@@ -14,17 +14,17 @@ public class TimeTrigger implements Trigger{
     
     private LocalTime time;
 
-    public LocalTime getTime() {
-        return time;
-    }
-
     public TimeTrigger(LocalTime time) {
         this.time = time;
     }
     
+    public LocalTime getTime() {
+        return time;
+    }
+    
     @Override
     public boolean isTriggered(){
-        return time.equals(LocalTime.now());
+        return LocalTime.now().equals(time);
     }
 
     @Override
