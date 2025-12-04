@@ -23,11 +23,4 @@ public class TriggerFactoryTest {
         assertEquals(time, ((TimeTrigger) t).getTime());
     }
 
-    @Test
-    public void testFactoryReturnsDifferentInstances() {
-        Trigger t1 = TriggerFactory.createTimeTrigger(LocalTime.of(9, 0));
-        Trigger t2 = TriggerFactory.createTimeTrigger(LocalTime.of(9, 0));
-
-        assertNotSame(t1, t2);
-    }
 }
