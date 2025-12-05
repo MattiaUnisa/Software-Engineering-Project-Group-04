@@ -15,20 +15,20 @@ import javafx.fxml.FXML;
  */
 public class CreateRuleController {
     
-    //inizializzo la combobox aggiungengo i trigger creati
+    //initialize the combobox and add the created triggers
     public void initialize() {
     triggerComboBox.getItems().addAll(
-        "TimeTrigger"                //i trigger vengono aggiunti nella combobox semplicemente come delle stringhe
+        "TimeTrigger"                //Triggers are added to the combobox as strings
     );
 }
     
-    @FXML  //Quando il trigger viene selezionato, vengono mostrati i campi per inserire gli elementi utili
+    @FXML  //When the trigger is selected, fields for entering useful elements are shown
     private void onTriggerSelected() {
-        String selected = triggerComboBox.getValue();  //catturo il trigger selezionato sottoforma di stringa
+        String selected = triggerComboBox.getValue();  //I capture the selected trigger as a string
     
         if (selected.equals("TimeTrigger")) {
-            hourSpinner.setVisible(true);    //mostro il selettore delle ore
-            minuteSpinner.setVisible(true);  //mostro il selettore dei minuti
+            hourSpinner.setVisible(true);    //show the hour selector
+            minuteSpinner.setVisible(true);  //show the minute selector
         }
     }
     
@@ -39,7 +39,7 @@ public class CreateRuleController {
 
         Trigger trigger = null;
 
-        if (selectedTrigger.equals("TimeTrigger")) {  //Se la stringa corrisponde viene generato il trigger
+        if (selectedTrigger.equals("TimeTrigger")) {  //If the string matches, the trigger is fired.
             int hour = hourSpinner.getValue();
             int minute = minuteSpinner.getValue();
             LocalTime time = LocalTime.of(hour, minute);
