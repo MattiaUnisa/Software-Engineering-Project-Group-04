@@ -4,7 +4,8 @@
  */
 package com.mycompany.softwareengineeringproject.Model;
 
-import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -12,14 +13,37 @@ import java.util.List;
  */
 public class RuleEngine {
     private static RuleEngine instance;
-    private List<Rule> rules;
+    private ObservableList<Rule> rules;
+    // observer: the list updates automatically the view 
     
-    //public static RuleEngine getInstance();
+    private RuleEngine() {
+        this.rules = FXCollections.observableArrayList();
+    }
     
-    //public void addRule(Rule r);
+    // Singleton
+    public static RuleEngine getInstance() {
+        if (instance == null) {
+            instance = new RuleEngine();
+        }
+        return instance;
+    }
     
-    //public void deleteRule(Rule r);
+    public void addRule(Rule rule) {
+        this.rules.add(rule);
+    }
     
-    //public List<Rule> getRules();
+    public void deleateRule(Rule rule){
+        this.rules.remove(rule);
+    }
+
+    public ObservableList<Rule> getRules(){
+        return this.rules;
+    }
+    @Override
+    public String toString() {
+        return "RuleEngine{" + "rules=" + rules + '}';
+    }
+    
+    
     
 }

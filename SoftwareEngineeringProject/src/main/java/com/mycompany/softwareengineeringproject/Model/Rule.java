@@ -43,9 +43,10 @@ public class Rule{
     public void setAction(Action action) {
         this.action = action;
     }
-    
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Rule{" + "name=" + name + ", trigger=" + trigger + ", action=" + action + '}';
+    }
     
 }
