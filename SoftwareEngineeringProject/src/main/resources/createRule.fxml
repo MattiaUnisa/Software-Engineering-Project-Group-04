@@ -27,7 +27,7 @@
             <children>
                 <Label text="Insert Rule Name:" style="-fx-font-size: 14px;" />
                 
-                <TextField fx:id="nameField" promptText="Es: Turn off WiFi at night" maxWidth="300.0" style="-fx-font-size: 14px; -fx-padding: 10;" />
+                <TextField fx:id="nameField" promptText="rule name" maxWidth="300.0" style="-fx-font-size: 14px; -fx-padding: 10;" />
                 
                 <Label text="" minHeight="20.0" />
                 
