@@ -32,7 +32,7 @@ public class RuleEngine {
         this.rules.add(rule);
     }
     
-    public void deleateRule(Rule rule){
+    public void deleteRule(Rule rule){
         this.rules.remove(rule);
     }
 
