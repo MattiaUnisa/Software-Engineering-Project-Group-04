@@ -1,42 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.StackPane?>
 
-<VBox spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.softwareengineeringproject.Controller.CreateRuleController">
-    
+<VBox spacing="20.0"  styleClass="main-container"
+      xmlns="http://javafx.com/javafx/8.0.171" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.mycompany.softwareengineeringproject.Controller.CreateRuleController"
+      stylesheets="@style.css">
     <children>
-        <HBox alignment="CENTER_LEFT" spacing="20.0">
-            <children>
-                <Button text="←" onAction="#onBackClick" style="-fx-font-size: 18px; -fx-background-radius: 50; -fx-min-width: 40px;" />
-                
-                <Label text="Create New Rule">
-                    <font>
-                        <Font name="System Bold" size="20.0" />
-                    </font>
-                </Label>
-            </children>
-        </HBox>
-
-        <VBox alignment="CENTER" spacing="15.0" VBox.vgrow="ALWAYS">
+        <StackPane>
+            <Label text="Create New Rule" styleClass="header-title"/>
+            <Button onAction="#onBackClick" styleClass="icon-button" StackPane.alignment="CENTER_LEFT"/>
+        </StackPane>
+        <!-- we use the StackPane because it overlaps the elements and we position the back_arrow on the left -->
+        <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
             <children>
                 <Label text="Insert Rule Name:" style="-fx-font-size: 14px;" />
+                <TextField fx:id="nameField" maxWidth="300.0" style="-fx-font-size: 14px; -fx-padding: 10;" />
                 
-                <TextField fx:id="nameField" promptText="rule name" maxWidth="300.0" style="-fx-font-size: 14px; -fx-padding: 10;" />
-                
-                <Label text="" minHeight="20.0" />
-                
-                <Button text="Save Rule" onAction="#onSaveClick" style="-fx-base: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10 20;" />
+                <Button text="Save Rule" onAction="#onSaveClick" styleClass="success-button" />
             </children>
         </VBox>
     </children>
 
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
+   
 </VBox>

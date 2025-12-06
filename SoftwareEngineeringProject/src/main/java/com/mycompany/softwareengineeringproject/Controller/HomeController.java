@@ -59,11 +59,11 @@ public class HomeController implements Initializable {
         public RuleListCell() {
             super();
             nameLabel = new Label();
-            nameLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+            nameLabel.getStyleClass().add("rule-name-label");
             
             deleteButton = new Button("🗑"); 
-            deleteButton.setStyle("-fx-background-color: #ffcccc; -fx-text-fill: red; -fx-border-color: red; -fx-border-radius: 3;");
-
+            deleteButton.getStyleClass().add("delete-button");
+            
             // the button is positioned on the right of the cell
             spacer = new Pane();
             HBox.setHgrow(spacer, Priority.ALWAYS);
@@ -78,6 +78,7 @@ public class HomeController implements Initializable {
                 Rule rule = getItem();
                 // ObservableList will update automatically
                 RuleEngine.getInstance().deleteRule(rule);
+                System.out.println("Rule Deleted: " + rule);
             });
         }
 
@@ -96,7 +97,7 @@ public class HomeController implements Initializable {
                 
                 // click on the rule -> TO DO (show rule details)
                 content.setOnMouseClicked(event -> {
-                    System.out.println("Hai cliccato sulla regola: " + rule.getName());
+                    System.out.println("You clicked on the rule: " + rule.getName());
                 });
 
                 setText(null); // disable the toString

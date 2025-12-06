@@ -1,0 +1,127 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 6-dic-2025, 12.52.17
+    Author     : Lenovo
+*/
+
+.root {
+    -green: #4CAF50;
+    -dark-green: #45a049;
+    -grey: #e0e0e0;
+    -light-grey: #f9f9f9;
+    -light-blue: #E3F2FD;
+    -delete-red: #ffb3b3;
+    -fx-font-family: 'Segoe UI', sans-serif;
+}
+
+.main-container {
+    -fx-padding: 20px;
+    -fx-spacing: 20px;
+    -fx-alignment: CENTER;
+}
+
+/* ----- HOME PAGE ----- */
+
+
+.header-title {
+    -fx-padding: 20px 0 20px 0;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    
+}
+
+/* Green buttons: create new rule/save */
+.success-button {
+    -fx-font-size: 18px;
+    -fx-background-color: -green; 
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-padding: 10px 20px 10px 20px;
+}
+.success-button:hover {
+    -fx-background-color: -dark-green;
+}
+
+.delete-button {
+    -fx-background-color: white;
+    -fx-text-fill: red;
+    -fx-border-color: red;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+    -fx-cursor: hand;
+}
+.delete-button:hover {
+    -fx-background-color: -delete-red;
+}
+
+.list-view {
+    -fx-background-color: white; 
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-border-radius: 5px; 
+    -fx-background-radius: 5px;
+    -fx-max-width: 600px;
+}
+
+/* Rule Label style (class assigned in controller)*/
+.rule-name-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+
+/* Rule cell style 
+    we don't need to assign a class to list cell because each JavaFX coponent has an assigned class'
+*/
+.list-cell:filled {
+    -fx-padding: 5px 10px 5px 10px; 
+    -fx-background-color: white;
+    /*  border only at bottom */
+    -fx-border-color: transparent transparent -grey transparent;
+}
+
+/* 3D effect on mouse hover*/
+.list-cell:filled:hover {
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 8, 0, 0, 2);
+    -fx-z-index: 1;
+    -fx-cursor: hand;    
+    -fx-background-color: -light-grey;
+}
+
+/* when we selecta rule */
+.list-cell:filled:selected {
+    -fx-background-color: -light-blue; /* O un tuo colore di selezione */
+    -fx-text-fill: black; 
+}
+
+/* ----- CREATE RULE PAGE ----- */
+
+/*  back arrow */
+.icon-button {
+    /* button dimensions */
+    -fx-pref-width: 40px;
+    -fx-pref-height: 40px;  
+    /* image loaded as wallpaper */
+    -fx-background-image: url("arrow_back.png");
+    -fx-background-size: contain; 
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-color: transparent; 
+    -fx-cursor: hand;
+}
+
+.icon-button:hover {
+    -fx-background-color: -grey;
+    -fx-background-radius: 50%;
+}

@@ -5,16 +5,18 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.softwareengineeringproject.Controller.HomeController">
+<VBox styleClass="main-container" 
+      xmlns="http://javafx.com/javafx/8.0.171" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.mycompany.softwareengineeringproject.Controller.HomeController"
+      stylesheets="@style.css">
+
     <children>
-        <Label text="RULE ENGINE" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+        <Label text="RULE ENGINE" styleClass="header-title" />
         
-        <Button text="+ Create a New Rule" onAction="#onNewRuleClick" style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;" maxWidth="400.0"/>
+        <Button text="+ Create a New Rule" onAction="#onNewRuleClick" styleClass="success-button"/>
         
-        <ListView fx:id="rulesListView" VBox.vgrow="ALWAYS" maxWidth="400.0"/>
-        
+        <ListView fx:id="rulesListView" VBox.vgrow="ALWAYS"/>
     </children>
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
+    
 </VBox>
