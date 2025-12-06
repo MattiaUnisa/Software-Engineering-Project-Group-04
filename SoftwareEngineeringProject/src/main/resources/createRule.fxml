@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.StackPane?>
 
-<VBox spacing="20.0"  styleClass="main-container"
+<VBox styleClass="main-container"
       xmlns="http://javafx.com/javafx/8.0.171" 
       xmlns:fx="http://javafx.com/fxml/1" 
       fx:controller="com.mycompany.softwareengineeringproject.Controller.CreateRuleController"
@@ -18,11 +18,10 @@
             <Button onAction="#onBackClick" styleClass="icon-button" StackPane.alignment="CENTER_LEFT"/>
         </StackPane>
         <!-- we use the StackPane because it overlaps the elements and we position the back_arrow on the left -->
-        <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
+        <VBox alignment="CENTER" VBox.vgrow="ALWAYS" styleClass="rule-creation-container">
             <children>
-                <Label text="Insert Rule Name:" style="-fx-font-size: 14px;" />
-                <TextField fx:id="nameField" maxWidth="300.0" style="-fx-font-size: 14px; -fx-padding: 10;" />
-                
+                <Label text="Insert Rule Name:" styleClass="section-lable"/>
+                <TextField fx:id="nameField"/>
                 <Button text="Save Rule" onAction="#onSaveClick" styleClass="success-button" />
             </children>
         </VBox>

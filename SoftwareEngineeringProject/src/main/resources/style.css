@@ -125,3 +125,17 @@ and open the template in the editor.
     -fx-background-color: -grey;
     -fx-background-radius: 50%;
 }
+
+.section-lable {
+    -fx-font-size: 14px;
+}
+
+.text-field {
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+    -fx-max-width: 500px;
+}
+
+.rule-creation-container {
+    -fx-spacing: 20px;
+}
