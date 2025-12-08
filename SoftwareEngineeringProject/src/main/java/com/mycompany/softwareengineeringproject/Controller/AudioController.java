@@ -24,6 +24,16 @@ public class AudioController implements ActionControllerInterface{
     
     private PlayAudioAction currentTestInstance;
     
+    //The method initialize is a special callback method of JavaFX. When the fxml file is loaded, the loader search and
+    //call automatically this method that in this case is used to 
+    public void initialize(){
+        
+        if(stopButton!=null){
+            stopButton.setDisable(true);
+        }
+    
+    }
+    
     //This method open a File Chooser that allow at the user to select a file audio
     @FXML
     private void onSelectFile(){

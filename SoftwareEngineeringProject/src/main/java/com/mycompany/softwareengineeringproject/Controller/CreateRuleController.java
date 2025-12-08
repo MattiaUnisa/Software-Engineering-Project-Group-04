@@ -1,6 +1,7 @@
 package com.mycompany.softwareengineeringproject.Controller;
 
 import com.mycompany.softwareengineeringproject.App;
+import com.mycompany.softwareengineeringproject.Model.Action;
 import com.mycompany.softwareengineeringproject.Model.Rule;
 import com.mycompany.softwareengineeringproject.Model.RuleEngine;
 import com.mycompany.softwareengineeringproject.Model.Trigger;
@@ -18,6 +19,9 @@ public class CreateRuleController {
     @FXML
     private TriggerController triggerSectionController;
     
+    @FXML
+    private ActionController actionSectionController;
+    
 
      // Go back to the home screen saving nothing
     @FXML
@@ -31,6 +35,8 @@ public class CreateRuleController {
         String name = nameField.getText();
         
         Trigger trigger = triggerSectionController.buildTrigger();
+        
+        Action action = actionSectionController.buildAction();
 
         // Validation of the name
         if (name == null || name.trim().isEmpty()) {
@@ -51,8 +57,17 @@ public class CreateRuleController {
             return;
         }
         
+        if (action == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Action missing");
+            alert.setContentText("Please select an action before saving the rule.");
+            alert.showAndWait();
+            return;
+        }
+        
         // empty rule 
-        Rule newRule = new Rule(name, trigger, null);
+        Rule newRule = new Rule(name, trigger, action);
 
         // add the rule to the singleton 
         RuleEngine.getInstance().addRule(newRule);
