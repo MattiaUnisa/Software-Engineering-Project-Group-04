@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TriggerFactoryTest {
 
+    //Test to verify the correct creation of an instance of the object TimeTrigger
     @Test
     public void testCreateTimeTrigger() {
         LocalTime time = LocalTime.of(9, 0);

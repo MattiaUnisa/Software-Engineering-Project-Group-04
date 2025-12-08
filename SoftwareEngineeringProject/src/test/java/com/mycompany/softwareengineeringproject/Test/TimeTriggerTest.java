@@ -13,6 +13,7 @@ import java.time.temporal.ChronoUnit;
 
 public class TimeTriggerTest {
 
+    //Test to control if the trigger is triggered when condition is verified
     @Test
     public void testTriggerAtExactTime() {
         LocalTime now = LocalTime.now().truncatedTo(ChronoUnit.MINUTES);
@@ -23,6 +24,7 @@ public class TimeTriggerTest {
         assertTrue(trigger.isTriggered(context));
     }
 
+    //Test to control if the trigger isn't triggered when condition isn't verified
     @Test
     public void testTriggerAtDifferentTime() {
         LocalTime triggerTime = LocalTime.of(10, 30);
