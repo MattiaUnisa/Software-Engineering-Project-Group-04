@@ -32,23 +32,23 @@ public class CreateRuleController {
         
         Trigger trigger = triggerSectionController.buildTrigger();
 
-        if (trigger == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Missing Trigger");
-            alert.setHeaderText(null);
-            alert.setContentText("Please select a trigger before saving the rule.");
-            alert.showAndWait();
-            return;
-        }
-        
         // Validation of the name
         if (name == null || name.trim().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Errore");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
             alert.setHeaderText("Name missing");
             alert.setContentText("Please insert a name for the rule.");
             alert.showAndWait();
             return; 
+        }
+        
+        if (trigger == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Trigger missing");
+            alert.setContentText("Please select a trigger before saving the rule.");
+            alert.showAndWait();
+            return;
         }
         
         // empty rule 
