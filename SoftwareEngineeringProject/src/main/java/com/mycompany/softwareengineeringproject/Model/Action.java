@@ -10,7 +10,7 @@ package com.mycompany.softwareengineeringproject.Model;
  */
 public interface Action {
     
-    public void execute();
+    public void execute(ActionContext context);
     
     public void stop();
     

@@ -222,3 +222,19 @@ and open the template in the editor.
 .rule-creation-container {
     -fx-spacing: 20px;
 }
+
+
+/* ----- PLAY AUDIO ----- */
+
+.standard-button {
+    -fx-font-size: 13px;
+    -fx-padding: 5px 10px;
+    -fx-background-color: white;
+    -fx-border-color: -grey; 
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+}
+.standard-button:hover {
+    -fx-background-color: -light-grey;
+}
