@@ -23,7 +23,9 @@
                 <TextField fx:id="nameField" />
                 <Label text="Select Trigger:" styleClass="section-label"/>
                 <fx:include source="TriggerSection.fxml" fx:id="triggerSection"/> 
-                <!-- the previous line of code is used to include in this file another fxml file -->
+                <Label text="Select Action:" styleClass="section-label"/>
+                <fx:include source="ActionSection.fxml" fx:id="actionSection"/> 
+                <!-- the previous line of code are used to include in this file another fxml file -->
                 <Button text="Save Rule" onAction="#onSaveClick" styleClass="success-button" />
             </children>
         </VBox>
