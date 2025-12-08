@@ -52,4 +52,11 @@ public class PlayAudioAction implements Action{
             mediaPlayer.stop();
         }
     }
+
+    @Override
+    public String toString() {
+        return "PlayAudioAction{" + "filePath=" + filePath + ", mediaPlayer=" + mediaPlayer + '}';
+    }
+    
+    
 }
