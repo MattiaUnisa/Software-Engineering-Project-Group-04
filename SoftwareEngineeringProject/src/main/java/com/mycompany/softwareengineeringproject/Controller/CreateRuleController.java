@@ -5,6 +5,7 @@ import com.mycompany.softwareengineeringproject.Model.Action;
 import com.mycompany.softwareengineeringproject.Model.Rule;
 import com.mycompany.softwareengineeringproject.Model.RuleEngine;
 import com.mycompany.softwareengineeringproject.Model.Trigger;
+import com.mycompany.softwareengineeringproject.View.DialogManager;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -37,32 +38,20 @@ public class CreateRuleController {
         Trigger trigger = triggerSectionController.buildTrigger();
         
         Action action = actionSectionController.buildAction();
-
+        
+        
         // Validation of the name
         if (name == null || name.trim().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning");
-            alert.setHeaderText("Name missing");
-            alert.setContentText("Please insert a name for the rule.");
-            alert.showAndWait();
+            DialogManager.showWarning("Warning", "Name missing", "Please insert a name for the rule.");
             return; 
-        }
-        
+        } 
+
         if (trigger == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning");
-            alert.setHeaderText("Trigger missing");
-            alert.setContentText("Please select a trigger before saving the rule.");
-            alert.showAndWait();
+            DialogManager.showWarning("Warning", "Trigger missing", "Please select a trigger before saving the rule.");
             return;
         }
-        
         if (action == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning");
-            alert.setHeaderText("Action missing");
-            alert.setContentText("Please select an action before saving the rule.");
-            alert.showAndWait();
+            DialogManager.showWarning("Warning", "Action missing", "Please select an action before saving the rule.");
             return;
         }
         
