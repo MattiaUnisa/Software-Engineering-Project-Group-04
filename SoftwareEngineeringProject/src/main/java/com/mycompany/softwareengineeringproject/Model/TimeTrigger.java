@@ -30,10 +30,10 @@ public class TimeTrigger implements Trigger{
     public boolean isTriggered(){
         LocalTime now = LocalTime.now();
         
-        // 1. Controlla se ORA e MINUTI coincidono
+        // Control if the time insert in the UI is equal to the real time
         boolean sameTime = now.truncatedTo(ChronoUnit.MINUTES).equals(time);
         
-        // 2. FIX: Controlla se siamo nel primo secondo del minuto (per evitare ripetizioni)
+        // Control if it's the first second of the minute
         boolean isJustStarted = now.getSecond() == 0;
         
         return sameTime && isJustStarted;

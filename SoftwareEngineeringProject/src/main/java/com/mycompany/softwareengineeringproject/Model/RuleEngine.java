@@ -44,7 +44,9 @@ public class RuleEngine {
     public void CheckAllRules(){
         for(Rule rule : rules){
             if(rule.getTrigger().isTriggered()){
-                // Wrap the execution in Platform.runLater
+                // Wrap the execution in Platform.runLater in the way that the RuleEngineThread verify if the trigger of a rule is triggered and
+                // then the application thread execute it. So the application thread when is free show it on display, while the RuleEngineThread 
+                // continues to check triggers
                 Platform.runLater(() -> {
                     ActionContext actioncontext = new ActionContext();
                     rule.getAction().execute(actioncontext);

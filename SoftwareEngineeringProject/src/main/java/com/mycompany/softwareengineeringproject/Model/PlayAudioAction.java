@@ -11,8 +11,8 @@ import java.util.Optional;
 public class PlayAudioAction implements Action {
     
     private final String filePath;
-    // Usiamo Clip (libreria standard) invece di MediaPlayer (JavaFX Media)
-    // Questo bypassa l'errore della DLL mancante
+    
+    //it's an object that allows us to reproduce media
     private Clip clip; 
 
     public PlayAudioAction(String filePath) {
@@ -33,13 +33,17 @@ public class PlayAudioAction implements Action {
         }
 
         try {
-            // 1. Preparazione Audio (Sistema Standard javax.sound)
-            // NOTA: Funziona solo con file .WAV
+            
+            //Takes in input the audio file with the extension .wav
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+            
+            //Take a clip instance from AudioSystem
             clip = AudioSystem.getClip();
+            
+            //This method take audio data from audioStream and load them in memory
             clip.open(audioStream);
             
-            // 2. Avvio Audio
+            //Play audio
             clip.start();
             context.appendToLog("Playing Audio (WAV): " + filePath);
 
