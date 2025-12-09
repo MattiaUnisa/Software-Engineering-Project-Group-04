@@ -1,5 +1,6 @@
 package com.mycompany.softwareengineeringproject;
 
+import com.mycompany.softwareengineeringproject.Model.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -33,8 +34,13 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         launch();
+        RuleEngine rules.getInstance();
+        while(true){
+            rules.CheckAllRules();
+            Thread.sleep(1000); // one second between a cicle and another
+        }
     }
 
 }
