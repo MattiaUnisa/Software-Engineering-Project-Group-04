@@ -13,6 +13,7 @@ and open the template in the editor.
     -dark-green: #45a049;
     -grey: #e0e0e0;
     -light-grey: #f9f9f9;
+    -dark-grey: #333;
     -light-blue: #E3F2FD;
     -delete-red: #ffb3b3;
     -fx-font-family: 'Segoe UI', sans-serif;
@@ -138,12 +139,12 @@ and open the template in the editor.
 
 .combo-box{   /* Style for selector that use ComboBox */
     -fx-background-color: white;
-    -fx-border-color: #bfc7d1;
+    -fx-border-color: -grey;
     -fx-border-radius: 6px;
     -fx-background-radius: 6px;
     -fx-padding: 4 6 4 6;
     -fx-font-size: 14px;
-    -fx-text-fill: #333;
+    -fx-text-fill: -dark-grey;
 }
 
 /*Begin Trigger Style */
@@ -228,7 +229,7 @@ and open the template in the editor.
 
 .standard-button {
     -fx-font-size: 13px;
-    -fx-padding: 5px 10px;
+    -fx-padding: 5px 10px 5PX 10PX;
     -fx-background-color: white;
     -fx-border-color: -grey; 
     -fx-border-radius: 4px;

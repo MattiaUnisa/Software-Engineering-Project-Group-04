@@ -4,6 +4,7 @@
  */
 package com.mycompany.softwareengineeringproject.Model;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -41,13 +42,18 @@ public class RuleEngine {
     }
     
     public void CheckAllRules(){
-        for(Rule rule:rules){
-            ActionContext actioncontext = new ActionContext();
+        for(Rule rule : rules){
             if(rule.getTrigger().isTriggered()){
-                rule.getAction().execute(actioncontext);
+                // Wrap the execution in Platform.runLater
+                Platform.runLater(() -> {
+                    ActionContext actioncontext = new ActionContext();
+                    rule.getAction().execute(actioncontext);
+                    System.out.println(actioncontext.getExecutionLog());
+                });
             }
         }
     }
+    
     @Override
     public String toString() {
         return "RuleEngine{" + "rules=" + rules + '}';

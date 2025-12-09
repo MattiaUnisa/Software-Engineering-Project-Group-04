@@ -12,7 +12,7 @@
       stylesheets="@style.css"> 
     <Label text="Play audio" styleClass="section-label"/>
     
-    <HBox spacing="5" alignment="CENTER">
+    <HBox alignment="CENTER">
         <TextField fx:id="filePathField" promptText="Path of the file audio" HBox.hgrow="ALWAYS" editable="false" styleClass="text-field"/> 
         
         <Button text="Select file" onAction="#onSelectFile" styleClass="standard-button"/>

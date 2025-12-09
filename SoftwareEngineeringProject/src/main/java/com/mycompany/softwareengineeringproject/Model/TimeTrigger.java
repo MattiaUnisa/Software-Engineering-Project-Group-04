@@ -25,11 +25,20 @@ public class TimeTrigger implements Trigger{
     }
     
     //Condition for the creation of the trigger
+    // It garantees no repetition of the action every secondo
     @Override
     public boolean isTriggered(){
-        return LocalTime.now().truncatedTo(ChronoUnit.MINUTES).equals(time);
+        LocalTime now = LocalTime.now();
+        
+        // 1. Controlla se ORA e MINUTI coincidono
+        boolean sameTime = now.truncatedTo(ChronoUnit.MINUTES).equals(time);
+        
+        // 2. FIX: Controlla se siamo nel primo secondo del minuto (per evitare ripetizioni)
+        boolean isJustStarted = now.getSecond() == 0;
+        
+        return sameTime && isJustStarted;
     }
-
+    
     @Override
     public String toString() {
         return "TimeTrigger{" + "time=" + time + '}';
