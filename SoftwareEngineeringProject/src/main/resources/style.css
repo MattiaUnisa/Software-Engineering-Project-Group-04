@@ -102,7 +102,7 @@ and open the template in the editor.
 
 /* when we select a rule */
 .list-cell:filled:selected {
-    -fx-background-color: -light-blue; /* O un tuo colore di selezione */
+    -fx-background-color: -light-blue;
     -fx-text-fill: black; 
 }
 
@@ -171,9 +171,9 @@ and open the template in the editor.
 }
 
 .combo-box .arrow { /* Style of the selection arrow */
-    -fx-background-color: black;       /* colore freccia */
+    -fx-background-color: black;       
     -fx-padding: 0.3em;
-    -fx-shape: "M 0 0 L 4 4 L 8 0 Z";  /* puoi cambiare forma */
+    -fx-shape: "M 0 0 L 4 4 L 8 0 Z";  
 }
 
 .combo-box .arrow-button { /* Style of the section around the arrow */
