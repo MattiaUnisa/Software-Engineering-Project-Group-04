@@ -45,11 +45,14 @@ public class CreateRuleController {
             DialogManager.showWarning("Warning", "Name missing", "Please insert a name for the rule.");
             return; 
         } 
-
+        
+        // Validation of the trigger
         if (trigger == null) {
             DialogManager.showWarning("Warning", "Trigger missing", "Please select a trigger before saving the rule.");
             return;
         }
+        
+        // Validation of the action
         if (action == null) {
             DialogManager.showWarning("Warning", "Action missing", "Please select an action before saving the rule.");
             return;
