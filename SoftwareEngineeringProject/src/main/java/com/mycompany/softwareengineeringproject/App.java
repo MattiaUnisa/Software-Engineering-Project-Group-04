@@ -39,7 +39,7 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
         Thread ruleEngineThread = new Thread(() -> {
-            RuleEngine rules =RuleEngine.getInstance();
+            RuleEngine rules = RuleEngine.getInstance();
             while(true){
                 rules.CheckAllRules();
                 try {
@@ -48,7 +48,7 @@ public class App extends Application {
                     System.err.println("Rule Engine Loop Interrupted.");
                 }
             }
-        }, "RuleEngine-Monitor-Thread");
+        }, "RuleEngine-Thread");
         
         // Set the thread as a daemon. This mean that the program will close automatically
         // also if this thread is already in execution, when all non-daemon thread (include JavaFX UI) are finished
