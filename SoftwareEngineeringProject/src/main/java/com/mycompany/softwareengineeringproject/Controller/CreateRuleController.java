@@ -23,7 +23,8 @@ public class CreateRuleController {
     @FXML
     private ActionController actionSectionController;
     
-    private RepetitionController repetitionController;
+    @FXML
+    private RepetitionController repetitionSectionController;
     
 
      // Go back to the home screen saving nothing
@@ -41,7 +42,7 @@ public class CreateRuleController {
         
         Action action = actionSectionController.buildAction();
         
-        Repetition repetition = repetitionController.buildRepetition();
+        Repetition repetition = repetitionSectionController.buildRepetition();
         
         
         // Validation of the name
