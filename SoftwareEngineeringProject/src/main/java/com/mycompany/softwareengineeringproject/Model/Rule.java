@@ -66,7 +66,9 @@ public class Rule{
 
     @Override
     public String toString() {
-        return "Rule:" + "name=" + name + ", trigger=" + trigger + ", action=" + action;
+        return "Rule: " + "name=" + name + ", trigger=" + trigger + ", action=" + action + ", active=" + active;
     }
+    
+    
     
 }

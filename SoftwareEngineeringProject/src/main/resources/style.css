@@ -63,6 +63,42 @@ and open the template in the editor.
     -fx-background-color: -delete-red;
 }
 
+/* ----- TOGGLE SWITCH STYLE ----- */
+
+/* OFF state */
+.toggle-switch {
+    -fx-background-color: -grey; /* background OFF */
+    -fx-text-fill: white; /* text OFF */
+    -fx-background-radius: 20; 
+    -fx-min-width: 60px;
+    -fx-max-width: 60px;
+    -fx-min-height: 30px;
+    -fx-max-height: 30px;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-padding: 0; 
+}
+
+/* on STATE */
+.toggle-switch:selected {
+    -fx-background-color: -green; /* background ON */
+    -fx-text-fill: white; /* text ON */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 2, 0, 0, 1);
+}
+
+.toggle-switch:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);
+}
+
+.toggle-switch:pressed {
+    -fx-background-color: derive(-grey, -10%); /* make the color darker of 10% */
+}
+.toggle-switch:selected:pressed {
+    -fx-background-color: derive(-green, -10%);
+}
+
 .list-view {
     -fx-background-color: white; 
     -fx-background-insets: 0;

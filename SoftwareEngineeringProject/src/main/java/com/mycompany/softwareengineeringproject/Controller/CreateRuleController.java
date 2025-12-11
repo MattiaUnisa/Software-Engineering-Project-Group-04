@@ -9,7 +9,6 @@ import com.mycompany.softwareengineeringproject.Model.Trigger;
 import com.mycompany.softwareengineeringproject.View.DialogManager;
 import java.io.IOException;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
 public class CreateRuleController {
