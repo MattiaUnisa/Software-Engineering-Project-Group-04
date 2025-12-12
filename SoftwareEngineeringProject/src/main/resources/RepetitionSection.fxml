@@ -28,7 +28,7 @@
     <VBox fx:id="repetitionInputContainer" managed="false" visible="false" styleClass="main-container" stylesheets="@style.css">
         
         <HBox styleClass="main-container" stylesheets="@style.css">
-            <Label text="Sleep Period (D:H:M):" />
+            <Label text="Sleep Period (D:H:M:S):" />
             <Spinner fx:id="daySpinner" prefWidth="100"/>
             <Spinner fx:id="hourSpinner" prefWidth="100"/>
             <Spinner fx:id="minuteSpinner" prefWidth="100"/>
