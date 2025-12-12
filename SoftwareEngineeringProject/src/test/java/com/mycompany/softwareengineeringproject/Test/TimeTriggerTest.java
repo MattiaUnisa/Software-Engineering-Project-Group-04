@@ -16,9 +16,6 @@ public class TimeTriggerTest {
     //Test to control if the trigger is triggered when condition is verified
     @Test
     public void testTriggerAtExactTime() throws InterruptedException {
-        LocalTime current = LocalTime.now().truncatedTo(ChronoUnit.SECONDS);
-        int SecondstoNextMinute= (60 - current.getSecond())*1000;
-        Thread.sleep(SecondstoNextMinute);
         LocalTime now = LocalTime.now().truncatedTo(ChronoUnit.MINUTES);
         TimeTrigger trigger = new TimeTrigger(now);
 

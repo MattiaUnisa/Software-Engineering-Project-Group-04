@@ -34,7 +34,6 @@ public class RepetitionController {
     @FXML 
     private Spinner<Integer> secondSpinner;
     
-    // Spinner per il Numero di Ripetizioni
     @FXML 
     private Spinner<Integer> repetition; 
     
@@ -42,11 +41,11 @@ public class RepetitionController {
     
     @FXML
     public void initialize() {
-        // Nasconde il contenitore all'avvio
+        // hide the content when the app is started
         repetitionInputContainer.setVisible(false);
         repetitionInputContainer.setManaged(false);
         
-        // Configurazione degli Spinner (Inizializzazione)
+        // Spinnner Initialization
 
         // Sleep Period: Days (Min: 0, Max: 365, Default: 0)
         daySpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 365, 0));
@@ -60,10 +59,11 @@ public class RepetitionController {
         // Sleep Period: Seconds (Min: 0, Max: 59, Default: 0)
         secondSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
         
-        // Max Repetitions: (Min: 0, Max: 999, Default: 1)
+        // Max Repetitions: (Min: 1, Max: 50, Default: 1)
         repetition.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 50, 1));
     }
     
+    //if the RadioButton Yes is clicked, this method is used
     @FXML
     private void handleYesSelected() {
         isOneTime = false;
@@ -71,6 +71,7 @@ public class RepetitionController {
         repetitionInputContainer.setManaged(true);
     }
     
+    //if the RadioButton No is clicked, this method is used
     @FXML
     private void handleNoSelected() {
         isOneTime = true;
@@ -78,6 +79,7 @@ public class RepetitionController {
         repetitionInputContainer.setManaged(false);
     }
     
+    //This is the method used to create the Repetition Object
     public Repetition buildRepetition(){
         long days = daySpinner.getValue();
         long hours = hourSpinner.getValue();

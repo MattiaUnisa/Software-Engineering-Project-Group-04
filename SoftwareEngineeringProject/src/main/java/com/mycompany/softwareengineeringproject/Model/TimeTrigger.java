@@ -33,10 +33,7 @@ public class TimeTrigger implements Trigger{
         // Control if the time insert in the UI is equal to the real time
         boolean sameTime = now.truncatedTo(ChronoUnit.MINUTES).equals(time);
         
-        // Control if it's the first second of the minute
-       /* boolean isJustStarted = now.getSecond() == 0;*/
-        
-        return sameTime /*&& isJustStarted*/;
+        return sameTime;
     }
     
     @Override

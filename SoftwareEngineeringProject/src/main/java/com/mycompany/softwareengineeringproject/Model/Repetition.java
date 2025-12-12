@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
  *
  * @author matda
  */
+
+//The class Repetition is created to generate a simpler object in order to don't increment the complexity of the class Rule
 public class Repetition {
     
     private boolean oneTime;
@@ -18,6 +20,9 @@ public class Repetition {
     private LocalDateTime lastExecution;
     private int numRepetition;
     private int currentRepetition;
+
+    public Repetition() {
+    }
     
     public Repetition(boolean oneTime, Duration sleepPeriod, LocalDateTime lastExecution,int numRepetition){
         this.oneTime = oneTime;

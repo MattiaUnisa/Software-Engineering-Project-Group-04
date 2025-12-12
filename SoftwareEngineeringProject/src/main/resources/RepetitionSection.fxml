@@ -25,6 +25,7 @@
         </HBox>
     </VBox>
     
+    <!-- This section is showed only when yes is selected -->
     <VBox fx:id="repetitionInputContainer" managed="false" visible="false" styleClass="main-container" stylesheets="@style.css">
         
         <HBox styleClass="main-container" stylesheets="@style.css">
