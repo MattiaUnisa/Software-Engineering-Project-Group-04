@@ -1,2 +1,1 @@
-ffff | TimeTrigger:5:0 | PlayAudioAction:C:\Users\anton\Desktop\sound.wav | Repetition:true;null;null;1
-aaa | TimeTrigger:17:6 | PlayAudioAction:C:\Users\anton\Desktop\sound.wav | Repetition:true;null;2025-12-12T17:06:00.227;1
+sveglia | TimeTrigger:17:22 | PlayAudioAction:C:\Users\matda\OneDrive\Desktop\sound.wav | Repetition:false;PT10S;2025-12-12T17:22:27.459;3
