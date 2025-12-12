@@ -32,6 +32,7 @@
             <Spinner fx:id="daySpinner" prefWidth="100"/>
             <Spinner fx:id="hourSpinner" prefWidth="100"/>
             <Spinner fx:id="minuteSpinner" prefWidth="100"/>
+            <Spinner fx:id="secondSpinner" prefWidth="100"/>
         </HBox>
         
         <HBox styleClass="main-container" stylesheets="@style.css">

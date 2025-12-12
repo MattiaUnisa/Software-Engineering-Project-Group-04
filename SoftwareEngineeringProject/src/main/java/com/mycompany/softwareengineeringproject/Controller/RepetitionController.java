@@ -31,6 +31,9 @@ public class RepetitionController {
     @FXML 
     private Spinner<Integer> minuteSpinner;
     
+    @FXML 
+    private Spinner<Integer> secondSpinner;
+    
     // Spinner per il Numero di Ripetizioni
     @FXML 
     private Spinner<Integer> repetition; 
@@ -54,6 +57,9 @@ public class RepetitionController {
         // Sleep Period: Minutes (Min: 0, Max: 59, Default: 0)
         minuteSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
         
+        // Sleep Period: Seconds (Min: 0, Max: 59, Default: 0)
+        secondSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
+        
         // Max Repetitions: (Min: 0, Max: 999, Default: 1)
         repetition.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 50, 1));
     }
@@ -76,9 +82,10 @@ public class RepetitionController {
         long days = daySpinner.getValue();
         long hours = hourSpinner.getValue();
         long minutes = minuteSpinner.getValue();
+        long seconds = secondSpinner.getValue();
         Duration sleepPeriod = null;
-        if (days > 0 || hours > 0 || minutes > 0) {
-            sleepPeriod = Duration.ofDays(days).plusHours(hours).plusMinutes(minutes);
+        if (days > 0 || hours > 0 || minutes > 0 || seconds > 0) {
+            sleepPeriod = Duration.ofDays(days).plusHours(hours).plusMinutes(minutes).plusSeconds(seconds);
         }
         int numRepetitions = repetition.getValue();
         Repetition repetition = new Repetition(isOneTime, sleepPeriod, null, numRepetitions);
