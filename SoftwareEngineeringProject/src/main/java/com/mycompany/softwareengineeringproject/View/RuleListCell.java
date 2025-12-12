@@ -96,7 +96,7 @@ public class RuleListCell extends ListCell<Rule> {
                     if (r.getRepetition() != null) {
                         r.getRepetition().setLastExecution(null); 
                         r.getRepetition().setCurrentRepetition(0);
-                        System.out.println("Rule ARMED & RESET");
+                        System.out.println("Rule RESETTED");
                     }
                 }
                 // if the user turns OFF the rule only stops 

@@ -22,7 +22,7 @@ import javafx.collections.ObservableList;
  */
 public class RuleEngine {
     private static RuleEngine instance;
-    private ObservableList<Rule> rules;
+    private final ObservableList<Rule> rules;
     // observer: the list updates automatically the view 
     
     private RuleEngine() {
@@ -71,13 +71,7 @@ public class RuleEngine {
                         continue;
                     }
                 }
-                
-                //is checked if the current repetition of the rule are less or more of the repetition requested from the user
-                if(rule.getRepetition().getCurrentRepetition()>=rule.getRepetition().getNumRepetition()){
-                    rule.setActive(false);
-                    continue;
-                }
-                
+                                
                 // the parameters of ripetition (LastExecution e CurrentRepetition) are updated here immediately 
                 // to block multiple executions (race condition) in the fast iteration of the rule engine.
                 rule.getRepetition().setLastExecution(LocalDateTime.now());
@@ -93,6 +87,12 @@ public class RuleEngine {
                     rule.getAction().execute(actioncontext);
                     System.out.println(actioncontext.getExecutionLog());
                 });
+                
+                //is checked if the current repetition of the rule are less or more of the repetition requested from the user
+                if(rule.getRepetition().getCurrentRepetition()>=rule.getRepetition().getNumRepetition()){
+                    rule.setActive(false);
+                    continue;
+                }
             }
         }
     }
