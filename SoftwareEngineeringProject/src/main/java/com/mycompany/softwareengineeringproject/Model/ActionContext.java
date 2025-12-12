@@ -4,12 +4,14 @@
  */
 package com.mycompany.softwareengineeringproject.Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author anton
  */
 //This class allows to register what happen during the execution
-public class ActionContext {
+public class ActionContext implements Serializable{
     
     private final StringBuilder execution;
     

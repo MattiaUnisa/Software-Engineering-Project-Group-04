@@ -18,9 +18,14 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("home"), 800, 800);
-        
+
         stage.setScene(scene);
         stage.setTitle("Rule Engine Manager"); 
+        
+        stage.setOnCloseRequest(event -> {
+            System.out.println("Atempting to save rules...");
+            RuleEngine.getInstance().saveRules("RulesFile.txt");
+        });
         stage.show();
     }
 
@@ -37,6 +42,8 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        RuleEngine.getInstance().loadRules("RulesFile.txt");
+        
         Thread ruleEngineThread = new Thread(() -> {
             RuleEngine rules = RuleEngine.getInstance();
             while(true){
@@ -55,6 +62,7 @@ public class App extends Application {
         
         // Start the thread execution
         ruleEngineThread.start();
+        
         
         launch();
     }

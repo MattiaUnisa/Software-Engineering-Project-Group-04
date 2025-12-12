@@ -1,0 +1,2 @@
+ffff | TimeTrigger:5:0 | PlayAudioAction:C:\Users\anton\Desktop\sound.wav | Repetition:true;null;null;1
+aaa | TimeTrigger:17:6 | PlayAudioAction:C:\Users\anton\Desktop\sound.wav | Repetition:true;null;null;1

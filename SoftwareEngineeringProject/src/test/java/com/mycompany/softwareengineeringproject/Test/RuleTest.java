@@ -13,18 +13,27 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class RuleTest {
 
-    // Mock classes to isolate Rule testing from specific Trigger/Action logic
+    // Helper classes
     private class MockTrigger implements Trigger {
+         private boolean state = false;
+        public void setTriggered(boolean value) { this.state = value; }
         @Override
-        public boolean isTriggered() { return false; }
+        public boolean isTriggered() { return state; }
     }
-
     private class MockAction implements Action {
+        public int counter = 0;
         @Override
-        public void execute(ActionContext context) {}
+        public void execute(ActionContext context) {
+            counter++;
+        }
         @Override
         public void stop() {}
     }
+
+    private RuleEngine ruleEngine;
+    private MockTrigger trigger;
+    private MockAction action;
+    private Rule rule;
 
     // Test the correct instantiation of a Rule object
     @Test
@@ -33,7 +42,7 @@ public class RuleTest {
         Trigger trigger = new MockTrigger();
         Action action = new MockAction();
 
-        Rule rule = new Rule(name, trigger, action);
+        Rule rule = new Rule(name, trigger, action, new Repetition());
 
         assertNotNull(rule);
         assertEquals(name, rule.getName());
@@ -46,7 +55,7 @@ public class RuleTest {
     // Test the activation and deactivation of a rule
     @Test
     public void testSetActive() {
-        Rule rule = new Rule("Test", new MockTrigger(), new MockAction());
+        Rule rule = new Rule("Test", new MockTrigger(), new MockAction(), new Repetition());
 
         // Deactivate
         rule.setActive(false);
@@ -62,7 +71,7 @@ public class RuleTest {
     // Test setters for name, trigger, and action
     @Test
     public void testSetters() {
-        Rule rule = new Rule("Old Name", new MockTrigger(), new MockAction());
+        Rule rule = new Rule("Old Name", new MockTrigger(), new MockAction(), new Repetition());
         
         String newName = "New Name";
         rule.setName(newName);

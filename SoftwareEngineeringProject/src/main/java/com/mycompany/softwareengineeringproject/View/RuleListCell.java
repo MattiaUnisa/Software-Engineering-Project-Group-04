@@ -82,7 +82,7 @@ public class RuleListCell extends ListCell<Rule> {
         }
     }
     
-    // --- logic for click with RESET ---
+    // logic for click with RESET 
     private void attachSwitchAction() {
         activeSwitch.setOnAction(event -> {
             Rule r = getItem(); // get the current rule

@@ -68,7 +68,7 @@ public class ActionController {
         
     }
     
-    //give the role of creator of the Trigger Object to the specific controller
+    //give the role of creator of the Action Object to the specific controller
     public Action buildAction() {
     
         if (action!= null){

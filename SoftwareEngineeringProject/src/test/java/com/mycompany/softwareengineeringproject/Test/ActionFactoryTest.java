@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ActionFactoryTest {
     @Test
     public void testCreatePlayAudio(){
-        String testPath = "C:\\test\\audio.mp3";
+        String testPath = "C:\\test\\audio.wav";
         Action a = ActionFactory.createPlayAudio(testPath);
         
         assertNotNull(a);

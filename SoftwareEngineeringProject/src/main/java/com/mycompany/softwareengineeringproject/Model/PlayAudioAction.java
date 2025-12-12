@@ -2,6 +2,7 @@ package com.mycompany.softwareengineeringproject.Model;
 
 import com.mycompany.softwareengineeringproject.View.DialogManager;
 import java.io.File;
+import java.io.Serializable;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -9,7 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import java.util.Optional;
 
-public class PlayAudioAction implements Action {
+public class PlayAudioAction implements Action, Serializable {
 
     private final String filePath;
 
@@ -72,6 +73,11 @@ public class PlayAudioAction implements Action {
             clip.close();
         }
     }
+    
+    public String getFilePath() {
+        return filePath;
+    }
+
 
     @Override
     public String toString() {
