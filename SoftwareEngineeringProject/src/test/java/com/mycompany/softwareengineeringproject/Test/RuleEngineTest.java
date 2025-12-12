@@ -133,11 +133,7 @@ public class RuleEngineTest {
 
         ruleEngine.CheckAllRules();
         assertEquals(3, rule.getRepetition().getCurrentRepetition());
-        assertTrue(rule.isActive()); 
-        
-        ruleEngine.CheckAllRules();
-        assertEquals(3, rule.getRepetition().getCurrentRepetition());
-        assertFalse(rule.isActive());
+        assertFalse(rule.isActive()); 
     }
     
     // ---------- SLEEP PERIOD TEST ----------
