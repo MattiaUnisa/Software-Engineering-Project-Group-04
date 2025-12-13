@@ -1,3 +1,1 @@
-ffff | TimeTrigger:5:0 | PlayAudioAction:C:\Users\anton\Desktop\sound.wav | Repetition:true;null;null;1
-aaa | TimeTrigger:17:6 | PlayAudioAction:C:\Users\anton\Desktop\sound.wav | Repetition:true;null;null;1
-vbnm | TimeTrigger:18:4 | PlayAudioAction:C:\Users\Lenovo\Desktop\MedicalSoftwareEngineering\sound.wav | Repetition:true;null;2025-12-12T18:04:00.347;1
+sveglia | TimeTrigger:18:0 | PlayAudioAction:C:\Users\matda\OneDrive\Desktop\sound.wav | Repetition:false;PT10M;null;3

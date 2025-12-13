@@ -3,13 +3,17 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.mycompany.softwareengineeringproject.Controller.NotificationController"
-      spacing="10">
+      styleClass="main-container"
+      stylesheets="@style.css">
 
-    <Label text="Notification message:"/>
-    <TextField fx:id="messageField" promptText="Type your notification..."/>
-
+    <Label text="Notification message:" styleClass="section-label"/>
+    <HBox alignment="CENTER">
+        <TextField fx:id="messageField" promptText="Type your notification..." HBox.hgrow="ALWAYS" styleClass="text-field"/>
+    </HBox>
 </VBox>

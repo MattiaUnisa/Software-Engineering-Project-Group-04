@@ -1,5 +1,7 @@
 package com.mycompany.softwareengineeringproject.Model;
 
+import com.mycompany.softwareengineeringproject.View.DialogManager;
+
 /**
  * A simple action that shows a notification message when a rule is triggered.
  */
@@ -29,8 +31,10 @@ public class NotificationAction implements Action {
      */
     @Override
     public void execute(ActionContext context) {
-        System.out.println("NOTIFICATION: " + message);
-        // TODO: Replace this with a graphical popup (Alert) later
+        String title = "Notification";
+        String header = "Show Notification...";
+        DialogManager.showNotification(title, header, message);
+        stop();
     }
 
     /**

@@ -30,6 +30,8 @@ public static void showNotification(String title, String header, String content)
     alert.setTitle(title);
     alert.setHeaderText(header);
     alert.setContentText(content);
+    ButtonType closeButton = new ButtonType("OK");
+    alert.getButtonTypes().setAll(closeButton);
     alert.showAndWait();
 }
 
