@@ -31,7 +31,8 @@ public class ActionController {
     //actions are added to the combobox as strings
     actionComboBox.getItems().addAll(
         "Choose Action",
-        "PlayAudio"                
+        "PlayAudio",
+        "Notification"
     );
     
     //the default string selected is Choose Action

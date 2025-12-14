@@ -8,12 +8,15 @@
 
 <VBox xmlns:fx="http://javafx.com/fxml/1" 
       fx:controller="com.mycompany.softwareengineeringproject.Controller.AudioController" 
-      styleClass="main-container"
-      stylesheets="@style.css"> 
+      stylesheets="@style.css"
+      alignment="CENTER"
+      spacing="15"
+      styleClass="dynamic-content"
+      > 
     <Label text="Play audio" styleClass="section-label"/>
     
-    <HBox alignment="CENTER">
-        <TextField fx:id="filePathField" promptText="Path of the file audio" HBox.hgrow="ALWAYS" editable="false" styleClass="text-field"/> 
+    <HBox>
+        <TextField fx:id="filePathField" promptText="Path of the file audio" HBox.hgrow="ALWAYS" editable="false" styleClass="audio-field"/> 
         
         <Button text="Select file" onAction="#onSelectFile" styleClass="standard-button"/>
     </HBox>

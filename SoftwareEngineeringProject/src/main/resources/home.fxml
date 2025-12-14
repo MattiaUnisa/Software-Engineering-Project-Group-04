@@ -14,7 +14,7 @@
     <children>
         <Label text="RULE ENGINE" styleClass="header-title" />
         
-        <Button text="+ Create a New Rule" onAction="#onNewRuleClick" styleClass="success-button"/>
+        <Button text="+ Create a New Rule" onAction="#onNewRuleClick" styleClass="create-button"/>
         
         <ListView fx:id="rulesListView" VBox.vgrow="ALWAYS"/>
     </children>

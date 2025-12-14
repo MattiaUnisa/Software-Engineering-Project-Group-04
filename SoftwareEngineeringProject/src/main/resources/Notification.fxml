@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.mycompany.softwareengineeringproject.Controller.NotificationController"
+      alignment="CENTER"
+      spacing="15"
+      styleClass="dynamic-content"
+      stylesheets="@style.css">
+
+    <Label text="Notification message:" styleClass="section-label"/>
+    <HBox alignment="CENTER">
+        <TextField fx:id="messageField" promptText="Type your notification..." HBox.hgrow="ALWAYS" styleClass="text-section"/>
+    </HBox>
+</VBox>

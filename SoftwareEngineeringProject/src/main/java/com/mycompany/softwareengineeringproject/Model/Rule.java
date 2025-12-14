@@ -4,6 +4,9 @@
  */
 package com.mycompany.softwareengineeringproject.Model;
 
+
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 /**
  *
  * @author matda
@@ -13,14 +16,18 @@ public class Rule{
     private String name;
     private Trigger trigger;
     private Action action;
-    private boolean active;
     private Repetition repetition;
 
+    // we use a BooleanProperty instaed of using a boolean because it notifies the Listeners connected
+    // of the change of the state
+    // IMPORTANT: so we have to add a Listener (in RuleListCell)
+    private final BooleanProperty active;
+    
     public Rule(String name, Trigger trigger, Action action, Repetition repetition) {
         this.name = name;
         this.trigger = trigger;
         this.action = action;
-        this.active = true;
+        this.active = new SimpleBooleanProperty(true);
         this.repetition = repetition;
     }
 
@@ -36,7 +43,13 @@ public class Rule{
         return action;
     }
 
+    // getter of the pure value (boolean)
     public boolean isActive() {
+        return active.get();
+    }
+
+    // getter of the property (for graphic binding)
+    public BooleanProperty activeProperty() {
         return active;
     }
 
@@ -57,7 +70,7 @@ public class Rule{
     }
 
     public void setActive(boolean active) {
-        this.active = active;
+        this.active.set(active);
     }
 
     public void setRepetition(Repetition repetition) {
@@ -100,7 +113,7 @@ public class Rule{
 
     @Override
     public String toString() {
-        return "Rule{" + "name=" + name + ", trigger=" + trigger + ", action=" + action + ", active=" + active + ", repetition=" + repetition + '}';
+        return "Rule{" + "name=" + name + ", trigger=" + trigger + ", action=" + action + ", active=" + isActive() + ", repetition=" + repetition + '}';
     }
  
     

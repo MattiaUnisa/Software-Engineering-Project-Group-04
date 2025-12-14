@@ -10,19 +10,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
 
-    <VBox xmlns="http://javafx.com/javafx/11.0.2" styleClass="main-container"
+    <VBox xmlns="http://javafx.com/javafx/11.0.2" 
           xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="com.mycompany.softwareengineeringproject.Controller.ActionController"
-          stylesheets="@style.css">
+          stylesheets="@style.css"
+          alignment="TOP_CENTER"
+          
+          >
 
         <!-- with the onAction when a new Action is selected the method onActionSelected of the ActionController is called -->
         <ComboBox fx:id="actionComboBox"
                   promptText="Choose action"
                   onAction="#onActionSelected"
-                  maxWidth="500"
         />
 
-        <StackPane styleClass="main-container" fx:id="dynamicContainer">
+        <StackPane fx:id="dynamicContainer">
         <!-- In this StackPane will be included all the feature based on the selected action -->
         </StackPane>
 

@@ -15,4 +15,8 @@ public class ActionFactory {
     public static Action createPlayAudio(String filePath) {
         return new PlayAudioAction(filePath); 
     }
+    
+    public static Action createShowNotification(String msg) {
+        return new NotificationAction(msg); 
+    }
 }

@@ -2,6 +2,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -14,22 +15,36 @@
     <children>
         <StackPane>
             <Label text="Create New Rule" styleClass="header-title"/>
-            <Button onAction="#onBackClick" styleClass="icon-button" StackPane.alignment="CENTER_LEFT"/>
+            <Button onAction="#onBackClick" styleClass="icon-button" StackPane.alignment="CENTER_LEFT">
+                <StackPane.margin>
+                    <Insets left="50" /> 
+                </StackPane.margin>
+            </Button>        
         </StackPane>
-        <!-- we use the StackPane because it overlaps the elements and we position the back_arrow on the left -->
-        <VBox alignment="CENTER" VBox.vgrow="ALWAYS" styleClass="rule-creation-container">
-            <children>
-                <Label text="Insert Rule Name:" styleClass="section-label"/>
-                <TextField fx:id="nameField" />
-                <Label text="Select Trigger:" styleClass="section-label"/>
-                <fx:include source="TriggerSection.fxml" fx:id="triggerSection"/> 
-                <Label text="Select Action:" styleClass="section-label"/>
-                <fx:include source="ActionSection.fxml" fx:id="actionSection"/> 
-                <!-- the previous line of code are used to include in this file another fxml file -->
-                <fx:include source="RepetitionSection.fxml" fx:id="repetitionSection"/> 
-                <Button text="Save Rule" onAction="#onSaveClick" styleClass="success-button" />
-            </children>
-        </VBox>
+        
+        <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" hbarPolicy="NEVER" styleClass="transparent-scroll-pane">
+            <content>
+                <!-- we use the StackPane because it overlaps the elements and we position the back_arrow on the left -->
+                <VBox VBox.vgrow="ALWAYS" alignment="TOP_CENTER" fillWidth="false" spacing="30">
+                    <children>
+
+                        <Label text="Insert Rule Name:" styleClass="section-label"/>
+                        <TextField fx:id="nameField" styleClass="name-section"/>
+
+                        <Label text="Select Trigger:" styleClass="section-label"/>
+                        <fx:include source="TriggerSection.fxml" fx:id="triggerSection"/> 
+
+                        <Label text="Select Action:" styleClass="section-label"/>
+                        <fx:include source="ActionSection.fxml" fx:id="actionSection"/> 
+
+                        <!-- the previous line of code are used to include in this file another fxml file -->
+                        <fx:include source="RepetitionSection.fxml" fx:id="repetitionSection"/> 
+                        <Button text="Save Rule" onAction="#onSaveClick" styleClass="save-button" />
+
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
     </children>
 
    

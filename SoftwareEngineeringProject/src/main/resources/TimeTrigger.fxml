@@ -6,13 +6,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox spacing="10" xmlns="http://javafx.com/javafx/11.0.2"
+<HBox xmlns="http://javafx.com/javafx/11.0.2"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.mycompany.softwareengineeringproject.Controller.TimeTriggerController"
       stylesheets="@style.css"
-      styleClass="main-container">
+      alignment="CENTER"
+      spacing="15"
+      styleClass="dynamic-content"
+      >
     
-    <Spinner fx:id="hourSpinner" prefWidth="100"/>
-    <Spinner fx:id="minuteSpinner" prefWidth="100"/>
+    <Spinner fx:id="hourSpinner"/>
+    <Spinner fx:id="minuteSpinner"/>
     
 </HBox>    
