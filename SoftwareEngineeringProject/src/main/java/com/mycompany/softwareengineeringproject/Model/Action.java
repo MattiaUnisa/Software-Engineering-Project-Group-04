@@ -14,4 +14,6 @@ public interface Action {
     
     public void stop();
     
+    public String formatString();
+    
 }

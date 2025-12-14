@@ -10,7 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import java.util.Optional;
 
-public class PlayAudioAction implements Action, Serializable {
+public class PlayAudioAction implements Action {
 
     private final String filePath;
 
@@ -76,6 +76,22 @@ public class PlayAudioAction implements Action, Serializable {
     
     public String getFilePath() {
         return filePath;
+    }
+    
+    //Format an Action object in a string 
+    @Override
+    public String formatString(){
+        return "PlayAudioAction:" + this.filePath;
+    }
+    
+    //This method permit to rebuild an Action object from a string
+    public static Action parseString(String action){
+        if (!action.startsWith("PlayAudioAction:")) {
+            throw new IllegalArgumentException("Invalid PlayAudioAction format.");
+        }
+        String path = action.substring("PlayAudioAction:".length());
+        //Use the factory to create the object
+        return ActionFactory.createPlayAudio(path);
     }
 
 

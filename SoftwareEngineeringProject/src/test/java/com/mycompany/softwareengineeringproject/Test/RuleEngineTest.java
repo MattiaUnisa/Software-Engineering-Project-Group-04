@@ -7,6 +7,7 @@ package com.mycompany.softwareengineeringproject.Test;
 import com.mycompany.softwareengineeringproject.Model.*;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import javafx.embed.swing.JFXPanel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -159,5 +160,87 @@ public class RuleEngineTest {
 
         ruleEngine.CheckAllRules();
         assertEquals(2, rule.getRepetition().getCurrentRepetition()); 
+    }
+    
+    //Test the save and the load of a rule
+    @Test
+    void testSaveAndLoadSingleRule(){
+        RuleEngine originalEngine = RuleEngine.getInstance();
+        originalEngine.getRules().clear();
+        
+        Trigger timeTrigger = new TimeTrigger(LocalTime.of(15, 30));
+        Action audioAction = new PlayAudioAction("C:\\Users\\anton\\Desktop\\sound.wav");
+        Repetition repetition = new Repetition(false, Duration.ofHours(1), LocalDateTime.now().minusDays(1), 5);
+    
+        Rule rule = new Rule("Daily Alarm", timeTrigger, audioAction, repetition);
+        rule.setActive(true);
+        originalEngine.addRule(rule);
+        
+        originalEngine.saveRules("C:\\Users\\anton\\Desktop\\test.txt");
+        
+        originalEngine.getRules().clear();
+        assertEquals(0, originalEngine.getRules().size(), "The rules list would be empty before the loading.");
+        
+        originalEngine.loadRules("C:\\Users\\anton\\Desktop\\test.txt");
+        assertEquals(1, originalEngine.getRules().size(), "It may be loaded just 1 rule.");
+        
+        Rule loadedRule = originalEngine.getRules().get(0);
+        
+        assertEquals("Daily Alarm", loadedRule.getName());
+        assertTrue(loadedRule.isActive());
+        
+        assertTrue(loadedRule.getTrigger() instanceof TimeTrigger);
+        assertEquals(LocalTime.of(15, 30), ((TimeTrigger) loadedRule.getTrigger()).getTime());
+        
+        assertEquals(5, loadedRule.getRepetition().getNumRepetition());
+        assertEquals(2, loadedRule.getRepetition().getCurrentRepetition());
+        assertEquals(Duration.ofHours(1), loadedRule.getRepetition().getSleepPeriod());
+        
+        assertNotNull(loadedRule.getRepetition().getLastExecution());
+    }
+    
+    //Test the save and the load of a rule when the repetition is deactivate
+    @Test
+    void testSaveAndLoadWithNullRepetitionValues() {
+        // 1. Arrange: Crea una regola dove SleepPeriod e LastExecution sono null
+        RuleEngine originalEngine = RuleEngine.getInstance();
+        originalEngine.getRules().clear();
+
+        // Nota: Il costruttore di Repetition deve accettare null per questi campi
+        Repetition repetition = new Repetition(false, null, null, 10); 
+
+        Rule nullRule = new Rule("Null Test", new TimeTrigger(LocalTime.of(1,1)), new PlayAudioAction("path"), repetition);
+        originalEngine.addRule(nullRule);
+
+        String testFilePath = "C:\\Users\\anton\\Desktop\\test_nor_repetition.txt";
+
+        // 2. Act (Salvataggio/Caricamento)
+        originalEngine.saveRules(testFilePath);
+        originalEngine.getRules().clear();
+        originalEngine.loadRules(testFilePath);
+
+        // 3. Assert: Verifica che siano stati ricaricati come null
+        assertEquals(1, originalEngine.getRules().size());
+        Rule loadedRule = originalEngine.getRules().get(0);
+
+        assertNull(loadedRule.getRepetition().getSleepPeriod(), "SleepPeriod dovrebbe essere ricaricato come null.");
+        assertNull(loadedRule.getRepetition().getLastExecution(), "LastExecution dovrebbe essere ricaricato come null.");
+        assertEquals(10, loadedRule.getRepetition().getNumRepetition());
+    }
+    
+    //Test the load of the rules when the file doesn't exist yet
+    @Test
+    void testLoadNonExistentFile() {
+        RuleEngine engine = RuleEngine.getInstance();
+        engine.getRules().clear();
+
+        // 1. Act: Tenta di caricare un file che non esiste nel percorso temporaneo
+        String nonExistentPath = "C:\\Users\\anton\\Desktop\\notExistentFile.txt";
+
+        // Nessuna eccezione dovrebbe essere lanciata
+        engine.loadRules(nonExistentPath); 
+
+        // 2. Assert: La lista delle regole deve essere vuota
+        assertEquals(0, engine.getRules().size(), "The rule list should remain empty when the file doesn't exist.");
     }
 }

@@ -40,6 +40,16 @@ public class NotificationAction implements Action {
     public void stop() {
         // No stop behavior needed for a simple notification
     }
+    
+    @Override
+    public String formatString(){
+        return null;
+    }
+    
+    @Override
+    public Action parseString(String action){
+        return null;
+    }
 
     @Override
     public String toString() {

@@ -97,16 +97,21 @@ public class RuleEngine {
         }
     }
     
+    //Principal method for the loading of the rules from a text file
     public void loadRules(String fileName){
         try(Scanner scanner = new Scanner(new BufferedReader(new FileReader(fileName)))){
             if(fileName == null || fileName.isEmpty()){
                 return;
             }
+            //Here the Observable List is emptied because like this there will be not duplicates
             this.rules.clear();
+            //iterate over the text file
             while(scanner.hasNextLine()){
                 String line = scanner.nextLine();
-                Rule rule = parseRules(line);
+                //Call the parsing function to convert a text string in a Rule object
+                Rule rule = Rule.parseRules(line);
                 if(rule != null){
+                    //if the parsing is happen with good end, the method add the Rule object at the Observable List
                     this.rules.add(rule);
                 }
             }
@@ -116,10 +121,12 @@ public class RuleEngine {
         }
     }
     
+    //Principal method for the saving of the rules in a text file
     public void saveRules(String fileName){
         try(PrintWriter writer = new PrintWriter(new FileWriter(fileName))){
             for (Rule rule : this.rules) {
-                String line = formatRuleForSaving(rule);
+                //The method convert a Rule Object in a formatted line of text, and write this in the text file
+                String line = rule.formatRules(rule);
                 writer.println(line);
             }
             System.out.println("Rules successfully saved to " + fileName + ".");
@@ -128,98 +135,7 @@ public class RuleEngine {
         }
     }
     
-    
-    private String formatRepetition(Repetition repetition){
-        return "Repetition:" +
-           repetition.isOneTime() + ";" + 
-           (repetition.getSleepPeriod() == null ? "null" : repetition.getSleepPeriod()) + ";" + 
-           (repetition.getLastExecution() == null ? "null" : repetition.getLastExecution()) + ";" + 
-           repetition.getNumRepetition();
-    }
-
-    private String formatTrigger(Trigger trigger) {
-        if (trigger instanceof TimeTrigger) {
-            TimeTrigger tt = (TimeTrigger) trigger;
-            // Formato: TimeTrigger:HH:MM
-            return "TimeTrigger:" + tt.getTime().getHour() + ":" + tt.getTime().getMinute();
-        }
-        return "UnknownTrigger:NA"; 
-    }
-
-    private String formatAction(Action action) {
-        if (action instanceof PlayAudioAction) {
-            PlayAudioAction pa = (PlayAudioAction) action;
-            return "PlayAudioAction:" + pa.getFilePath();
-        }
-        return "UnknownAction:NA"; 
-    }
-    
-    private String formatRuleForSaving(Rule rule) {
-        String triggerData = formatTrigger(rule.getTrigger());
-
-        String actionData = formatAction(rule.getAction());
-
-        String repetitionData = formatRepetition(rule.getRepetition());
-
-        return rule.getName() + " | " + triggerData + " | " + actionData + " | " + repetitionData;
-    }
-    
-    private Repetition parseRepetition(String repetition){
-        if(!repetition.startsWith("Repetition:")){
-            return null;
-        }
-        String dataPart = repetition.substring("Repetition:".length());
-        String[] fields = dataPart.split(";");
-        
-        if (fields.length != 4) throw new IllegalArgumentException("Repetition data error.");
-        
-        boolean oneTime = Boolean.parseBoolean(fields[0]);
-        Duration sleepPeriod = fields[1].equals("null") ? null : Duration.parse(fields[1]);
-        LocalDateTime lastExecution = fields[2].equals("null") ? null : LocalDateTime.parse(fields[2]);
-        int numRepetition = Integer.parseInt(fields[3]);
-        return new Repetition(oneTime, sleepPeriod, lastExecution, numRepetition);
-    }
-    
-    private Trigger parseTrigger(String trigger){
-        if(!trigger.startsWith("TimeTrigger:")){
-            return null;
-        }
-        String timePart = trigger.substring("TimeTrigger:".length());
-        String[] parts = timePart.split(":");
-        int hour = Integer.parseInt(parts[0]);
-        int minute = Integer.parseInt(parts[1]);
-        LocalTime time = LocalTime.of(hour, minute);
-        return TriggerFactory.createTimeTrigger(time);
-    }
-    
-    private Action parseAction(String action) {
-        if (action.startsWith("PlayAudioAction:")) {
-            String path = action.substring("PlayAudioAction:".length());
-            return ActionFactory.createPlayAudio(path);
-        }
-        return null;
-    }
-    
-    private Rule parseRules(String rule){
-        try{
-            String[] parts = rule.split(" \\| ");
-            if(parts.length != 4) throw new IllegalArgumentException("Invalid rule format.");
-            
-            String name = parts[0];
-            Trigger trigger = parseTrigger(parts[1]);
-            Action action = parseAction(parts[2]);
-            Repetition repetition = parseRepetition(parts[3]);
-            
-            if (trigger != null && action != null && repetition != null) {
-                return new Rule(name, trigger, action, repetition); 
-            }
-        }catch(Exception e){
-            System.err.println("ERROR: " + e.getMessage());
-        }
-        return null;
-    }
-
-    
+   
     @Override
     public String toString() {
         return "RuleEngine{" + "rules=" + rules + '}';

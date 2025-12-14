@@ -13,7 +13,7 @@ import java.time.temporal.ChronoUnit;
  */
 public class TimeTrigger implements Trigger{
     
-    private LocalTime time;
+    private final LocalTime time;
 
     //Truncate the time in order to consider only hours and minutes
     public TimeTrigger(LocalTime time) {
@@ -34,6 +34,27 @@ public class TimeTrigger implements Trigger{
         boolean sameTime = now.truncatedTo(ChronoUnit.MINUTES).equals(time);
         
         return sameTime;
+    }
+    
+    //This method format a Trigger object in a string in this way: HH:MM
+    @Override
+    public String formatString() {
+        return "TimeTrigger:" + this.time.getHour() + ":" + this.time.getMinute();
+    }
+    
+    //This method permit to rebuild a Trigger object from a string
+    public static Trigger parseString(String trigger){
+        if(!trigger.startsWith("TimeTrigger:")){
+            throw new IllegalArgumentException("Invalid TimeTrigger format.");        
+        }
+        String timePart = trigger.substring("TimeTrigger:".length());
+        //As separator for hours and minutes the method use the colon
+        String[] parts = timePart.split(":");
+        int hour = Integer.parseInt(parts[0]);
+        int minute = Integer.parseInt(parts[1]);
+        LocalTime time = LocalTime.of(hour, minute);
+        //Use the factory to create the object
+        return TriggerFactory.createTimeTrigger(time);
     }
     
     @Override

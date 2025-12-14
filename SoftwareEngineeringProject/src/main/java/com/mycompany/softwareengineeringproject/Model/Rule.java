@@ -63,6 +63,40 @@ public class Rule{
     public void setRepetition(Repetition repetition) {
         this.repetition = repetition;
     }
+    
+    //This method permit to rebuild a Rule object from a line of text
+    public static Rule parseRules(String line){
+        try{
+            //Separate the 4 fields of the line considering the same separator used to save the rules in the text file 
+            String[] parts = line.split(" \\| ");
+            //verify that there are 4 fields
+            
+            if(parts.length != 4) throw new IllegalArgumentException("Invalid rule format.");
+            
+            //Here it takes the fields and on everyone use the parsing function
+            String name = parts[0];
+            Trigger trigger = TriggerIOFactory.parseTrigger(parts[1]);
+            Action action = ActionIOFactory.parseAction(parts[2]);
+            Repetition repetition = Repetition.parseRepetition(parts[3]);
+            
+            if (trigger != null && action != null && repetition != null) {
+                return new Rule(name, trigger, action, repetition); 
+            }
+        }catch(Exception e){
+            System.err.println("ERROR: " + e.getMessage());
+        }
+        return null;
+    }
+    
+    public String formatRules(Rule rule) {
+        String triggerData = this.getTrigger().formatString();
+        
+        String actionData = this.getAction().formatString();
+        
+        String repetition = this.getRepetition().formatRepetition();
+        
+        return rule.getName() + " | " + triggerData + " | " + actionData + " | " + repetition;
+    }
 
     @Override
     public String toString() {

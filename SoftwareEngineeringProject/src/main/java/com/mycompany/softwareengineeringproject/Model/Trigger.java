@@ -13,4 +13,6 @@ public interface Trigger {
     //Use of Strategy pattern in order to manage different trigger without specific details
     public boolean isTriggered();
     
+    public String formatString();
+    
 }
