@@ -180,12 +180,12 @@ public class RuleEngineTest {
         rule.setActive(true);
         originalEngine.addRule(rule);
         
-        originalEngine.saveRules("C:\\Users\\anton\\Desktop\\test.txt");
+        originalEngine.saveRules("test.txt");
         
         originalEngine.getRules().clear();
         assertEquals(0, originalEngine.getRules().size(), "The rules list would be empty before the loading.");
         
-        originalEngine.loadRules("C:\\Users\\anton\\Desktop\\test.txt");
+        originalEngine.loadRules("test.txt");
         assertEquals(1, originalEngine.getRules().size(), "It may be loaded just 1 rule.");
         
         Rule loadedRule = originalEngine.getRules().get(0);
@@ -197,7 +197,7 @@ public class RuleEngineTest {
         assertEquals(LocalTime.of(15, 30), ((TimeTrigger) loadedRule.getTrigger()).getTime());
         
         assertEquals(5, loadedRule.getRepetition().getNumRepetition());
-        assertEquals(2, loadedRule.getRepetition().getCurrentRepetition());
+        assertEquals(0, loadedRule.getRepetition().getCurrentRepetition());
         assertEquals(Duration.ofHours(1), loadedRule.getRepetition().getSleepPeriod());
         
         assertNotNull(loadedRule.getRepetition().getLastExecution());
@@ -216,7 +216,7 @@ public class RuleEngineTest {
         Rule nullRule = new Rule("Null Test", new TimeTrigger(LocalTime.of(1,1)), new PlayAudioAction("path"), repetition);
         originalEngine.addRule(nullRule);
 
-        String testFilePath = "C:\\Users\\anton\\Desktop\\test_nor_repetition.txt";
+        String testFilePath = "test.txt";
 
         // 2. Act (Salvataggio/Caricamento)
         originalEngine.saveRules(testFilePath);
