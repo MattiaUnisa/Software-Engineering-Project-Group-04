@@ -43,7 +43,6 @@ public class TimeTriggerController implements TriggerControllerInterface{
         int hour = hourSpinner.getValue();  //take the int hour value
         int minute = minuteSpinner.getValue(); //take the int minute value
         LocalTime time = LocalTime.of(hour, minute); //create a variable that we use to create the TimeTrigger
-        System.out.println("ciao");
         return TriggerFactory.createTimeTrigger(time);
     }
     

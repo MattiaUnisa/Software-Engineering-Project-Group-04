@@ -8,8 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import static javafx.application.Application.launch;
 
 public class App extends Application {
 
@@ -17,9 +16,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("home"), 800, 800);
+        scene = new Scene(loadFXML("home"), 1500, 800);
 
         stage.setScene(scene);
+        
+        stage.setMaximized(true);
         stage.setTitle("Rule Engine Manager"); 
         
         stage.setOnCloseRequest(event -> {

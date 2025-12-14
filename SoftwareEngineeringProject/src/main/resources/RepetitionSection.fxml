@@ -11,11 +11,14 @@
 <VBox fx:id="repetitionHBox"
       xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
       fx:controller="com.mycompany.softwareengineeringproject.Controller.RepetitionController"
-      stylesheets="@style.css">
+      stylesheets="@style.css"
+      spacing="40"
+      alignment="TOP_CENTER"
+      >
     
-    <VBox styleClass="main-container" stylesheets="@style.css">
-        <Label text="Repetition?" />
-        <HBox styleClass="main-container" stylesheets="@style.css">
+    <VBox stylesheets="@style.css" alignment="CENTER">
+        <Label text="Repetition?" styleClass="section-label"/>
+        <HBox stylesheets="@style.css" alignment="CENTER">
             <RadioButton fx:id="yesRadio" mnemonicParsing="false" text="Yes" onAction="#handleYesSelected">
                 <toggleGroup>
                     <ToggleGroup fx:id="repetitionGroup" />
@@ -26,19 +29,19 @@
     </VBox>
     
     <!-- This section is showed only when yes is selected -->
-    <VBox fx:id="repetitionInputContainer" managed="false" visible="false" styleClass="main-container" stylesheets="@style.css">
+    <VBox fx:id="repetitionInputContainer" managed="false" visible="false" stylesheets="@style.css" alignment="CENTER">
         
-        <HBox styleClass="main-container" stylesheets="@style.css">
-            <Label text="Sleep Period (D:H:M:S):" />
-            <Spinner fx:id="daySpinner" prefWidth="100"/>
-            <Spinner fx:id="hourSpinner" prefWidth="100"/>
-            <Spinner fx:id="minuteSpinner" prefWidth="100"/>
-            <Spinner fx:id="secondSpinner" prefWidth="100"/>
+        <HBox stylesheets="@style.css" alignment="CENTER" spacing="20">
+            <Label text="Sleep Period (D:H:M:S):" styleClass="section-label"/>
+            <Spinner fx:id="daySpinner"/>
+            <Spinner fx:id="hourSpinner"/>
+            <Spinner fx:id="minuteSpinner"/>
+            <Spinner fx:id="secondSpinner"/>
         </HBox>
         
-        <HBox styleClass="main-container" stylesheets="@style.css">
-            <Label text="Max Repetitions:" />
-            <Spinner fx:id="repetition" prefWidth="100"/>
+        <HBox stylesheets="@style.css" alignment="CENTER" spacing="20">
+            <Label text="Max Repetitions:" styleClass="section-label"/>
+            <Spinner fx:id="repetition"/>
         </HBox>
     </VBox>
     
