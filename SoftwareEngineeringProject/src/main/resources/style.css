@@ -90,7 +90,11 @@ and open the template in the editor.
 }
 
 .toggle-switch:hover {
-    -fx-background-color: -dark-green;
+    -fx-background-color: derive(-grey, -20%);
+}
+
+.toggle-switch:selected:hover {
+    -fx-background-color: -dark-green; 
 }
 
 .toggle-switch:pressed {

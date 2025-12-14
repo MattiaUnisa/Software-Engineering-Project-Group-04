@@ -1,2 +1,1 @@
-aaa | TimeTrigger:4:0 | PlayAudioAction:C:\Users\anton\Desktop\sound.wav | Repetition:true;null;null;1
-ciao | TimeTrigger:7:0 | PlayAudioAction:C:\Users\matda\OneDrive\Desktop\sound.wav | Repetition:false;PT3S;null;1
+Rule 1 | TimeTrigger:13:30 | PlayAudioAction:C:\Users\Lenovo\Desktop\MedicalSoftwareEngineering\sound.wav | Repetition:true;null;null;1
