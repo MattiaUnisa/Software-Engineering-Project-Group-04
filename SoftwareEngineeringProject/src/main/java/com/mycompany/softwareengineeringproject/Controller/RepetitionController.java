@@ -21,7 +21,7 @@ public class RepetitionController {
     @FXML 
     private VBox repetitionInputContainer;
 
-    // Spinner per lo Sleep Period
+    // Spinner for the Sleep Period
     @FXML 
     private Spinner<Integer> daySpinner;
     
