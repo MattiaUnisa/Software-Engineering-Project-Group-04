@@ -33,6 +33,10 @@ public class NotificationAction implements Action {
     public void execute(ActionContext context) {
         String title = "Notification";
         String header = "Show Notification...";
+        if (message == null || message.isEmpty()) {
+            context.appendToLog("No Message is given by the user");
+            return;
+        }
         DialogManager.showNotification(title, header, message);
         stop();
     }
