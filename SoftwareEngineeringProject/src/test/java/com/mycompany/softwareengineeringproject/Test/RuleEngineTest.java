@@ -206,11 +206,10 @@ public class RuleEngineTest {
     //Test the save and the load of a rule when the repetition is deactivate
     @Test
     void testSaveAndLoadWithNullRepetitionValues() {
-        // 1. Arrange: Crea una regola dove SleepPeriod e LastExecution sono null
+        // Create a rule where SleepPeriod and LastExecution are null
         RuleEngine originalEngine = RuleEngine.getInstance();
         originalEngine.getRules().clear();
 
-        // Nota: Il costruttore di Repetition deve accettare null per questi campi
         Repetition repetition = new Repetition(false, null, null, 10); 
 
         Rule nullRule = new Rule("Null Test", new TimeTrigger(LocalTime.of(1,1)), new PlayAudioAction("path"), repetition);
@@ -218,12 +217,12 @@ public class RuleEngineTest {
 
         String testFilePath = "test.txt";
 
-        // 2. Act (Salvataggio/Caricamento)
+        // Saving and loading
         originalEngine.saveRules(testFilePath);
         originalEngine.getRules().clear();
         originalEngine.loadRules(testFilePath);
 
-        // 3. Assert: Verifica che siano stati ricaricati come null
+        // It verify if these are loaded as null
         assertEquals(1, originalEngine.getRules().size());
         Rule loadedRule = originalEngine.getRules().get(0);
 
@@ -238,13 +237,13 @@ public class RuleEngineTest {
         RuleEngine engine = RuleEngine.getInstance();
         engine.getRules().clear();
 
-        // 1. Act: Tenta di caricare un file che non esiste nel percorso temporaneo
-        String nonExistentPath = "C:\\Users\\anton\\Desktop\\notExistentFile.txt";
+        // Try to load a not existent file
+        String nonExistentPath = "notExistentFile.txt";
 
-        // Nessuna eccezione dovrebbe essere lanciata
+        // No one exception should be throw
         engine.loadRules(nonExistentPath); 
 
-        // 2. Assert: La lista delle regole deve essere vuota
+        // The rule list must be empty
         assertEquals(0, engine.getRules().size(), "The rule list should remain empty when the file doesn't exist.");
     }
 }

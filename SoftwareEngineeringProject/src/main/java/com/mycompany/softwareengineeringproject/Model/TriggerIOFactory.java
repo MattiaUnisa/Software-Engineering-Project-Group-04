@@ -10,14 +10,13 @@ package com.mycompany.softwareengineeringproject.Model;
  */
 public class TriggerIOFactory {
     
+    //This method permit to rebuild a Trigger object from a string
     public static Trigger parseTrigger(String trigger) {
         
         if (trigger.startsWith("TimeTrigger:")) {
-            // Delega la ricostruzione alla classe TimeTrigger
+            // Assign the rebuilding at TimeTrigger class
             return TimeTrigger.parseString(trigger);
         }
-        
-        // Aggiungi qui altri tipi di Trigger (es. FileMonitorTrigger, etc.)
         
         throw new IllegalArgumentException("Unknown Trigger type in persistence data: " + trigger);
     }

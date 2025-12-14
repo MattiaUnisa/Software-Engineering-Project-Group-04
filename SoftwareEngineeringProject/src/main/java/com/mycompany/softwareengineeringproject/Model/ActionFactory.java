@@ -9,7 +9,8 @@ package com.mycompany.softwareengineeringproject.Model;
  * @author anton
  */
 
-//It allow to create the configured object PlayAudioAction, in this way is not necessary the communication with the other Action classes
+//It allow to create the configured object PlayAudioAction or ShowNotification, in this way is not necessary the communication 
+//with the other Action classes
 public class ActionFactory {
     
     public static Action createPlayAudio(String filePath) {
