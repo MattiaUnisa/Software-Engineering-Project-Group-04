@@ -239,7 +239,7 @@ public class RuleEngineTest {
         engine.getRules().clear();
 
         // 1. Act: Tenta di caricare un file che non esiste nel percorso temporaneo
-        String nonExistentPath = "C:\\Users\\anton\\Desktop\\notExistentFile.txt";
+        String nonExistentPath = "notExistentFile.txt";
 
         // Nessuna eccezione dovrebbe essere lanciata
         engine.loadRules(nonExistentPath); 
