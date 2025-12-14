@@ -25,10 +25,10 @@ public class DialogManager {
     }
     
     // Method called for Notifications (Information popup)
-public static void showNotification(String title, String header, String content) {
+public static void showNotification(String title, String content) {
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
     alert.setTitle(title);
-    alert.setHeaderText(header);
+    alert.setHeaderText(null);
     alert.setContentText(content);
     ButtonType closeButton = new ButtonType("OK");
     alert.getButtonTypes().setAll(closeButton);
