@@ -1,1 +1,3 @@
 aaa | TimeTrigger:4:0 | PlayAudioAction:C:\Users\anton\Desktop\sound.wav | Repetition:true;null;null;1
+ss | TimeTrigger:2:0 | Notification:ee | Repetition:true;null;null;1
+zz | TimeTrigger:4:0 | Notification:pp | Repetition:true;null;null;1

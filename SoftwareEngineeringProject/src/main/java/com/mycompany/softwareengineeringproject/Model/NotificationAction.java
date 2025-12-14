@@ -51,14 +51,18 @@ public class NotificationAction implements Action {
     
     @Override
     public String formatString(){
-        return null;
+        return "Notification:" + this.message;
     }
-    /*
-    @Override
-    public Action parseString(String action){
-        return null;
+    
+    public static Action parseString(String action){
+        if (!action.startsWith("Notification:")) {
+            throw new IllegalArgumentException("Invalid Notification format.");
+        }
+        String message = action.substring("Notification:".length());
+        //Use the factory to create the object
+        return ActionFactory.createShowNotification(message);
     }
-*/
+
     @Override
     public String toString() {
         return "NotificationAction{message='" + message + "'}";

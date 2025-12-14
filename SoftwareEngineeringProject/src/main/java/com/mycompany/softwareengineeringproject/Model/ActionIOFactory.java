@@ -15,11 +15,11 @@ public class ActionIOFactory {
         if (action.startsWith("PlayAudioAction:")) {
             return PlayAudioAction.parseString(action);
            
-        } /* else if (action.startsWith("NotificationAction:")) {
+        }else if (action.startsWith("Notification:")) {
             return NotificationAction.parseString(action);
             
         }
-*/
+
         throw new IllegalArgumentException("Unknown Action type in persistence data: " + action);
     }
 }
