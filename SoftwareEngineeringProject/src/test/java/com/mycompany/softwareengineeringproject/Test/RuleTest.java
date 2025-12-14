@@ -19,6 +19,10 @@ public class RuleTest {
         public void setTriggered(boolean value) { this.state = value; }
         @Override
         public boolean isTriggered() { return state; }
+        @Override
+        public String formatString(){
+        return "";
+        }
     }
     private class MockAction implements Action {
         public int counter = 0;
@@ -28,6 +32,10 @@ public class RuleTest {
         }
         @Override
         public void stop() {}
+        @Override
+        public String formatString(){
+        return "";
+        }
     }
 
     private RuleEngine ruleEngine;
