@@ -29,7 +29,7 @@
     </VBox>
     
     <!-- This section is showed only when yes is selected -->
-    <VBox fx:id="repetitionInputContainer" managed="false" visible="false" stylesheets="@style.css" alignment="CENTER">
+    <VBox fx:id="repetitionInputContainer" managed="false" visible="false" stylesheets="@style.css" alignment="CENTER" spacing="20">
         
         <HBox stylesheets="@style.css" alignment="CENTER" spacing="20">
             <Label text="Sleep Period (D:H:M:S):" styleClass="section-label"/>
