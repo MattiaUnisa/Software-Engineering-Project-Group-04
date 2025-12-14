@@ -37,7 +37,7 @@ public class NotificationAction implements Action {
             context.appendToLog("No Message is given by the user");
             return;
         }
-        DialogManager.showNotification(title, header, message);
+        DialogManager.showNotification(title, null, message);
         stop();
     }
 
