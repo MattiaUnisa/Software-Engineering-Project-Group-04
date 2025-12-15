@@ -23,7 +23,7 @@ public class Rule{
     // IMPORTANT: so we have to add a Listener (in RuleListCell)
     private final BooleanProperty active;
     
-    public Rule(String name, Trigger trigger, Action action, Repetition repetition) {
+    public Rule(String name, Trigger trigger, Action action,Repetition repetition) {
         this.name = name;
         this.trigger = trigger;
         this.action = action;
@@ -84,16 +84,19 @@ public class Rule{
             String[] parts = line.split(" \\| ");
             //verify that there are 4 fields
             
-            if(parts.length != 4) throw new IllegalArgumentException("Invalid rule format.");
+            if(parts.length != 5) throw new IllegalArgumentException("Invalid rule format.");
             
             //Here it takes the fields and on everyone use the parsing function
             String name = parts[0];
-            Trigger trigger = TriggerIOFactory.parseTrigger(parts[1]);
-            Action action = ActionIOFactory.parseAction(parts[2]);
-            Repetition repetition = Repetition.parseRepetition(parts[3]);
+            boolean active = Boolean.parseBoolean(parts[1]);
+            Trigger trigger = TriggerIOFactory.parseTrigger(parts[2]);
+            Action action = ActionIOFactory.parseAction(parts[3]);
+            Repetition repetition = Repetition.parseRepetition(parts[4]);
             
             if (trigger != null && action != null && repetition != null) {
-                return new Rule(name, trigger, action, repetition); 
+                Rule rule = new Rule(name, trigger, action ,repetition);
+                rule.setActive(active);
+                return rule;
             }
         }catch(Exception e){
             System.err.println("ERROR: " + e.getMessage());
@@ -108,7 +111,7 @@ public class Rule{
         
         String repetition = this.getRepetition().formatRepetition();
         
-        return rule.getName() + " | " + triggerData + " | " + actionData + " | " + repetition;
+        return rule.getName() + " | " + rule.isActive() + " | " + triggerData + " | " + actionData + " | " + repetition;
     }
 
     @Override
