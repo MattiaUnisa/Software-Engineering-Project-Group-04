@@ -4,6 +4,7 @@
  */
 package com.mycompany.softwareengineeringproject.Model;
 
+import java.time.DayOfWeek;
 import java.time.LocalTime;
 
 /**
@@ -18,6 +19,14 @@ public class TriggerFactory {
     
     public static Trigger createTimeTrigger(LocalTime time){
         return new TimeTrigger(time);
+    }
+    
+    public static Trigger createDayOfWeekTrigger(DayOfWeek day){
+        return new DayOfWeekTrigger(day);
+    }
+    
+    public static Trigger createDayOfMonthTrigger(int day){
+        return new DayOfMonthTrigger(day);
     }
     
 }

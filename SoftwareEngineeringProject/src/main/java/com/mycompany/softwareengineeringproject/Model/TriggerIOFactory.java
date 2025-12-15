@@ -18,6 +18,16 @@ public class TriggerIOFactory {
             return TimeTrigger.parseString(trigger);
         }
         
+        if (trigger.startsWith("DayOfWeekTrigger:")) {
+            // Assign the rebuilding at DayOfWeekTrigger class
+            return DayOfWeekTrigger.parseString(trigger);
+        }
+        
+        if (trigger.startsWith("DayOfMonthTrigger:")) {
+            // Assign the rebuilding at DayOfMonthTrigger class
+            return DayOfMonthTrigger.parseString(trigger);
+        }
+        
         throw new IllegalArgumentException("Unknown Trigger type in persistence data: " + trigger);
     }
 }

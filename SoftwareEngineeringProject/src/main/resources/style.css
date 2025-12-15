@@ -380,3 +380,10 @@ and open the template in the editor.
 .save-button:hover {
     -fx-background-color: -dark-green;
 }
+
+/* --- DatePicker --- */
+
+.date-picker {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}

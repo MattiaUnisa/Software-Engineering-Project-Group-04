@@ -25,7 +25,6 @@ public class TimeTrigger implements Trigger{
     }
     
     //Condition for the creation of the trigger
-    // It garantees no repetition of the action every secondo
     @Override
     public boolean isTriggered(){
         LocalTime now = LocalTime.now();

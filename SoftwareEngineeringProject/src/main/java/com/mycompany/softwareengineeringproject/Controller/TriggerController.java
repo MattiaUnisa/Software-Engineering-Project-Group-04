@@ -33,7 +33,9 @@ public class TriggerController {
     //Triggers are added to the combobox as strings
     triggerComboBox.getItems().addAll(
         "Choose Trigger",
-        "TimeTrigger"                
+        "TimeTrigger",
+        "DayOfWeekTrigger",
+        "DayOfMonthTrigger"
     );
     
     //the default string selected is Choose Trigger
