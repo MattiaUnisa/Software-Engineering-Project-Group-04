@@ -35,7 +35,8 @@ public class TriggerController {
         "Choose Trigger",
         "TimeTrigger",
         "DayOfWeekTrigger",
-        "DayOfMonthTrigger"
+        "DayOfMonthTrigger",
+        "DateTrigger"
     );
     
     //the default string selected is Choose Trigger

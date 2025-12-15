@@ -28,6 +28,11 @@ public class TriggerIOFactory {
             return DayOfMonthTrigger.parseString(trigger);
         }
         
+        if (trigger.startsWith("DateTrigger:")) {
+            // Assign the rebuilding at DateTrigger class
+            return DateTrigger.parseString(trigger);
+        }
+        
         throw new IllegalArgumentException("Unknown Trigger type in persistence data: " + trigger);
     }
 }
