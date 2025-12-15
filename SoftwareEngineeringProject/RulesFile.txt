@@ -1,2 +1,3 @@
 Rule 1 | TimeTrigger:13:30 | PlayAudioAction:C:\Users\Lenovo\Desktop\MedicalSoftwareEngineering\sound.wav | Repetition:true;null;null;1
 Rule 2 | TimeTrigger:13:45 | Notification:Ciao | Repetition:false;PT5S;2025-12-14T13:45:55.748;3
+Prova | TimeTrigger:10:54 | Notification:Ciao | Repetition:false;PT5S;2025-12-15T10:54:29.928;5
