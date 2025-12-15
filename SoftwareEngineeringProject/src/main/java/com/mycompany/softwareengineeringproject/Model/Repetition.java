@@ -78,7 +78,8 @@ public class Repetition {
            //Manage the case in which the object have the fields Sleep Period and Last Execution equal to null
            (this.sleepPeriod == null ? "null" : this.sleepPeriod) + ";" + 
            (this.lastExecution == null ? "null" : this.lastExecution) + ";" + 
-           this.numRepetition;
+            this.numRepetition + ";" +
+            this.currentRepetition;
     }
     
     //This method permit to rebuild a Repetition object from a string
@@ -93,7 +94,7 @@ public class Repetition {
         String[] fields = dataPart.split(";");
         
         //Verify that there are four fields
-        if (fields.length != 4) throw new IllegalArgumentException("Repetition data error.");
+        if (fields.length != 5) throw new IllegalArgumentException("Repetition data error.");
         
         boolean oneTime = Boolean.parseBoolean(fields[0]);
         //Manage the NULL case, that is, if the field is null so it assigned NULL; if it isn't NULL, it make the parse of 
@@ -101,7 +102,10 @@ public class Repetition {
         Duration sleepPeriod = fields[1].equals("null") ? null : Duration.parse(fields[1]);
         LocalDateTime lastExecution = fields[2].equals("null") ? null : LocalDateTime.parse(fields[2]);
         int numRepetition = Integer.parseInt(fields[3]);
-        return new Repetition(oneTime, sleepPeriod, lastExecution, numRepetition);
+        int currRepetition = Integer.parseInt(fields[4]);
+        Repetition Rep = new Repetition(oneTime, sleepPeriod, lastExecution, numRepetition);
+        Rep.setCurrentRepetition(currRepetition);
+        return Rep;
     }
 
     @Override
