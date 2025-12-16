@@ -16,7 +16,7 @@
       >
     
     <Label text="Directory Path" styleClass="section-label"/>
-    <HBox>    
+    <HBox spacing="10">    
         <TextField fx:id="filePathField" promptText="Path of the directory" HBox.hgrow="ALWAYS" editable="false" styleClass="text-field"/>
         <Button text="Select directory" onAction="#onSelectDirectory" styleClass="standard-button"/>
     </HBox> 

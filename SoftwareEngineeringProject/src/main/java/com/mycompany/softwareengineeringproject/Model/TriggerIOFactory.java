@@ -38,6 +38,11 @@ public class TriggerIOFactory {
             return FileTrigger.parseString(trigger);
         }
         
+        if (trigger.startsWith("FileSizeTrigger:")) {
+            // Assign the rebuilding at FileSizeTrigger class
+            return FileSizeTrigger.parseString(trigger);
+        }
+        
         throw new IllegalArgumentException("Unknown Trigger type in persistence data: " + trigger);
     }
 }

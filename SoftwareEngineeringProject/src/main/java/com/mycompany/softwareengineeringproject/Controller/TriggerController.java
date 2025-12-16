@@ -37,7 +37,8 @@ public class TriggerController {
         "DayOfWeekTrigger",
         "DayOfMonthTrigger",
         "DateTrigger",
-        "FileTrigger"
+        "FileTrigger",
+        "FileSizeTrigger"
     );
     
     //the default string selected is Choose Trigger

@@ -397,3 +397,9 @@ and open the template in the editor.
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
 }
+
+/* --- Unit ComboBox --- */
+.unit-combo {
+    -fx-min-width: 100px;
+    -fx-min-height: 28px; 
+}

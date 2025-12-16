@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.2"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.mycompany.softwareengineeringproject.Controller.FileSizeTriggerController"
+      stylesheets="@style.css"
+      alignment="CENTER"
+      spacing="15"
+      styleClass="dynamic-content"
+      >
+    
+    <Label text="File Selection" styleClass="section-label"/>
+    <HBox spacing="10">    
+        <TextField fx:id="filePathField" promptText="Path of the File" HBox.hgrow="ALWAYS" editable="false" styleClass="text-field"/>
+        <Button text="Select file" onAction="#onSelectFile" styleClass="standard-button"/>
+    </HBox> 
+    <Label text="File size" styleClass="section-label"/>
+    <HBox spacing="10">
+    <TextField fx:id="size" promptText="Insert size to check" HBox.hgrow="ALWAYS" editable="true" styleClass="text-fieldUnitSize"/> 
+    <ComboBox fx:id="sizeUnitBox"
+              promptText="Choose size unit"
+              styleClass="unit-combo"
+        />
+    </HBox>
+    
+</VBox>    
