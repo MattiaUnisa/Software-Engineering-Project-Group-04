@@ -34,4 +34,8 @@ public class TriggerFactory {
         return new DateTrigger(date);
     }
     
+    public static Trigger createFileTrigger(String filepath, String filename){
+        return new FileTrigger(filepath, filename);
+    }
+    
 }

@@ -1,2 +1,1 @@
 Rule 1 | false | TimeTrigger:11:46 | Notification:Prova | Repetition:false;PT15S;2025-12-15T11:46:41.024;3;3
-Prova | true | DateTrigger:2025-12-16 | Notification:Ciao | Repetition:false;PT5S;2025-12-16T00:14:26.724;4;2
