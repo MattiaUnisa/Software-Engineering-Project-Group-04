@@ -12,9 +12,8 @@ package com.mycompany.softwareengineeringproject.Controller;
  * @author Lenovo
  */
 import com.mycompany.softwareengineeringproject.App;
-import com.mycompany.softwareengineeringproject.Model.Rule;
-import com.mycompany.softwareengineeringproject.Model.RuleEngine;
-import com.mycompany.softwareengineeringproject.View.RuleListCell;
+import com.mycompany.softwareengineeringproject.Model.*;
+import com.mycompany.softwareengineeringproject.View.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,6 +31,29 @@ public class HomeController implements Initializable {
     // constructor could be called before injection -> NullPointerException
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //Record an observer into the RuleEngine
+        RuleEngine.getInstance().setUiEventListener(new UiEventListener() {
+            @Override
+            public void onShowNotification(String t, String m) {
+                DialogManager.showNotification(t, m);
+            }
+
+            @Override
+            public void onShowWarning(String t, String h, String c) {
+                DialogManager.showWarning(t, h, c);
+            }
+
+            @Override
+            public void onShowError(String t, String h, String c) {
+                DialogManager.showError(t, h, c);
+            }
+
+            @Override
+            public void onShowAudioPlayer(String filename) {
+                DialogManager.showAudioPlayerDialog(filename);
+            }
+        });
+        
         if(rulesListView != null){
             rulesListView.setItems(RuleEngine.getInstance().getRules());
             

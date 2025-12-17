@@ -31,7 +31,11 @@ public class PlayAudioAction implements Action {
         File audioFile = new File(filePath);
         if (!audioFile.exists()) {
             context.appendToLog("ERROR: File not found: " + filePath);
-            DialogManager.showError("ERROR", "File not found", null);
+            //Get the listener, verify if it is null and if not call the method onShowNotification in order to Show a notification
+            if (context.getUiEventListener() != null) {
+                context.getUiEventListener().onShowError("ERROR", "File not found", null);
+            }  
+            //DialogManager.showError("ERROR", "File not found", null);
             return;
         }
 
@@ -51,7 +55,10 @@ public class PlayAudioAction implements Action {
             context.appendToLog("Playing Audio (WAV): " + filePath);
 
             String fileName = new File(filePath).getName();
-            DialogManager.showAudioPlayerDialog(fileName);
+            //Get the listener, verify if it is null and if not call the method onShowAudioPlayer in order to Show it
+            if (context.getUiEventListener() != null) {
+                context.getUiEventListener().onShowAudioPlayer(fileName);
+            }  
             // in DialogManager .showAndWait freeze the execution of the code to the click by the user of button STOP. 
             // when that window is closed, the first method is stop(), so the audio playing is stopped.
 
@@ -59,7 +66,9 @@ public class PlayAudioAction implements Action {
             context.appendToLog("Audio stopped by user.");
 
         } catch (Exception e) {
-            DialogManager.showError("Errore", "Cannot play audio", "Make sure to play an .WAV audio file.\nError: " + e.getMessage());
+            if (context.getUiEventListener() != null) {
+                context.getUiEventListener().onShowError("Errore", "Cannot play audio", "Make sure to play an .WAV audio file.\nError: " + e.getMessage());
+            }  
         }
     }
 

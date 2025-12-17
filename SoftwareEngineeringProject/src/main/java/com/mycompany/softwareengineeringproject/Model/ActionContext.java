@@ -14,6 +14,15 @@ import java.io.Serializable;
 public class ActionContext implements Serializable{
     
     private final StringBuilder execution;
+    private UiEventListener listener;
+    
+    public void setUiEventListener(UiEventListener listener) {
+        this.listener = listener;
+    }
+
+    public UiEventListener getUiEventListener() {
+        return listener;
+    }
     
     public ActionContext() {
         this.execution = new StringBuilder();
