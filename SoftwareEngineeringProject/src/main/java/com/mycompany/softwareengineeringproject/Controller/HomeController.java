@@ -85,7 +85,7 @@ public class HomeController implements Initializable {
                     // When closed: remove class -> the list is centered
                     rulesListView.getStyleClass().remove("list-view-compact");
                     
-                    // IMPORTANTE: Deseleziona la riga così l'utente può cliccarci di nuovo se vuole riaprirla
+                    // IMPORTANT: deselect the rule, so if the user close the dedtails section, he can open the same rule
                     rulesListView.getSelectionModel().clearSelection();
                 }
             });

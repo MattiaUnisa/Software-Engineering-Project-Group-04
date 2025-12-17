@@ -382,6 +382,43 @@ panel is visible, the list is shifted on left of 100px
     -fx-background-color: black;
 }
 
+/* --- DATE PICKER STYLE --- */
+
+.date-picker {
+    -fx-background-color: white;
+    -fx-border-color: -grey;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-pref-height: 40px; 
+    -fx-font-size: 14px;
+}
+
+.date-picker .text-field {
+    -fx-background-color: transparent;
+    -fx-padding: 0 10 0 10; 
+}
+
+/* button that have calendar inside */
+.date-picker .arrow-button {
+    -fx-background-color: transparent; 
+    -fx-cursor: hand;
+    -fx-padding: 0 10 0 10;
+    -fx-border-width: 0 0 0 1px; 
+    -fx-border-color: -grey; 
+}
+
+/* calendar icon */
+.date-picker .arrow {
+    -fx-background-color: -dark-grey; 
+}
+
+
+.date-picker:hover {
+    -fx-border-color: -cyan; 
+}
+
+
 /* ----- PLAY AUDIO ----- */
 
 .audio-field {
