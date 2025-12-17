@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+
+<VBox fx:id="detailsRoot" spacing="15" visible="false" styleClass="details-pane" prefWidth="300"
+      xmlns="http://javafx.com/javafx/8.0.171" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.mycompany.softwareengineeringproject.Controller.RuleDetailsController">
+
+    <HBox alignment="CENTER_LEFT">
+        <Label text="Rule Details" styleClass="details-title" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+        
+        <Button text="✕" onAction="#onCloseClick" styleClass="close-details-button"/>
+    </HBox>
+    
+    <Separator/>
+    
+    <VBox spacing="5">
+        <Label text="Name:" styleClass="details-label-key"/>
+        <Label fx:id="lblName" text="..." styleClass="details-label-value"/>
+    </VBox>
+    
+    <VBox spacing="5">
+        <Label text="Trigger:" styleClass="details-label-key"/>
+        <Label fx:id="lblTrigger" text="..." styleClass="details-label-value"/>
+    </VBox>
+    
+    <VBox spacing="5">
+        <Label text="Action:" styleClass="details-label-key"/>
+        <Label fx:id="lblAction" text="..." styleClass="details-label-value"/>
+    </VBox>
+    
+    <VBox spacing="5">
+        <Label text="Status:" styleClass="details-label-key"/>
+        <Label fx:id="lblStatus" text="..." styleClass="details-label-value"/>
+    </VBox>
+
+</VBox>
