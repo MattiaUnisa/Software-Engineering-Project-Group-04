@@ -47,6 +47,8 @@ public static void showNotification(String title, String content) {
         alert.getButtonTypes().setAll(stopButton);
 
         Optional<ButtonType> result = alert.showAndWait();
+        // in DialogManager .showAndWait freeze the execution of the code to the click by the user of button STOP. 
+        // when that window is closed, the first method is stop(), so the audio playing is stopped.
         
         return true;
     }

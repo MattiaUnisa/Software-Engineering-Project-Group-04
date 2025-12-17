@@ -1,2 +1,2 @@
 Rule 1 | false | TimeTrigger:11:46 | Notification:Prova | Repetition:false;PT15S;null;3;0
-test | false | DayOfWeekTrigger:WEDNESDAY | WriteOnFile: C:\Users\anton\Desktop\giorgio.txt;gino | Repetition:false;PT5S;2025-12-17T11:18:37.138;5;5
+test | false | DayOfWeekTrigger:WEDNESDAY | WriteOnFile: C:\Users\anton\AppData\Local\Modrinth App\Modrinth App.exe;gino | Repetition:false;PT5S;2025-12-17T11:18:37.138;5;5

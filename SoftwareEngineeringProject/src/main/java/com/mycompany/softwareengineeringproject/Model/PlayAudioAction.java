@@ -1,14 +1,9 @@
 package com.mycompany.softwareengineeringproject.Model;
 
-import com.mycompany.softwareengineeringproject.View.DialogManager;
 import java.io.File;
-import java.io.Serializable;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import java.util.Optional;
 
 public class PlayAudioAction implements Action {
 
@@ -35,7 +30,6 @@ public class PlayAudioAction implements Action {
             if (context.getUiEventListener() != null) {
                 context.getUiEventListener().onShowError("ERROR", "File not found", null);
             }  
-            //DialogManager.showError("ERROR", "File not found", null);
             return;
         }
 
@@ -59,8 +53,6 @@ public class PlayAudioAction implements Action {
             if (context.getUiEventListener() != null) {
                 context.getUiEventListener().onShowAudioPlayer(fileName);
             }  
-            // in DialogManager .showAndWait freeze the execution of the code to the click by the user of button STOP. 
-            // when that window is closed, the first method is stop(), so the audio playing is stopped.
 
             stop();
             context.appendToLog("Audio stopped by user.");

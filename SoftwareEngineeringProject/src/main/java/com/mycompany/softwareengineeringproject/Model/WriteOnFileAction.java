@@ -4,7 +4,6 @@
  */
 package com.mycompany.softwareengineeringproject.Model;
 
-import com.mycompany.softwareengineeringproject.View.DialogManager;
 import java.io.*;
 
 /**
@@ -34,9 +33,14 @@ public class WriteOnFileAction implements Action{
         try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(filePath, true)))){
             pw.println(message + "\n");
             context.appendToLog("SUCCESS: Wrote on file: " + message);
+            if (context.getUiEventListener() != null) {
+                context.getUiEventListener().onShowNotification("Success!", message);
+            }  
         }catch(Exception e){
             context.appendToLog("ERROR: Cannot write on file: " + message + ". Cause: " + e.getMessage());
-            DialogManager.showError("Error", "Cannot write on file", "Error: " + e.getMessage());
+            if (context.getUiEventListener() != null) {
+                context.getUiEventListener().onShowError("Error", "Cannot write on file", "Error: " + e.getMessage());
+            }  
 
         }
     }

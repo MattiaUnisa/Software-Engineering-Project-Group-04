@@ -1,7 +1,5 @@
 package com.mycompany.softwareengineeringproject.Model;
 
-import com.mycompany.softwareengineeringproject.View.DialogManager;
-
 /**
  * A simple action that shows a notification message when a rule is triggered.
  */
