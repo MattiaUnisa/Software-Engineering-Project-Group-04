@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  *
@@ -32,8 +33,7 @@ public class FileSizeTriggerController implements TriggerControllerInterface{
     private ComboBox<String> sizeUnitBox;
     
     //The method initialize is a special callback method of JavaFX. When the fxml file is loaded, the loader search and
-    //call automatically this method that in this case is used to give the value to the Spinner
-    //A Spinner can't work unless a SpinnerValueFactory is assigned to it
+    //call automatically this method that in this case is used to give the value to the ComboBox
     public void initialize(){
         
         // Populate the ComboBox with the units of measurement
@@ -50,9 +50,10 @@ public class FileSizeTriggerController implements TriggerControllerInterface{
         //Create the object to open the dialog box
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select the file");  
+        Stage stage = (Stage) filePathField.getScene().getWindow();
         
         //show the box and wait the selection
-        File file = fileChooser.showOpenDialog(null);
+        File file = fileChooser.showOpenDialog(stage);
         
         //set the path in the text field
         if(file != null){

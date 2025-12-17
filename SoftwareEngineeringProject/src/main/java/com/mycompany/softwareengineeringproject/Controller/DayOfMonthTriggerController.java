@@ -6,7 +6,6 @@ package com.mycompany.softwareengineeringproject.Controller;
 
 import com.mycompany.softwareengineeringproject.Model.Trigger;
 import com.mycompany.softwareengineeringproject.Model.TriggerFactory;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
@@ -26,7 +25,7 @@ public class DayOfMonthTriggerController implements TriggerControllerInterface{
         datePicker.setValue(LocalDate.now());
     }
     
-    //This Method is used to get the value to create the instance of DayOfWeekTrigger
+    //This Method is used to get the value to create the instance of DayOfMonthTrigger
     @Override
     public Trigger buildTrigger(){
         int day = datePicker.getValue().getDayOfMonth();

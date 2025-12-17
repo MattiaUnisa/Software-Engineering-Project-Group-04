@@ -10,6 +10,7 @@ import java.io.File;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  *
@@ -28,8 +29,8 @@ public class WriteOnFileActionController implements ActionControllerInterface{
     private void onSelectFile(){
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select the text file");
-        
-        File file = fileChooser.showOpenDialog(null);
+        Stage stage = (Stage) filePathField.getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
         
         if(file != null){
             filePathField.setText(file.getAbsolutePath());

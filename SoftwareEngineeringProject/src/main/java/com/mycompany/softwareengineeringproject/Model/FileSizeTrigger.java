@@ -10,6 +10,8 @@ import java.io.File;
  *
  * @author matda
  */
+//This class say that the trigger isTriggered when the size of a file is greater 
+//than the size value insert by the user
 public class FileSizeTrigger implements Trigger{
     
     private final String filePath;
@@ -33,7 +35,6 @@ public class FileSizeTrigger implements Trigger{
     public boolean isTriggered(){
         File file = new File(filePath);
         if (!file.exists()) {
-            //DialogManager.showError("ERROR", "Directory not found", null);
             return false;
         }
         return file.length() > size;

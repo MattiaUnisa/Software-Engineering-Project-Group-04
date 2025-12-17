@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  *
@@ -30,7 +31,8 @@ public class CopyFileActionController implements ActionControllerInterface{
     private void onSelectSource() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Source File");
-        File source = fileChooser.showOpenDialog(null);
+        Stage sourcestage = (Stage) sourcePathField.getScene().getWindow();
+        File source = fileChooser.showOpenDialog(sourcestage);
         if (source != null) {
             sourcePathField.setText(source.getAbsolutePath());
         }
@@ -40,7 +42,8 @@ public class CopyFileActionController implements ActionControllerInterface{
     private void onSelectDest() {
         javafx.stage.DirectoryChooser dirChooser = new javafx.stage.DirectoryChooser();
         dirChooser.setTitle("Select Destination Directory");
-        File dest = dirChooser.showDialog(null);
+        Stage deststage = (Stage) destPathField.getScene().getWindow();
+        File dest = dirChooser.showDialog(deststage);
         if (dest != null) {
             destPathField.setText(dest.getAbsolutePath());
         }

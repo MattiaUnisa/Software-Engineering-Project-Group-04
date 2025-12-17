@@ -10,8 +10,11 @@ import java.time.LocalDate;
  *
  * @author matda
  */
+//This class say that the trigger isTriggered when the day of month ("ex. 17") 
+//selected by the user is equals to today's day of month 
 public class DayOfMonthTrigger implements Trigger{
     
+    //the day of Month is an int number
     private final int day;
     
     public DayOfMonthTrigger(int day){
