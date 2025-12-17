@@ -36,7 +36,10 @@ public class NotificationAction implements Action {
             context.appendToLog("No Message is given by the user");
             return;
         }
-        DialogManager.showNotification(title, message);
+        //Get the listener, verify if it is null and if not call the method onShowNotification in order to Show a notification
+        if (context.getUiEventListener() != null) {
+            context.getUiEventListener().onShowNotification("Notification", message);
+        }   
         stop();
     }
 
