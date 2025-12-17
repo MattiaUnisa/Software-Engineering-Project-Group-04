@@ -6,8 +6,6 @@ package com.mycompany.softwareengineeringproject.Controller;
 
 import com.mycompany.softwareengineeringproject.Model.Action;
 import com.mycompany.softwareengineeringproject.Model.ActionFactory;
-import com.mycompany.softwareengineeringproject.Model.ActionContext;
-import com.mycompany.softwareengineeringproject.Model.PlayAudioAction;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
