@@ -62,6 +62,9 @@ public class WriteOnFileAction implements Action{
         }
         String wofPart = action.substring("WriteToFile: ".length());
         String[] parts = wofPart.split(";");
+        
+        if (parts.length != 2) throw new IllegalArgumentException("CopyMoveAction data error.");
+        
         String path = parts[0];
         String msg = parts[1];
         return ActionFactory.createWriteOnFile(path, msg);
