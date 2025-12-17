@@ -40,8 +40,7 @@ public class DateTrigger implements Trigger{
             throw new IllegalArgumentException("Invalid DateTrigger format.");        
         }
         String datepart = trigger.substring("DateTrigger:".length());
-        String[] parts = datepart.split(":");
-        LocalDate date = LocalDate.parse(parts[0]);
+        LocalDate date = LocalDate.parse(datepart);
         //Use the factory to create the object
         return TriggerFactory.createDateTrigger(date);
     }

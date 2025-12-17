@@ -15,7 +15,7 @@
       > 
     <Label text="Play audio" styleClass="section-label"/>
     
-    <HBox>
+    <HBox spacing="10">
         <TextField fx:id="filePathField" promptText="Path of the file audio" HBox.hgrow="ALWAYS" editable="false" styleClass="audio-field"/> 
         
         <Button text="Select file" onAction="#onSelectFile" styleClass="standard-button"/>

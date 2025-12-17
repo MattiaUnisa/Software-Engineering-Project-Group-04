@@ -40,8 +40,7 @@ public class DayOfMonthTrigger implements Trigger{
             throw new IllegalArgumentException("Invalid DayOfMonthTrigger format.");        
         }
         String daypart = trigger.substring("DayOfMonthTrigger:".length());
-        String[] parts = daypart.split(":");
-        int dayOfMonth = Integer.parseInt(parts[0]);
+        int dayOfMonth = Integer.parseInt(daypart);
         //Use the factory to create the object
         return TriggerFactory.createDayOfMonthTrigger(dayOfMonth);
     }

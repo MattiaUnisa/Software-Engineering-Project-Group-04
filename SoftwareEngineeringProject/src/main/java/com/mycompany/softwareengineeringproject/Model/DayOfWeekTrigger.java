@@ -41,8 +41,7 @@ public class DayOfWeekTrigger implements Trigger{
             throw new IllegalArgumentException("Invalid DayOfWeekTrigger format.");        
         }
         String daypart = trigger.substring("DayOfWeekTrigger:".length());
-        String[] parts = daypart.split(":");
-        DayOfWeek dayOfWeek = DayOfWeek.valueOf(parts[0]);
+        DayOfWeek dayOfWeek = DayOfWeek.valueOf(daypart);
         //Use the factory to create the object
         return TriggerFactory.createDayOfWeekTrigger(dayOfWeek);
     }
