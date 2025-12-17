@@ -38,13 +38,19 @@ public class CopyFileAction implements Action{
             // La User Story richiede di spostare in una directory di destinazione
             File finalDest = new File(destPath, sourcePath.getName());
 
-                // Copia il file convertendo in Path
-                Files.copy(sourcePath.toPath(), finalDest.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                context.appendToLog("SUCCESS: File copied to " + finalDest.getAbsolutePath());
+            // Copia il file convertendo in Path
+            Files.copy(sourcePath.toPath(), finalDest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            context.appendToLog("SUCCESS: File copied to " + finalDest.getAbsolutePath());
+            if (context.getUiEventListener() != null) {
+                context.getUiEventListener().onShowNotification("Success!", "File is well copied");
+            } 
 
 
         } catch (IOException e) {
             context.appendToLog("ERROR: File operation failed: " + e.getMessage());
+            if (context.getUiEventListener() != null) {
+                context.getUiEventListener().onShowError("Error", "Cannot write on file", "Error: " + e.getMessage());
+            }  
         }
     }
 
@@ -55,17 +61,17 @@ public class CopyFileAction implements Action{
 
     @Override
     public String formatString() {
-        return "CopyFileAction: " + sourcePath + ";" + destPath;
+        return "CopyFile: " + sourcePath + ";" + destPath;
     }
     
     public static Action parseString(String action){
-        if(!action.startsWith("CopyFileAction: ")){
-            throw new IllegalArgumentException("Invalid CopyMoveFileAction format.");
+        if(!action.startsWith("CopyFile: ")){
+            throw new IllegalArgumentException("Invalid CopyFileAction format.");
         }
-        String cmfPart = action.substring("CopyFileAction: ".length());
+        String cmfPart = action.substring("CopyFile: ".length());
         String[] parts = cmfPart.split(";");
         
-        if (parts.length != 2) throw new IllegalArgumentException("CopyMoveAction data error.");
+        if (parts.length != 2) throw new IllegalArgumentException("CopyFileAction data error.");
         
         File source = new File(parts[0]);
         File dest = new File(parts[1]);
