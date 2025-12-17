@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.2"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.mycompany.softwareengineeringproject.Controller.ExternalProgramActionController"
+      stylesheets="@style.css"
+      alignment="CENTER"
+      spacing="15"
+      styleClass="dynamic-content"
+      >
+    
+    <Label text="Choose the program to open" styleClass="section-label"/>
+    <HBox spacing="10">    
+        <TextField fx:id="programPathField" promptText="Path of the program" HBox.hgrow="ALWAYS" editable="false" styleClass="text-field"/>
+        <Button text="Select source" onAction="#onSelectFile" styleClass="standard-button"/>
+    </HBox> 
+    
+</VBox>  

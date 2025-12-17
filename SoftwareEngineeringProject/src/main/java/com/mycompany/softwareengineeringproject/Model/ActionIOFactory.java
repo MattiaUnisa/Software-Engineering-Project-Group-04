@@ -25,6 +25,10 @@ public class ActionIOFactory {
         if (action.startsWith("CopyFile:")){
             return CopyFileAction.parseString(action);
         }
+        
+        if (action.startsWith("ExternalProgram:")){
+            return ExternalProgramAction.parseString(action);
+        }
 
         throw new IllegalArgumentException("Unknown Action type in persistence data: " + action);
     }
