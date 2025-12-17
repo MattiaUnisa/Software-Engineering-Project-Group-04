@@ -15,9 +15,11 @@ public class ActionIOFactory {
         if (action.startsWith("PlayAudioAction:")) {
             return PlayAudioAction.parseString(action);
            
-        }else if (action.startsWith("Notification:")) {
+        }if (action.startsWith("Notification:")) {
             return NotificationAction.parseString(action);
             
+        }if (action.startsWith("WriteOnFile:")){
+            return WriteOnFileAction.parseString(action);
         }
 
         throw new IllegalArgumentException("Unknown Action type in persistence data: " + action);

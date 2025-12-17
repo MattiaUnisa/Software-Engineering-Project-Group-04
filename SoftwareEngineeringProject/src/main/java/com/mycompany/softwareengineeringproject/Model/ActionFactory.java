@@ -20,4 +20,9 @@ public class ActionFactory {
     public static Action createShowNotification(String msg) {
         return new NotificationAction(msg); 
     }
+    
+    public static Action createWriteOnFile(String filePath, String msg){
+        return new WriteOnFileAction(filePath, msg);
+    }
+    
 }
