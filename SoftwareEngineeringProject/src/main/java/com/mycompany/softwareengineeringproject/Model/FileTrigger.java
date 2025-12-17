@@ -4,10 +4,7 @@
  */
 package com.mycompany.softwareengineeringproject.Model;
 
-import com.mycompany.softwareengineeringproject.View.DialogManager;
 import java.io.File;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
 
 /**
  *
@@ -36,7 +33,6 @@ public class FileTrigger implements Trigger{
     public boolean isTriggered(){
         File directory = new File(filePath);
         if (!directory.exists()) {
-            //DialogManager.showError("ERROR", "Directory not found", null);
             return false;
         }
         File targetFile = new File(directory, fileName);
