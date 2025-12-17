@@ -27,18 +27,22 @@ public class CopyFileActionController implements ActionControllerInterface{
     }
     
     @FXML
-    private void onSelectFile(){
-        FileChooser fileChooserSource = new FileChooser();
-        fileChooserSource.setTitle("Select the source file");
-        FileChooser fileChooserDest = new FileChooser();
-        fileChooserDest.setTitle("Select the destination file");
-        
-        File fileSource = fileChooserSource.showOpenDialog(null);
-        File fileDest = fileChooserDest.showOpenDialog(null);
+    private void onSelectSource() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Source File");
+        File source = fileChooser.showOpenDialog(null);
+        if (source != null) {
+            sourcePathField.setText(source.getAbsolutePath());
+        }
+    }
 
-        if(fileSource != null && fileDest != null){
-            sourcePathField.setText(fileSource.getPath());
-            destPathField.setText(fileDest.getPath());
+    @FXML
+    private void onSelectDest() {
+        javafx.stage.DirectoryChooser dirChooser = new javafx.stage.DirectoryChooser();
+        dirChooser.setTitle("Select Destination Directory");
+        File dest = dirChooser.showDialog(null);
+        if (dest != null) {
+            destPathField.setText(dest.getAbsolutePath());
         }
     }
     
@@ -50,7 +54,7 @@ public class CopyFileActionController implements ActionControllerInterface{
             return null;
         }
                 
-        return ActionFactory.createCopyMoveFile(new File(sourcePathField.getText()), new File(destPathField.getText()));
+        return ActionFactory.createCopyFile(new File(sourcePathField.getText()), new File(destPathField.getText()));
     }
     
 }

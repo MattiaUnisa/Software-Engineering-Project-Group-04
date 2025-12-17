@@ -15,12 +15,12 @@ import java.util.logging.Logger;
  *
  * @author anton
  */
-public class CopyMoveFileAction implements Action{
+public class CopyFileAction implements Action{
     
     private static File sourcePath;
     private static File destPath;
 
-    public CopyMoveFileAction(File sourcePath, File destPath) {
+    public CopyFileAction(File sourcePath, File destPath) {
         this.sourcePath = sourcePath;
         this.destPath = destPath;
     }
@@ -28,24 +28,24 @@ public class CopyMoveFileAction implements Action{
     @Override
     public void execute(ActionContext context) {
         // Controllo esistenza file sorgente
-    if (sourcePath == null || !sourcePath.exists()) {
-        context.appendToLog("ERROR: Source file does not exist: " + sourcePath);
-        return;
-    }
+        if (sourcePath == null || !sourcePath.exists()) {
+            context.appendToLog("ERROR: Source file does not exist: " + sourcePath);
+            return;
+        }
 
-    try {
-        // Costruiamo il file di destinazione finale (Directory + Nome File Sorgente)
-        // La User Story richiede di spostare in una directory di destinazione
-        File finalDest = new File(destPath, sourcePath.getName());
+        try {
+            // Costruiamo il file di destinazione finale (Directory + Nome File Sorgente)
+            // La User Story richiede di spostare in una directory di destinazione
+            File finalDest = new File(destPath, sourcePath.getName());
 
-            // Copia il file convertendo in Path
-            Files.copy(sourcePath.toPath(), finalDest.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            context.appendToLog("SUCCESS: File copied to " + finalDest.getAbsolutePath());
-            
-        
-    } catch (IOException e) {
-        context.appendToLog("ERROR: File operation failed: " + e.getMessage());
-    }
+                // Copia il file convertendo in Path
+                Files.copy(sourcePath.toPath(), finalDest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                context.appendToLog("SUCCESS: File copied to " + finalDest.getAbsolutePath());
+
+
+        } catch (IOException e) {
+            context.appendToLog("ERROR: File operation failed: " + e.getMessage());
+        }
     }
 
     @Override
@@ -55,26 +55,26 @@ public class CopyMoveFileAction implements Action{
 
     @Override
     public String formatString() {
-        return "CopyMoveFileAction: " + sourcePath + ";" + destPath;
+        return "CopyFileAction: " + sourcePath + ";" + destPath;
     }
     
     public static Action parseString(String action){
-        if(!action.startsWith("CopyMoveFileAction: ")){
+        if(!action.startsWith("CopyFileAction: ")){
             throw new IllegalArgumentException("Invalid CopyMoveFileAction format.");
         }
-        String cmfPart = action.substring("CopyMoveFileAction: ".length());
+        String cmfPart = action.substring("CopyFileAction: ".length());
         String[] parts = cmfPart.split(";");
         
         if (parts.length != 2) throw new IllegalArgumentException("CopyMoveAction data error.");
         
         File source = new File(parts[0]);
         File dest = new File(parts[1]);
-        return ActionFactory.createCopyMoveFile(sourcePath, destPath);
+        return ActionFactory.createCopyFile(sourcePath, destPath);
     }
 
     @Override
     public String toString() {
-        return "CopyMoveFileAction{" + "sourcePath=" + sourcePath + ", destPath=" + destPath + ", operationType=" + '}';
+        return "CopyFileAction{" + "sourcePath=" + sourcePath + ", destPath=" + destPath + ", operationType=" + '}';
     }
 
     

@@ -27,7 +27,7 @@ public class ActionFactory {
         return new WriteOnFileAction(filePath, msg);
     }
     
-    public static Action createCopyMoveFile(File sourcePath, File destPath){
-        return new CopyMoveFileAction(sourcePath, destPath);
+    public static Action createCopyFile(File sourcePath, File destPath){
+        return new CopyFileAction(sourcePath, destPath);
     }
 }
