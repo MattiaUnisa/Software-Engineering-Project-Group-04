@@ -33,7 +33,8 @@ public class ActionController {
         "Choose Action",
         "PlayAudio",
         "Notification",
-        "WriteOnFile"
+        "WriteOnFile",
+        "CopyFile"
     );
     
     //the default string selected is Choose Action

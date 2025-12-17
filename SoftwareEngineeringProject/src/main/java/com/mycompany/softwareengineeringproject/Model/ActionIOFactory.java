@@ -21,6 +21,10 @@ public class ActionIOFactory {
         }if (action.startsWith("WriteOnFile:")){
             return WriteOnFileAction.parseString(action);
         }
+        
+        if (action.startsWith("CopyFile:")){
+            return CopyFileAction.parseString(action);
+        }
 
         throw new IllegalArgumentException("Unknown Action type in persistence data: " + action);
     }

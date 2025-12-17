@@ -4,6 +4,8 @@
  */
 package com.mycompany.softwareengineeringproject.Model;
 
+import java.io.File;
+
 /**
  *
  * @author anton
@@ -25,4 +27,7 @@ public class ActionFactory {
         return new WriteOnFileAction(filePath, msg);
     }
     
+    public static Action createCopyFile(File sourcePath, File destPath){
+        return new CopyFileAction(sourcePath, destPath);
+    }
 }

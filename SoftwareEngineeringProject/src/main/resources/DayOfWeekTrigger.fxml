@@ -15,7 +15,7 @@
       styleClass="dynamic-content"
       >
     
-    <DatePicker fx:id="datePicker" editable="false" />
+    <DatePicker fx:id="datePicker" editable="false"/>
 
     
 </HBox>    
