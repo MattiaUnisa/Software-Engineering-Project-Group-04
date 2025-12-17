@@ -31,8 +31,8 @@ public class WriteOnFileAction implements Action{
     
     @Override
     public void execute(ActionContext context){
-        try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(filePath)))){
-            pw.println(message);
+        try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(filePath, true)))){
+            pw.println(message + "\n");
             context.appendToLog("SUCCESS: Wrote on file: " + message);
         }catch(Exception e){
             context.appendToLog("ERROR: Cannot write on file: " + message + ". Cause: " + e.getMessage());
@@ -49,7 +49,7 @@ public class WriteOnFileAction implements Action{
     
     @Override
     public String formatString(){
-        return "WriteOnFile: " + this.message;
+        return "WriteOnFile: " + this.filePath + ";" + this.message;
     }
     
     public static Action parseString(String action){
@@ -57,7 +57,15 @@ public class WriteOnFileAction implements Action{
             throw new IllegalArgumentException("Invalid WriteToFile format.");
         }
         String wofPart = action.substring("WriteToFile: ".length());
-        return ActionFactory.createWriteOnFile(filePath, wofPart);
+        String[] parts = wofPart.split(";");
+        String path = parts[0];
+        String msg = parts[1];
+        return ActionFactory.createWriteOnFile(path, msg);
+    }
+
+    @Override
+    public String toString() {
+        return "WriteOnFileAction{" + "filePath=" + filePath + "message=" + message + '}';
     }
 
     
