@@ -1,7 +1,5 @@
 package com.mycompany.softwareengineeringproject.Model;
 
-import com.mycompany.softwareengineeringproject.View.DialogManager;
-
 /**
  * A simple action that shows a notification message when a rule is triggered.
  */
@@ -36,7 +34,10 @@ public class NotificationAction implements Action {
             context.appendToLog("No Message is given by the user");
             return;
         }
-        DialogManager.showNotification(title, message);
+        //Get the listener, verify if it is null and if not call the method onShowNotification in order to Show a notification
+        if (context.getUiEventListener() != null) {
+            context.getUiEventListener().onShowNotification("Notification", message);
+        }   
         stop();
     }
 

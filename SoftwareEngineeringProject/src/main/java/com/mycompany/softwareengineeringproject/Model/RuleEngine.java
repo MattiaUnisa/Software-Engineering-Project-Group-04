@@ -8,9 +8,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.Scanner;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -24,6 +22,7 @@ public class RuleEngine {
     private static RuleEngine instance;
     private ObservableList<Rule> rules;
     // observer: the list updates automatically the view 
+    private UiEventListener listener;
     
     private RuleEngine() {
         this.rules = FXCollections.observableArrayList();
@@ -47,6 +46,14 @@ public class RuleEngine {
 
     public ObservableList<Rule> getRules(){
         return this.rules;
+    }
+    
+    public void setUiEventListener(UiEventListener listener) {
+        this.listener = listener;
+    }
+
+    public UiEventListener getUiEventListener() {
+        return listener;
     }
     
     public void CheckAllRules(){
@@ -84,6 +91,8 @@ public class RuleEngine {
                 // continues to check triggers
                 Platform.runLater(() -> {
                     ActionContext actioncontext = new ActionContext();
+                    //here the RuleEngine give the Uilistener to the Action
+                    actioncontext.setUiEventListener(listener);
                     rule.getAction().execute(actioncontext);
                     System.out.println(actioncontext.getExecutionLog());
                 });

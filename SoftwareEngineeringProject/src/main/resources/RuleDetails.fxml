@@ -3,13 +3,20 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
 
 <VBox fx:id="detailsRoot" spacing="15" visible="false" styleClass="details-pane" prefWidth="300"
       xmlns="http://javafx.com/javafx/8.0.171" 
       xmlns:fx="http://javafx.com/fxml/1" 
       fx:controller="com.mycompany.softwareengineeringproject.Controller.RuleDetailsController">
 
-    <Label text="Rule Details" styleClass="details-title"/>
+    <HBox alignment="CENTER_LEFT">
+        <Label text="Rule Details" styleClass="details-title" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+        
+        <Button text="✕" onAction="#onCloseClick" styleClass="close-details-button"/>
+    </HBox>
+    
     <Separator/>
     
     <VBox spacing="5">

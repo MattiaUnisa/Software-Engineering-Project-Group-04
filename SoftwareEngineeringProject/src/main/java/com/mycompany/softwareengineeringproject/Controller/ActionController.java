@@ -32,7 +32,8 @@ public class ActionController {
     actionComboBox.getItems().addAll(
         "Choose Action",
         "PlayAudio",
-        "Notification"
+        "Notification",
+        "WriteOnFile"
     );
     
     //the default string selected is Choose Action

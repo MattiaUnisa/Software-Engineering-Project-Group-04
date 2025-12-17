@@ -25,15 +25,15 @@ public class DialogManager {
     }
     
     // Method called for Notifications (Information popup)
-public static void showNotification(String title, String content) {
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle(title);
-    alert.setHeaderText(null);
-    alert.setContentText(content);
-    ButtonType closeButton = new ButtonType("OK");
-    alert.getButtonTypes().setAll(closeButton);
-    alert.showAndWait();
-}
+    public static void showNotification(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        ButtonType closeButton = new ButtonType("OK");
+        alert.getButtonTypes().setAll(closeButton);
+        alert.showAndWait();
+    }
 
 
     // method to permits the user to stop the audio while playing
@@ -47,6 +47,8 @@ public static void showNotification(String title, String content) {
         alert.getButtonTypes().setAll(stopButton);
 
         Optional<ButtonType> result = alert.showAndWait();
+        // in DialogManager .showAndWait freeze the execution of the code to the click by the user of button STOP. 
+        // when that window is closed, the first method is stop(), so the audio playing is stopped.
         
         return true;
     }

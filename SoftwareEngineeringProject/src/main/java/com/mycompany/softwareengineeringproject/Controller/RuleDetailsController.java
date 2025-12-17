@@ -2,6 +2,7 @@ package com.mycompany.softwareengineeringproject.Controller;
 
 import com.mycompany.softwareengineeringproject.Model.Rule;
 import javafx.beans.property.BooleanProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -20,6 +21,13 @@ public class RuleDetailsController {
         detailsRoot.managedProperty().bind(detailsRoot.visibleProperty());
     }
     
+    // method to close the rule details section
+    @FXML
+    private void onCloseClick(ActionEvent event) {
+        detailsRoot.setVisible(false);
+    }
+    
+    
     // method called by the home to show the details f the rule
     public void setRule(Rule rule) {
         if (rule == null) {
@@ -34,7 +42,6 @@ public class RuleDetailsController {
         lblName.setText(rule.getName());
         lblTrigger.setText(rule.getTrigger().toString());
         lblAction.setText(rule.getAction().toString());
-
         
         updateStatusStyle(rule.isActive());
     }
@@ -61,4 +68,6 @@ public class RuleDetailsController {
     public BooleanProperty visibleProperty() {
         return detailsRoot.visibleProperty();
     }
+    
+    
 }

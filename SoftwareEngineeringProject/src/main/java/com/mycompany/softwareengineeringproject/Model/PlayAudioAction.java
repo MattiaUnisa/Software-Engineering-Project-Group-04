@@ -1,14 +1,9 @@
 package com.mycompany.softwareengineeringproject.Model;
 
-import com.mycompany.softwareengineeringproject.View.DialogManager;
 import java.io.File;
-import java.io.Serializable;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import java.util.Optional;
 
 public class PlayAudioAction implements Action {
 
@@ -31,7 +26,10 @@ public class PlayAudioAction implements Action {
         File audioFile = new File(filePath);
         if (!audioFile.exists()) {
             context.appendToLog("ERROR: File not found: " + filePath);
-            DialogManager.showError("ERROR", "File not found", null);
+            //Get the listener, verify if it is null and if not call the method onShowNotification in order to Show a notification
+            if (context.getUiEventListener() != null) {
+                context.getUiEventListener().onShowError("ERROR", "File not found", null);
+            }  
             return;
         }
 
@@ -51,15 +49,18 @@ public class PlayAudioAction implements Action {
             context.appendToLog("Playing Audio (WAV): " + filePath);
 
             String fileName = new File(filePath).getName();
-            DialogManager.showAudioPlayerDialog(fileName);
-            // in DialogManager .showAndWait freeze the execution of the code to the click by the user of button STOP. 
-            // when that window is closed, the first method is stop(), so the audio playing is stopped.
+            //Get the listener, verify if it is null and if not call the method onShowAudioPlayer in order to Show it
+            if (context.getUiEventListener() != null) {
+                context.getUiEventListener().onShowAudioPlayer(fileName);
+            }  
 
             stop();
             context.appendToLog("Audio stopped by user.");
 
         } catch (Exception e) {
-            DialogManager.showError("Errore", "Cannot play audio", "Make sure to play an .WAV audio file.\nError: " + e.getMessage());
+            if (context.getUiEventListener() != null) {
+                context.getUiEventListener().onShowError("Errore", "Cannot play audio", "Make sure to play an .WAV audio file.\nError: " + e.getMessage());
+            }  
         }
     }
 
