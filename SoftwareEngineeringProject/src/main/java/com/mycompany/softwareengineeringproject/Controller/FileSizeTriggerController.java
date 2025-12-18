@@ -41,6 +41,15 @@ public class FileSizeTriggerController implements TriggerControllerInterface{
         
         // Set a default value to prevent errors
         sizeUnitBox.getSelectionModel().select("KB");
+        
+        // Create a filter in order to accept only numbers
+        size.setTextFormatter(new javafx.scene.control.TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+            if (newText.matches("\\d*")) { // Regex: accept only number
+                return change;
+            }
+            return null; // Refuse changes if they aren't numeric
+        }));
    
     }
     
