@@ -84,4 +84,8 @@ public class TriggerController {
         return null;
     }
     
+    public void setTrigger(Trigger existingTrigger) {
+        System.out.println("TriggerController: setTrigger called(TO DO)");
+    }
+    
 }

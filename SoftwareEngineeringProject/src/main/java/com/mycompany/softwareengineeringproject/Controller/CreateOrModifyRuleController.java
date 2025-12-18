@@ -9,13 +9,16 @@ import com.mycompany.softwareengineeringproject.Model.Trigger;
 import com.mycompany.softwareengineeringproject.View.DialogManager;
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class CreateRuleController {
+public class CreateOrModifyRuleController {
     
     // takes the name from the tag in fxml
     @FXML 
     private TextField nameField;
+    
+    @FXML private Label titleLabel;
     
     @FXML
     private TriggerController triggerSectionController;
@@ -26,7 +29,28 @@ public class CreateRuleController {
     @FXML
     private RepetitionController repetitionSectionController;
     
-
+    // variable to track the rule we are modifing
+    // if is null, we are in "creation mode". If it's not null, we are in "modify mode".
+    private Rule ruleToEdit = null;
+    
+    // method called by Rule DetailsController to share data of the rule to modify
+    public void initData(Rule rule) {
+        this.ruleToEdit = rule;
+        
+        // change title
+        titleLabel.setText("Modify Rule: " + rule.getName());
+        
+        // set name
+        nameField.setText(rule.getName());
+        
+        // Set values sor each section
+        triggerSectionController.setTrigger(rule.getTrigger());
+        actionSectionController.setAction(rule.getAction());
+        repetitionSectionController.setRepetition(rule.getRepetition());
+        
+        System.out.println("Editing mode active for: " + rule.getName());
+    }
+    
      // Go back to the home screen saving nothing
     @FXML
     private void onBackClick() throws IOException {
@@ -65,13 +89,18 @@ public class CreateRuleController {
         
         Rule newRule = new Rule(name, trigger, action, repetition);
 
-        // add the rule to the singleton 
-        RuleEngine.getInstance().addRule(newRule);
-        
-        // debug in console
-        System.out.println("Rule Saved: " + name); 
-        
-        // TO DO
+        // LOGICA SALVATAGGIO:
+        if (ruleToEdit != null) {
+            // --- MODIFY ---
+            // remove old rule and add a new one
+            RuleEngine.getInstance().getRules().remove(ruleToEdit);
+            RuleEngine.getInstance().addRule(newRule);
+            System.out.println("Rule Modified: " + ruleToEdit.getName() + " -> " + name);
+        } else {
+            // --- CREATION ---
+            RuleEngine.getInstance().addRule(newRule);
+            System.out.println("Rule Created: " + name); 
+        } 
         
         App.setRoot("home");
     }

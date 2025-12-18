@@ -94,4 +94,8 @@ public class RepetitionController {
         return repetition;
     }
     
+    public void setRepetition(Repetition existingRepetition) {
+        System.out.println("RepetitionController: setRepetition called (TO DO)");
+    }
+    
 }
