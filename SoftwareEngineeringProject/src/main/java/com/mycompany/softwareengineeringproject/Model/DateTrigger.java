@@ -10,6 +10,8 @@ import java.time.LocalDate;
  *
  * @author matda
  */
+//This class say that the trigger isTriggered when the date ("ex. 17/12/25") 
+//selected by the user is equals to today's date 
 public class DateTrigger implements Trigger{
     
     private final LocalDate date;

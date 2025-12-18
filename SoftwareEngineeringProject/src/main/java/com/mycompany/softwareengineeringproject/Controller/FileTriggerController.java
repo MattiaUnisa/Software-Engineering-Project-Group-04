@@ -25,13 +25,6 @@ public class FileTriggerController implements TriggerControllerInterface{
     @FXML 
     private TextField fileNameField;
     
-    //The method initialize is a special callback method of JavaFX. When the fxml file is loaded, the loader search and
-    //call automatically this method that in this case is used to give the value to the Spinner
-    //A Spinner can't work unless a SpinnerValueFactory is assigned to it
-    public void initialize(){
-        
-   
-    }
     
     //This method open a File Chooser that allow at the user to select a file/directory
     @FXML
@@ -39,9 +32,14 @@ public class FileTriggerController implements TriggerControllerInterface{
         //Create the object to open the dialog box
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Select the directory");
+        //Stage is the window of the Create Rule
         Stage stage = (Stage) filePathField.getScene().getWindow();
         
         //show the box and wait the selection
+        //ww give the stage to the showDialog in order to create a parental relentionship 
+        //between the window of the createRule and new window that is going to open when 
+        //the file is clicked for choose the file, in this way we can come back to the main scene
+        //only if we choose the file or close the selector
         File file = directoryChooser.showDialog(stage);
         
         //set the path in the text field

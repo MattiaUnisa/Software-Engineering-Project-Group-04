@@ -11,8 +11,11 @@ import java.time.LocalDate;
  *
  * @author matda
  */
+//This class say that the trigger isTriggered when the day of week ("ex. MONDAY") 
+//selected by the user is equals to today's day of week 
 public class DayOfWeekTrigger implements Trigger{
     
+    //type for the day of week
     private final DayOfWeek day;
     
     public DayOfWeekTrigger(DayOfWeek day){

@@ -25,7 +25,7 @@ public class DateTriggerController implements TriggerControllerInterface{
         datePicker.setValue(LocalDate.now());
     }
     
-    //This Method is used to get the value to create the instance of DayOfWeekTrigger
+    //This Method is used to get the value to create the instance of DateTrigger
     @Override
     public Trigger buildTrigger(){
         LocalDate date = datePicker.getValue();

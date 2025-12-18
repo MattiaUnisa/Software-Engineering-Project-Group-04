@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import java.io.File;
+import javafx.stage.Stage;
 /**
  *
  * @author anton
@@ -37,9 +38,10 @@ public class AudioController implements ActionControllerInterface{
         //Create the object to open the dialog box
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select the file audio");
+        Stage stage = (Stage) filePathField.getScene().getWindow();
         
         //show the box and wait the selection
-        File file = fileChooser.showOpenDialog(null);
+        File file = fileChooser.showOpenDialog(stage);
         
         //set the path in the text field
         if(file != null){

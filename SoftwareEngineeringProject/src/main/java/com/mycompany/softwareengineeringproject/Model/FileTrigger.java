@@ -10,6 +10,8 @@ import java.io.File;
  *
  * @author matda
  */
+//This class say that the trigger isTriggered when the file searched by the user 
+//is found into the directory insert by him
 public class FileTrigger implements Trigger{
     
     private final String filePath;
@@ -35,7 +37,9 @@ public class FileTrigger implements Trigger{
         if (!directory.exists()) {
             return false;
         }
+        //File that are into the directory
         File targetFile = new File(directory, fileName);
+        //if return true the file searched by the user is found into the directory
         return targetFile.exists();
     }
     
