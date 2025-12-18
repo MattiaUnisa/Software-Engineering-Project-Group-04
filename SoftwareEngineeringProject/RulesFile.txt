@@ -1,3 +1,2 @@
 hjk | false | TimeTrigger:3:0 | Notification:bnm | Repetition:true;null;null;1;0
 gggg | false | DayOfMonthTrigger:17 | Notification:ook | Repetition:true;null;2025-12-17T17:23:26.175;1;1
-xx | false | DayOfWeekTrigger:WEDNESDAY | ExternalProgram: C:\Users\anton\AppData\Roaming\.minecraft\TLauncher.exe | Repetition:true;null;2025-12-17T19:21:37.200;1;1
