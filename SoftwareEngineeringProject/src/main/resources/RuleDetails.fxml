@@ -38,5 +38,7 @@
         <Label text="Status:" styleClass="details-label-key"/>
         <Label fx:id="lblStatus" text="..." styleClass="details-label-value"/>
     </VBox>
+    
+    <Button text="Modify Rule" onAction="#" styleClass="modify-rule-button"/>
 
 </VBox>
