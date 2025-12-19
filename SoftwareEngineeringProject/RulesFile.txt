@@ -1,2 +1,2 @@
 Rule 1 | false | DayOfWeekTrigger:FRIDAY | Notification:ok | Repetition:false;PT15S;2025-12-19T11:17:42.749;4;1
-dsdsdsds | false | TimeTrigger:23:0 | ExternalProgram: null | Repetition:false;PT3H5S;null;2;0
+dsdsdsds | false | FileSizeTrigger:C:\Users\matda\OneDrive\Desktop\sound.wav;0 | Notification:daje | Repetition:false;PT3H5S;2025-12-19T11:49:07.046;2;1

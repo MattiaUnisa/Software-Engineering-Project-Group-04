@@ -34,4 +34,8 @@ public class ActionFactory {
     public static Action createExternalProgram(File programPath){
         return new ExternalProgramAction(programPath);
     }
+    
+    public static Action createMoveFile(File sourcePath, File destPath){
+        return new CopyFileAction(sourcePath, destPath);
+    }
 }
