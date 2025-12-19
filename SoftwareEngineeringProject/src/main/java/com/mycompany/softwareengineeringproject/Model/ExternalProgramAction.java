@@ -65,6 +65,6 @@ public class ExternalProgramAction implements Action{
     
     @Override
     public String toString() {
-        return "ExternalProgramAction{" + "programPath=" + programPath + '}';
+        return "ExternalProgramAction\n" + "programPath: " + programPath;
     }
 }

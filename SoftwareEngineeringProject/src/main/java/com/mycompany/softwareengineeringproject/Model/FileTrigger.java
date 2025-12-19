@@ -64,7 +64,7 @@ public class FileTrigger implements Trigger{
 
     @Override
     public String toString() {
-        return "FileTrigger{" + "filePath=" + filePath + ", fileName=" + fileName + '}';
+        return "FileTrigger\n" + "filePath: " + filePath + "\nfileName: " + fileName;
     }
 
     

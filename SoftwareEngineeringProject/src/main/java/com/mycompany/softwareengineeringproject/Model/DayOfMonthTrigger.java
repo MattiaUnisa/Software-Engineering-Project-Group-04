@@ -50,7 +50,7 @@ public class DayOfMonthTrigger implements Trigger{
 
     @Override
     public String toString() {
-        return "DayOfMonthTrigger{" + "day=" + day + '}';
+        return "DayOfMonthTrigger\n" + "day: " + day;
     }
 
 

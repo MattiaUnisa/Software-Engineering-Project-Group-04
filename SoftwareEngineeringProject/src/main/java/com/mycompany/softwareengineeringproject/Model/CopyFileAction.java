@@ -89,7 +89,7 @@ public class CopyFileAction implements Action{
     
     @Override
     public String toString() {
-        return "CopyFileAction{" + "sourcePath=" + sourcePath + ", destPath=" + destPath + ", operationType=" + '}';
+        return "CopyFileAction\n" + "sourcePath: " + sourcePath + "\ndestPath: " + destPath;
     }
 
     

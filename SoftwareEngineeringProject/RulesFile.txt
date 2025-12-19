@@ -1,2 +1,2 @@
-dsdsdsds | true | TimeTrigger:23:0 | WriteOnFile: C:\Users\anton\AppData\Local\Modrinth App\Modrinth App.exe;ginogagaggaga | Repetition:false;PT3H5S;null;2;0
-Rule 1 | true | TimeTrigger:11:46 | PlayAudioAction:C:\Users\Lenovo\Desktop\MedicalSoftwareEngineering\sound.wav | Repetition:false;PT15S;null;3;0
+Rule 1 | false | DayOfWeekTrigger:FRIDAY | Notification:ok | Repetition:false;PT15S;2025-12-19T11:17:42.749;4;1
+dsdsdsds | false | TimeTrigger:23:0 | ExternalProgram: null | Repetition:false;PT3H5S;null;2;0

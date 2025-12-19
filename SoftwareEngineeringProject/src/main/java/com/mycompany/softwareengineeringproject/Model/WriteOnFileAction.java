@@ -72,7 +72,7 @@ public class WriteOnFileAction implements Action{
 
     @Override
     public String toString() {
-        return "WriteOnFileAction{" + "filePath=" + filePath + "message=" + message + '}';
+        return "WriteOnFileAction\n" + "filePath: " + filePath + "\nmessage: " + message;
     }
 
     

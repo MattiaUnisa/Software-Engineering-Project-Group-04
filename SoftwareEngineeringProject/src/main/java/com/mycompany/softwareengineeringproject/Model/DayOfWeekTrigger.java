@@ -51,7 +51,7 @@ public class DayOfWeekTrigger implements Trigger{
 
     @Override
     public String toString() {
-        return "DayOfWeekTrigger{" + "DayOfWeek=" + day + '}';
+        return "DayOfWeekTrigger\n" + "DayOfWeek: " + day;
     }
     
     

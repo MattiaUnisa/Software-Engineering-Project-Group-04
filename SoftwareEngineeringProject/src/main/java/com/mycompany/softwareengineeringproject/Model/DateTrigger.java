@@ -49,7 +49,7 @@ public class DateTrigger implements Trigger{
 
     @Override
     public String toString() {
-        return "DateTrigger{" + "date=" + date + '}';
+        return "DateTrigger\n" + "date: " + date;
     }
     
 }

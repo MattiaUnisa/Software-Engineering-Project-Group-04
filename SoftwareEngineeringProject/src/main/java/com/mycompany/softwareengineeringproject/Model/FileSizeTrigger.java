@@ -61,7 +61,7 @@ public class FileSizeTrigger implements Trigger{
 
     @Override
     public String toString() {
-        return "FileTrigger{" + "filePath=" + filePath + ", size=" + size + '}';
+        return "FileTrigger\n" + "filePath: " + filePath + "\nsize: " + size;
     }
     
 }
