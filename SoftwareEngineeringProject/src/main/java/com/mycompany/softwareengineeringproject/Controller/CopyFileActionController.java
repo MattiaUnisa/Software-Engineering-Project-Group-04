@@ -27,17 +27,22 @@ public class CopyFileActionController implements ActionControllerInterface{
         
     }
     
+    
+    //When the "Select source" button is pressed the program open a window to choose the file that the user want to copy
     @FXML
     private void onSelectSource() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Source File");
         Stage sourcestage = (Stage) sourcePathField.getScene().getWindow();
         File source = fileChooser.showOpenDialog(sourcestage);
+        //If the user has select a file, the program write the path in the TextField
         if (source != null) {
             sourcePathField.setText(source.getAbsolutePath());
         }
     }
 
+    //When the "Select destination" button is pressed the program open a window to choose the folder 
+    //in which the user want copy the file
     @FXML
     private void onSelectDest() {
         javafx.stage.DirectoryChooser dirChooser = new javafx.stage.DirectoryChooser();
@@ -49,6 +54,9 @@ public class CopyFileActionController implements ActionControllerInterface{
         }
     }
     
+    
+    //Create the Action Object starting from the data entered from th user. It is called from the Controller 
+    //when the button "Save" is pressed
     @Override
     public Action buildAction() {
             
@@ -56,7 +64,8 @@ public class CopyFileActionController implements ActionControllerInterface{
                 (destPathField == null || destPathField.getText().isEmpty())){
             return null;
         }
-                
+        
+        //Delegate at the Factory the construction the CopyFileAction object with the paths of the two object files.
         return ActionFactory.createCopyFile(new File(sourcePathField.getText()), new File(destPathField.getText()));
     }
     

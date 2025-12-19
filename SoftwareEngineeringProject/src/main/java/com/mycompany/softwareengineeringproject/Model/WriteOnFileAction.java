@@ -31,7 +31,7 @@ public class WriteOnFileAction implements Action{
     @Override
     public void execute(ActionContext context){
         try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(filePath, true)))){
-            pw.println(message + "\n");
+            pw.println(message);
             context.appendToLog("SUCCESS: Wrote on file: " + message);
             if (context.getUiEventListener() != null) {
                 context.getUiEventListener().onShowNotification("Success!", message);
