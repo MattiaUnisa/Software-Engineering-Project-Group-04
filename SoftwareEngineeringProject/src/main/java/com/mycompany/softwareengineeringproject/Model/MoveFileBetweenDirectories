@@ -1,0 +1,23 @@
+package com.mycompany.softwareengineeringproject.Model;
+
+import java.io.File;
+
+public class ActionFactory {
+    
+    public static Action createMoveFile(File source, File destination) {
+        // Esta acción moverá el archivo desde la fuente hasta el destino
+        return new Action() {
+            @Override
+            public void execute() {
+                if (source.exists() && !destination.exists()) {
+                    boolean success = source.renameTo(new File(destination, source.getName()));
+                    if (!success) {
+                        System.out.println("Failed to move the file.");
+                    }
+                } else {
+                    System.out.println("Invalid source or destination.");
+                }
+            }
+        };
+    }
+}
