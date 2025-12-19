@@ -1,3 +1,4 @@
+/*
 package com.mycompany.softwareengineeringproject.Controller;
 
 import com.mycompany.softwareengineeringproject.Model.Action;
@@ -56,4 +57,10 @@ public class MoveFileActionController implements ActionControllerInterface {
         // Crea la acción de mover el archivo.
         return ActionFactory.createMoveFile(new File(sourcePathField.getText()), new File(destPathField.getText()));
     }
+
+    @Override
+    public void setActionData(Action action) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
+*/

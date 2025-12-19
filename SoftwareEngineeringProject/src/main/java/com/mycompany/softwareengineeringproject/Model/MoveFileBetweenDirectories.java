@@ -1,3 +1,4 @@
+/*
 package com.mycompany.softwareengineeringproject.Model;
 
 import java.io.File;
@@ -18,6 +19,22 @@ public class ActionFactory {
                     System.out.println("Invalid source or destination.");
                 }
             }
+
+            @Override
+            public void execute(ActionContext context) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void stop() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public String formatString() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
         };
     }
 }
+*/
