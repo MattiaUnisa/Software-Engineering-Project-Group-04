@@ -33,7 +33,7 @@ public class CreateOrModifyRuleController {
     // if is null, we are in "creation mode". If it's not null, we are in "modify mode".
     private Rule ruleToEdit = null;
     
-    // method called by Rule DetailsController to share data of the rule to modify
+    // method called by Rule DetailsController to get data of the rule to modify
     public void initData(Rule rule) {
         this.ruleToEdit = rule;
         
@@ -44,10 +44,9 @@ public class CreateOrModifyRuleController {
         nameField.setText(rule.getName());
         
         // Set values sor each section
-        triggerSectionController.setTrigger(rule.getTrigger());
-        actionSectionController.setAction(rule.getAction());
-        repetitionSectionController.setRepetition(rule.getRepetition());
-        
+        //triggerSectionController.setTrigger(rule.getTrigger());
+        //actionSectionController.setAction(rule.getAction());
+        //repetitionSectionController.setRepetition(rule.getRepetition());
         System.out.println("Editing mode active for: " + rule.getName());
     }
     
@@ -89,7 +88,6 @@ public class CreateOrModifyRuleController {
         
         Rule newRule = new Rule(name, trigger, action, repetition);
 
-        // LOGICA SALVATAGGIO:
         if (ruleToEdit != null) {
             // --- MODIFY ---
             // remove old rule and add a new one
