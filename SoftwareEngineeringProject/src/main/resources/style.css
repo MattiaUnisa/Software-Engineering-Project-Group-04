@@ -234,7 +234,7 @@ panel is visible, the list is shifted on left of 100px
 
 .modify-rule-button {
     -fx-font-size: 20px;
-    -fx-background-color: -bright-light-blue; 
+    -fx-background-color: -green; 
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-background-radius: 8px;
@@ -243,7 +243,7 @@ panel is visible, the list is shifted on left of 100px
 }
 
 .modify-rule-button:hover {
-    -fx-background-color: derive(-bright-light-blue, -20%);
+    -fx-background-color: -dark-green;
 }
 /* ----- CREATE RULE PAGE ----- */
 
