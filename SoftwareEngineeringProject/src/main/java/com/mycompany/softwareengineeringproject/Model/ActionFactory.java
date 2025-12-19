@@ -36,6 +36,6 @@ public class ActionFactory {
     }
     
     public static Action createMoveFile(File sourcePath, File destPath){
-        return new CopyFileAction(sourcePath, destPath);
+        return new MoveFileAction(sourcePath, destPath);
     }
 }
