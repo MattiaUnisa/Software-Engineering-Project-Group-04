@@ -7,6 +7,7 @@ package com.mycompany.softwareengineeringproject.Controller;
 import com.mycompany.softwareengineeringproject.Model.Repetition;
 import java.time.Duration;
 import javafx.fxml.FXML;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.layout.VBox;
@@ -17,7 +18,11 @@ import javafx.scene.layout.VBox;
  */
 public class RepetitionController {
     
-    // Riferimenti FXML    
+    // Reference to FXML    
+    @FXML private RadioButton yesRadio;
+    
+    @FXML private RadioButton noRadio;
+    
     @FXML 
     private VBox repetitionInputContainer;
 
@@ -94,8 +99,37 @@ public class RepetitionController {
         return repetition;
     }
     
+    // method to set fields of UI starting from an existing Repetition.
     public void setRepetition(Repetition existingRepetition) {
-        System.out.println("RepetitionController: setRepetition called (TO DO)");
+        // radioButton settings (YES/NO)
+        if (existingRepetition.isOneTime()) {
+            noRadio.setSelected(true);
+            handleNoSelected(); // hide controls
+        } else {
+            yesRadio.setSelected(true);
+            handleYesSelected(); // show controls
+            
+            // set duration spinner
+            Duration duration = existingRepetition.getSleepPeriod();
+            if (duration != null) {
+                // break down Duration Days, Hours, Minutes, Seconds
+                long days = duration.toDays();
+                long hours = duration.toHours() % 24;
+                long minutes = duration.toMinutes() % 60;
+                long seconds = duration.getSeconds() % 60;
+                
+                daySpinner.getValueFactory().setValue((int) days);
+                hourSpinner.getValueFactory().setValue((int) hours);
+                minuteSpinner.getValueFactory().setValue((int) minutes);
+                secondSpinner.getValueFactory().setValue((int) seconds);
+            }
+            
+            // set repetitions number
+            // it must be >= 1
+            int numReps = existingRepetition.getNumRepetition();
+            if (numReps < 1) numReps = 1; 
+            repetition.getValueFactory().setValue(numReps);
+        }
     }
     
 }

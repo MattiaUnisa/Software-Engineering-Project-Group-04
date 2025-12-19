@@ -13,4 +13,7 @@ public interface ActionControllerInterface {
     
     //This method is used to create and return the action that the user have configured in the UI
     public Action buildAction();
+    
+    // method to set data in the UI in the page to modify the rule starting from an existing action
+    public void setActionData(Action action);
 }

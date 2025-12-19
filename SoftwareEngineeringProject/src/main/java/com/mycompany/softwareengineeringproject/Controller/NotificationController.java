@@ -2,6 +2,7 @@ package com.mycompany.softwareengineeringproject.Controller;
 
 import com.mycompany.softwareengineeringproject.Model.Action;
 import com.mycompany.softwareengineeringproject.Model.ActionFactory;
+import com.mycompany.softwareengineeringproject.Model.NotificationAction;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -16,5 +17,13 @@ public class NotificationController implements ActionControllerInterface {
         String msg = (messageField != null) ? messageField.getText() : "";
         if (msg == null) msg = "";
         return ActionFactory.createShowNotification(msg);
+    }
+    
+    @Override
+    public void setActionData(Action action) {
+        if (action instanceof NotificationAction) {
+            NotificationAction notifyAction = (NotificationAction) action;
+            messageField.setText(notifyAction.getMessage());
+        }
     }
 }

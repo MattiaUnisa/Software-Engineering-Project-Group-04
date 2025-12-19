@@ -15,4 +15,6 @@ public interface TriggerControllerInterface {
     //Method for the creation of the Trigger Object
     public Trigger buildTrigger();
     
+    // method to set data in the UI in the page to modify the rule starting from an existing trigger
+    public void setTriggerData(Trigger trigger);
 }

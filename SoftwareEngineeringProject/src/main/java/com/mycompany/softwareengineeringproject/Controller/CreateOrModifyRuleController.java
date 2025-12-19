@@ -44,9 +44,9 @@ public class CreateOrModifyRuleController {
         nameField.setText(rule.getName());
         
         // Set values sor each section
-        //triggerSectionController.setTrigger(rule.getTrigger());
-        //actionSectionController.setAction(rule.getAction());
-        //repetitionSectionController.setRepetition(rule.getRepetition());
+        triggerSectionController.setTrigger(rule.getTrigger());
+        actionSectionController.setAction(rule.getAction());
+        repetitionSectionController.setRepetition(rule.getRepetition());
         System.out.println("Editing mode active for: " + rule.getName());
     }
     

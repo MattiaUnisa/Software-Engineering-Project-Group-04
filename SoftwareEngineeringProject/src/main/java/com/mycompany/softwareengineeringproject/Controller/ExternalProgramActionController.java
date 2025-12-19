@@ -6,6 +6,7 @@ package com.mycompany.softwareengineeringproject.Controller;
 
 import com.mycompany.softwareengineeringproject.Model.Action;
 import com.mycompany.softwareengineeringproject.Model.ActionFactory;
+import com.mycompany.softwareengineeringproject.Model.ExternalProgramAction;
 import java.io.File;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -46,6 +47,16 @@ public class ExternalProgramActionController implements ActionControllerInterfac
             return null;
         }
         return ActionFactory.createExternalProgram(new File(programPathField.getText()));
+    }
+    
+    @Override
+    public void setActionData(Action action) {
+        if (action instanceof ExternalProgramAction) {
+            ExternalProgramAction progAction = (ExternalProgramAction) action;
+            
+            if (progAction.getProgramPath() != null)
+                programPathField.setText(progAction.getProgramPath().getAbsolutePath());
+        }
     }
     
 }

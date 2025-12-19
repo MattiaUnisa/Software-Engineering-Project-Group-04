@@ -4,10 +4,12 @@
  */
 package com.mycompany.softwareengineeringproject.Controller;
 
+import com.mycompany.softwareengineeringproject.Model.DayOfWeekTrigger;
 import com.mycompany.softwareengineeringproject.Model.Trigger;
 import com.mycompany.softwareengineeringproject.Model.TriggerFactory;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 
@@ -31,6 +33,19 @@ public class DayOfWeekTriggerController implements TriggerControllerInterface{
     public Trigger buildTrigger(){
         DayOfWeek day = datePicker.getValue().getDayOfWeek();
         return TriggerFactory.createDayOfWeekTrigger(day);
+    }
+
+    @Override
+    public void setTriggerData(Trigger trigger) {
+        if (trigger instanceof DayOfWeekTrigger) {
+            DayOfWeekTrigger dowTrigger = (DayOfWeekTrigger) trigger;
+            DayOfWeek savedDay = dowTrigger.getDay();
+            
+            // ex. DayOfWeekTrigger contains onlt MONDAY, but DatePicker needs the complete date, 
+            //so we take "the first possible monday startin from now"
+            LocalDate dateToShow = LocalDate.now().with(TemporalAdjusters.nextOrSame(savedDay));
+            datePicker.setValue(dateToShow);
+        }
     }
     
 }

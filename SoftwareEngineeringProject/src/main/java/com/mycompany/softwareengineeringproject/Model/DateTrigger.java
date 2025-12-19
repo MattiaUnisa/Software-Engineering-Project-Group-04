@@ -20,7 +20,7 @@ public class DateTrigger implements Trigger{
         this.date = date;
     }
 
-    public LocalDate getdate() {
+    public LocalDate getDate() {
         return date;
     }
     

@@ -56,6 +56,12 @@ public class ExternalProgramAction implements Action{
         String path = action.substring("ExternalProgram: ".length());
         return ActionFactory.createExternalProgram(programPath);
     }
+
+    public File getProgramPath() {
+        return programPath;
+    }
+    
+    
     
     @Override
     public String toString() {

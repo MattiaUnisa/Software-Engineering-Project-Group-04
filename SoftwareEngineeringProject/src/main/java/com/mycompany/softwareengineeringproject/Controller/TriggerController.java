@@ -83,10 +83,38 @@ public class TriggerController {
         }
         return null;
     }
-    
-    
+
+    // method called from CreateOrModifyRuleController
+    // method that allows us to get the istance of the triggers to set values in UI
+    // each trigger has its own setTriggerData method that is called by this method
     public void setTrigger(Trigger existingTrigger) {
-        System.out.println("TriggerController: setTrigger called(TO DO)");
+        // get the class name for the combobox
+        String triggerClassName = existingTrigger.getClass().getSimpleName();
+        
+        // set the combobox
+        triggerComboBox.getSelectionModel().select(triggerClassName);
+        
+        // load the FXML
+        try {
+            String fxmlPath = "/" + triggerClassName + ".fxml";
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent triggerUI = loader.load();
+            
+            // get the controller of the specified trigger controller
+            trigger = loader.getController();
+            
+            // show the UI
+            dynamicContainer.getChildren().clear();
+            dynamicContainer.getChildren().add(triggerUI);
+            
+            // give data to the specified trigger controller
+            if (trigger != null) {
+                trigger.setTriggerData(existingTrigger);
+            }
+            
+        } catch (IOException e) {
+            System.out.println("Error load UI for: " + triggerClassName);
+        }
     }
-    
+        
 }

@@ -4,6 +4,7 @@
  */
 package com.mycompany.softwareengineeringproject.Controller;
 
+import com.mycompany.softwareengineeringproject.Model.FileTrigger;
 import com.mycompany.softwareengineeringproject.Model.Trigger;
 import com.mycompany.softwareengineeringproject.Model.TriggerFactory;
 import java.io.File;
@@ -54,6 +55,16 @@ public class FileTriggerController implements TriggerControllerInterface{
         String path = filePathField.getText();
         String name = fileNameField.getText();
         return TriggerFactory.createFileTrigger(path,name);
+    }
+
+    @Override
+    public void setTriggerData(Trigger trigger) {
+        if (trigger instanceof FileTrigger) {
+            FileTrigger fileTrigger = (FileTrigger) trigger;
+            
+            filePathField.setText(fileTrigger.getFilePath()); 
+            fileNameField.setText(fileTrigger.getFileName()); 
+        }
     }
     
 }

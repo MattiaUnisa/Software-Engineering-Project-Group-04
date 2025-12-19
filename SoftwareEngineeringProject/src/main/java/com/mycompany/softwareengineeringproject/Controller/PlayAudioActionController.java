@@ -6,6 +6,7 @@ package com.mycompany.softwareengineeringproject.Controller;
 
 import com.mycompany.softwareengineeringproject.Model.Action;
 import com.mycompany.softwareengineeringproject.Model.ActionFactory;
+import com.mycompany.softwareengineeringproject.Model.PlayAudioAction;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -16,7 +17,7 @@ import javafx.stage.Stage;
  *
  * @author anton
  */
-public class AudioController implements ActionControllerInterface{
+public class PlayAudioActionController implements ActionControllerInterface{
     
     @FXML private Button stopButton;
     @FXML private TextField filePathField;
@@ -59,5 +60,13 @@ public class AudioController implements ActionControllerInterface{
             return null;
         }
         return ActionFactory.createPlayAudio(path);
+    }
+    
+    @Override
+    public void setActionData(Action action) {
+        if (action instanceof PlayAudioAction) {
+            PlayAudioAction audioAction = (PlayAudioAction) action;
+            filePathField.setText(audioAction.getFilePath()); 
+        }
     }
 }

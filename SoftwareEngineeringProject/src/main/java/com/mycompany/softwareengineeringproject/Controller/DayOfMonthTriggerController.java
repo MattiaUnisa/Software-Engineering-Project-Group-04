@@ -4,6 +4,7 @@
  */
 package com.mycompany.softwareengineeringproject.Controller;
 
+import com.mycompany.softwareengineeringproject.Model.DayOfMonthTrigger;
 import com.mycompany.softwareengineeringproject.Model.Trigger;
 import com.mycompany.softwareengineeringproject.Model.TriggerFactory;
 import java.time.LocalDate;
@@ -30,6 +31,21 @@ public class DayOfMonthTriggerController implements TriggerControllerInterface{
     public Trigger buildTrigger(){
         int day = datePicker.getValue().getDayOfMonth();
         return TriggerFactory.createDayOfMonthTrigger(day);
+    }
+
+    @Override
+    public void setTriggerData(Trigger trigger) {
+        if (trigger instanceof DayOfMonthTrigger) {
+            DayOfMonthTrigger domTrigger = (DayOfMonthTrigger) trigger;
+            int savedDay = domTrigger.getDay(); 
+            
+            try {
+                LocalDate dateToShow = LocalDate.now().withDayOfMonth(savedDay);
+                datePicker.setValue(dateToShow);
+            } catch (Exception e) {
+                datePicker.setValue(LocalDate.now());
+            }
+        }
     }
     
 }

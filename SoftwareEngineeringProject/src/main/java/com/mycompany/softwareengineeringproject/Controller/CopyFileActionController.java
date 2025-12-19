@@ -6,6 +6,7 @@ package com.mycompany.softwareengineeringproject.Controller;
 
 import com.mycompany.softwareengineeringproject.Model.Action;
 import com.mycompany.softwareengineeringproject.Model.ActionFactory;
+import com.mycompany.softwareengineeringproject.Model.CopyFileAction;
 import java.io.File;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -58,6 +59,19 @@ public class CopyFileActionController implements ActionControllerInterface{
         }
                 
         return ActionFactory.createCopyFile(new File(sourcePathField.getText()), new File(destPathField.getText()));
+    }
+    
+    @Override
+    public void setActionData(Action action) {
+        if (action instanceof CopyFileAction) {
+            CopyFileAction copyAction = (CopyFileAction) action;
+            
+            if (copyAction.getSourcePath() != null)
+                sourcePathField.setText(copyAction.getSourcePath().getAbsolutePath());
+            
+            if (copyAction.getDestPath() != null)
+                destPathField.setText(copyAction.getDestPath().getAbsolutePath());
+        }
     }
     
 }

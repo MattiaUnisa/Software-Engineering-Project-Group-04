@@ -32,6 +32,6 @@ public class DayOfMonthTriggerTest {
     @Test
     public void testGetDay() {
         DayOfMonthTrigger trigger = new DayOfMonthTrigger(15);
-        assertEquals(15, trigger.getday());
+        assertEquals(15, trigger.getDay());
     }
 }

@@ -4,6 +4,7 @@
  */
 package com.mycompany.softwareengineeringproject.Controller;
 
+import com.mycompany.softwareengineeringproject.Model.FileSizeTrigger;
 import com.mycompany.softwareengineeringproject.Model.Trigger;
 import com.mycompany.softwareengineeringproject.Model.TriggerFactory;
 import java.io.File;
@@ -94,6 +95,18 @@ public class FileSizeTriggerController implements TriggerControllerInterface{
             break;
     }
         return TriggerFactory.createFileSizeTrigger(path,thresholdInBytes);
+    }
+
+    @Override
+    public void setTriggerData(Trigger trigger) {
+        if (trigger instanceof FileSizeTrigger) {
+            FileSizeTrigger fsTrigger = (FileSizeTrigger) trigger;
+            
+            filePathField.setText(fsTrigger.getFilePath());
+            
+            size.setText(String.valueOf(fsTrigger.getSize())); 
+            sizeUnitBox.getSelectionModel().select("Bytes");
+        }
     }
     
 }

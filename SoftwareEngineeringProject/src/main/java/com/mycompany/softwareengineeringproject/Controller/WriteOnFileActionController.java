@@ -6,6 +6,7 @@ package com.mycompany.softwareengineeringproject.Controller;
 
 import com.mycompany.softwareengineeringproject.Model.Action;
 import com.mycompany.softwareengineeringproject.Model.ActionFactory;
+import com.mycompany.softwareengineeringproject.Model.WriteOnFileAction;
 import java.io.File;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -48,5 +49,15 @@ public class WriteOnFileActionController implements ActionControllerInterface{
             return null;
         }
         return ActionFactory.createWriteOnFile(path, content);
+    }
+    
+    @Override
+    public void setActionData(Action action) {
+        if (action instanceof WriteOnFileAction) {
+            WriteOnFileAction writeAction = (WriteOnFileAction) action;
+            
+            filePathField.setText(writeAction.getFilePath());
+            message.setText(writeAction.getMessage());
+        }
     }
 }
