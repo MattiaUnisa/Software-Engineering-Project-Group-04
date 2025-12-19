@@ -53,17 +53,17 @@ public class WriteOnFileAction implements Action{
     
     @Override
     public String formatString(){
-        return "WriteOnFile: " + this.filePath + ";" + this.message;
+        return "WriteOnFile:" + this.filePath + ";" + this.message;
     }
     
     public static Action parseString(String action){
-        if(!action.startsWith("WriteOnFile: ")){
+        if(!action.startsWith("WriteOnFile:")){
             throw new IllegalArgumentException("Invalid WriteToFile format.");
         }
-        String wofPart = action.substring("WriteToFile: ".length());
+        String wofPart = action.substring("WriteOnFile:".length());
         String[] parts = wofPart.split(";");
         
-        if (parts.length != 2) throw new IllegalArgumentException("CopyMoveAction data error.");
+        if (parts.length != 2) throw new IllegalArgumentException("WriteOnFile data error.");
         
         String path = parts[0];
         String msg = parts[1];

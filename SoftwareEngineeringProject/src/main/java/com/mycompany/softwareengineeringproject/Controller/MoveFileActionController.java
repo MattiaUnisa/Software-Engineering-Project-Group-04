@@ -3,6 +3,7 @@ package com.mycompany.softwareengineeringproject.Controller;
 
 import com.mycompany.softwareengineeringproject.Model.Action;
 import com.mycompany.softwareengineeringproject.Model.ActionFactory;
+import com.mycompany.softwareengineeringproject.Model.MoveFileAction;
 import java.io.File;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -60,6 +61,14 @@ public class MoveFileActionController implements ActionControllerInterface {
 
     @Override
     public void setActionData(Action action) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (action instanceof MoveFileAction) {
+            MoveFileAction moveAction = (MoveFileAction) action;
+            
+            if (moveAction.getSource() != null)
+                sourcePathField.setText(moveAction.getSource().getAbsolutePath());
+            
+            if (moveAction.getDestination() != null)
+                destPathField.setText(moveAction.getDestination().getAbsolutePath());
+        }
     }
 }

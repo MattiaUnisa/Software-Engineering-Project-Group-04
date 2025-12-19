@@ -1,4 +1,3 @@
-
 package com.mycompany.softwareengineeringproject.Model;
 
 import java.io.File;
@@ -32,9 +31,36 @@ public class MoveFileAction implements Action{
 
     @Override
     public String formatString() {
-        return "";
+        return "MoveFile: " + source + ";" + destination;
+    }
+    
+    public static Action parseString(String action){
+        if(!action.startsWith("MoveFile:")){
+            throw new IllegalArgumentException("Invalid MoveFileAction format.");
+        }
+        String mfPart = action.substring("MoveFile:".length());
+        String[] parts = mfPart.split(";");
+        
+        if (parts.length != 2) throw new IllegalArgumentException("MoveFileAction data error.");
+        
+        File source = new File(parts[0]);
+        File dest = new File(parts[1]);
+        return ActionFactory.createMoveFile(source, dest);
     }
 
+    public File getSource() {
+        return source;
+    }
+
+    public File getDestination() {
+        return destination;
+    }
+
+    @Override
+    public String toString() {
+        return "MoveFileAction\n" + "sourcePath: " + source + "\ndestPath: " + destination;
+    }
+    
     
 }
 
