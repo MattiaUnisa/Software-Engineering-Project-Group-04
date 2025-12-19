@@ -54,7 +54,7 @@ public class CreateOrModifyRuleController {
      // Go back to the home screen saving nothing
     @FXML
     private void onBackClick() throws IOException {
-        App.setRoot("home");
+        App.setRoot("HomePage");
     }
 
     // go back to the home screen saving the rule
@@ -102,7 +102,7 @@ public class CreateOrModifyRuleController {
             System.out.println("Rule Created: " + name); 
         } 
         
-        App.setRoot("home");
+        App.setRoot("HomePage");
     }
     
 }
