@@ -25,13 +25,18 @@ public class ExternalProgramAction implements Action{
             return;
         }
         try{
+            //ProcessBuilder preparate the execution of the external program. 
+            //getAbsolutePath() is used to pass the string of the complete path
             ProcessBuilder pb = new ProcessBuilder(programPath.getAbsolutePath());
+            //Here the method open the external app
             pb.start();
             context.appendToLog("SUCCESS: Program started: " + programPath.getName());
+            //Visual notification on the UI about the execution of the app
             if (context.getUiEventListener() != null) {
                 context.getUiEventListener().onShowNotification("Success!", "Program " + programPath.getName() + " is well started");
             } 
         }catch(Exception e){
+            //The method here manage the possible errors about the execution of the app
             context.appendToLog("ERROR: Esecution of program is failed: " + e.getMessage());
             if (context.getUiEventListener() != null) {
                 context.getUiEventListener().onShowError("Error", "Cannot start the Program " + programPath.getName(), "Error: " + e.getMessage());
@@ -44,18 +49,28 @@ public class ExternalProgramAction implements Action{
         
     }
 
+    //Format an Action object in a string 
     @Override
     public String formatString() {
         return "ExternalProgram: " + programPath;
     }
     
+    //This method permit to rebuild an Action object from a string
     public static Action parseString(String action){
         if(!action.startsWith("ExternalProgram: ")){
             throw new IllegalArgumentException("Invalid ExternalProgramAction format.");
         }
+        //Extraxt the path of the file from the saved string
         String path = action.substring("ExternalProgram: ".length());
+        //Use the factory to create the object
         return ActionFactory.createExternalProgram(programPath);
     }
+
+    public File getProgramPath() {
+        return programPath;
+    }
+    
+    
     
     @Override
     public String toString() {

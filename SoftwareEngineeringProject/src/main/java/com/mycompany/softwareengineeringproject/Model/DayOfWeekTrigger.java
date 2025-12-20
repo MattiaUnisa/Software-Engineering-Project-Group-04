@@ -22,7 +22,7 @@ public class DayOfWeekTrigger implements Trigger{
         this.day = day;
     }
 
-    public DayOfWeek getday() {
+    public DayOfWeek getDay() {
         return day;
     }
     

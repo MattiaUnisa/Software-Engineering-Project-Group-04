@@ -83,6 +83,15 @@ public class CopyFileAction implements Action{
         return ActionFactory.createCopyFile(sourcePath, destPath);
     }
 
+    public File getSourcePath() {
+        return sourcePath;
+    }
+
+    public File getDestPath() {
+        return destPath;
+    }
+
+    
     @Override
     public String toString() {
         return "CopyFileAction{" + "sourcePath=" + sourcePath + ", destPath=" + destPath + ", operationType=" + '}';

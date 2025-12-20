@@ -30,14 +30,18 @@ public class WriteOnFileAction implements Action{
     
     @Override
     public void execute(ActionContext context){
+        //The "true" parameter enable the appen mode
         try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(filePath, true)))){
+            //Write the message in the file
             pw.println(message);
             context.appendToLog("SUCCESS: Wrote on file: " + message);
+            //Show a succes notification in the UI
             if (context.getUiEventListener() != null) {
                 context.getUiEventListener().onShowNotification("Success!", message);
             }  
         }catch(Exception e){
             context.appendToLog("ERROR: Cannot write on file: " + message + ". Cause: " + e.getMessage());
+            //Show an error notification in the UI
             if (context.getUiEventListener() != null) {
                 context.getUiEventListener().onShowError("Error", "Cannot write on file", "Error: " + e.getMessage());
             }  
@@ -51,15 +55,18 @@ public class WriteOnFileAction implements Action{
         
     }
     
+    //Format an Action object in a string 
     @Override
     public String formatString(){
         return "WriteOnFile: " + this.filePath + ";" + this.message;
     }
     
+    //This method permit to rebuild an Action object from a string
     public static Action parseString(String action){
         if(!action.startsWith("WriteOnFile: ")){
             throw new IllegalArgumentException("Invalid WriteToFile format.");
         }
+        //Extraxt the path of the file from the saved string
         String wofPart = action.substring("WriteToFile: ".length());
         String[] parts = wofPart.split(";");
         

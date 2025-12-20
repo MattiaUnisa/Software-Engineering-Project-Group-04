@@ -4,6 +4,7 @@
  */
 package com.mycompany.softwareengineeringproject.Controller;
 
+import com.mycompany.softwareengineeringproject.Model.DateTrigger;
 import com.mycompany.softwareengineeringproject.Model.Trigger;
 import com.mycompany.softwareengineeringproject.Model.TriggerFactory;
 import java.time.LocalDate;
@@ -30,6 +31,15 @@ public class DateTriggerController implements TriggerControllerInterface{
     public Trigger buildTrigger(){
         LocalDate date = datePicker.getValue();
         return TriggerFactory.createDateTrigger(date);
+    }
+
+    @Override
+    public void setTriggerData(Trigger trigger) {
+        if (trigger instanceof DateTrigger) {
+            DateTrigger dateTrigger = (DateTrigger) trigger;
+            // set date in the picker
+            datePicker.setValue(dateTrigger.getDate()); 
+        }
     }
     
 }

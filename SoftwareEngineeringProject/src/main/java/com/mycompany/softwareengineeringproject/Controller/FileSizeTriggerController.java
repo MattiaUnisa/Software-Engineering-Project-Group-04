@@ -4,6 +4,7 @@
  */
 package com.mycompany.softwareengineeringproject.Controller;
 
+import com.mycompany.softwareengineeringproject.Model.FileSizeTrigger;
 import com.mycompany.softwareengineeringproject.Model.Trigger;
 import com.mycompany.softwareengineeringproject.Model.TriggerFactory;
 import java.io.File;
@@ -41,6 +42,15 @@ public class FileSizeTriggerController implements TriggerControllerInterface{
         
         // Set a default value to prevent errors
         sizeUnitBox.getSelectionModel().select("KB");
+        
+        // Create a filter in order to accept only numbers
+        size.setTextFormatter(new javafx.scene.control.TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+            if (newText.matches("\\d*")) { // Regex: accept only number
+                return change;
+            }
+            return null; // Refuse changes if they aren't numeric
+        }));
    
     }
     
@@ -85,6 +95,18 @@ public class FileSizeTriggerController implements TriggerControllerInterface{
             break;
     }
         return TriggerFactory.createFileSizeTrigger(path,thresholdInBytes);
+    }
+
+    @Override
+    public void setTriggerData(Trigger trigger) {
+        if (trigger instanceof FileSizeTrigger) {
+            FileSizeTrigger fsTrigger = (FileSizeTrigger) trigger;
+            
+            filePathField.setText(fsTrigger.getFilePath());
+            
+            size.setText(String.valueOf(fsTrigger.getSize())); 
+            sizeUnitBox.getSelectionModel().select("Bytes");
+        }
     }
     
 }

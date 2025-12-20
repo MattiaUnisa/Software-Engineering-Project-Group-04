@@ -10,11 +10,11 @@
 
 <VBox xmlns:fx="http://javafx.com/fxml/1" styleClass="main-container"
       xmlns="http://javafx.com/javafx/8.0.171"  
-      fx:controller="com.mycompany.softwareengineeringproject.Controller.CreateRuleController"
+      fx:controller="com.mycompany.softwareengineeringproject.Controller.CreateOrModifyRuleController"
       stylesheets="@style.css">
     <children>
         <StackPane>
-            <Label text="Create New Rule" styleClass="header-title"/>
+            <Label fx:id="titleLabel" text="Create New Rule" styleClass="header-title"/>
             <Button onAction="#onBackClick" styleClass="icon-button" StackPane.alignment="CENTER_LEFT">
                 <StackPane.margin>
                     <Insets left="50" /> 

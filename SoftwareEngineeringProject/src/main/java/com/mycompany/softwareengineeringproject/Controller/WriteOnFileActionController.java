@@ -6,6 +6,7 @@ package com.mycompany.softwareengineeringproject.Controller;
 
 import com.mycompany.softwareengineeringproject.Model.Action;
 import com.mycompany.softwareengineeringproject.Model.ActionFactory;
+import com.mycompany.softwareengineeringproject.Model.WriteOnFileAction;
 import java.io.File;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -25,6 +26,7 @@ public class WriteOnFileActionController implements ActionControllerInterface{
         
     }
     
+    //When the "Select file" button is pressed the program open a window to choose the file in which the user want write
     @FXML
     private void onSelectFile(){
         FileChooser fileChooser = new FileChooser();
@@ -37,6 +39,8 @@ public class WriteOnFileActionController implements ActionControllerInterface{
         }
     }
     
+    //Create the Action Object starting from the data entered from the user. It is called from the Controller 
+    //when the button "Save" is pressed
     @Override
     public Action buildAction(){
         String path = filePathField.getText();
@@ -47,6 +51,17 @@ public class WriteOnFileActionController implements ActionControllerInterface{
         if(path == null || path.isEmpty()){
             return null;
         }
+        //Delegate at the Factory the construction the WriteOnFileAction object
         return ActionFactory.createWriteOnFile(path, content);
+    }
+    
+    @Override
+    public void setActionData(Action action) {
+        if (action instanceof WriteOnFileAction) {
+            WriteOnFileAction writeAction = (WriteOnFileAction) action;
+            
+            filePathField.setText(writeAction.getFilePath());
+            message.setText(writeAction.getMessage());
+        }
     }
 }

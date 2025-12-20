@@ -18,34 +18,34 @@ import org.junit.jupiter.api.Test;
  */
 public class ExternalProgramActionTest {
     
+    //Test 1: Verify that a program is started correctly
     @Test
     void testExecuteStartsExternalProgram() {
-        // Preparazione: usiamo un comando di sistema universale (es. "echo" o un eseguibile noto)
-        // Su Windows potresti usare "notepad.exe"
-        File program = new File("C:\\Windows\\System32\\notepad.exe");
-        
+        //Define the absoluteh path of the program
+        File program = new File("C:\\Windows\\System32\\calc.exe");
+        //create an instance of the action and of the context to save in that the feedback about the execution of the action
         ExternalProgramAction action = new ExternalProgramAction(program);
         ActionContext context = new ActionContext();
 
-        // Esecuzione
         action.execute(context);
 
-        // Verifica
+        //Check if in the log is present the word "SUCCESS"
         assertTrue(context.getExecutionLog().contains("SUCCESS"), "The action should write in the context taht the program is started succesfully");
+        //Check if in the log isn't present the word "ERROR"
         assertFalse(context.getExecutionLog().contains("ERROR"), "There shouldn't be errors in the context");
     }
     
+    //Test 2: Verify that the sistem manage correctly the case in which is used a not valid path
     @Test
     void testExecuteHandlesInvalidProgramPath() {
-        // Prepariamo un file fittizio che non esiste
+        //Here the program prepare a fake file for the testesiste
         File fakeProgram = new File("C:\\not\\existed\\path\\app.exe");
         ExternalProgramAction action = new ExternalProgramAction(fakeProgram);
         ActionContext context = new ActionContext();
 
-        // Esecuzione
         action.execute(context);
 
-        // Verifica: il log deve segnalare l'errore chiaramente
+        //Check if the log contain the string "ERROR" to confirm the managing of the error
         assertTrue(context.getExecutionLog().contains("ERROR"), "There should registered an error for not valid path");
     }
 }

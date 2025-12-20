@@ -21,7 +21,7 @@ public class DayOfMonthTrigger implements Trigger{
         this.day = day;
     }
 
-    public int getday() {
+    public int getDay() {
         return day;
     }
     

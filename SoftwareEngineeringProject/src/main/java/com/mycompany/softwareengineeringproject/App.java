@@ -16,7 +16,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("home"), 1500, 800);
+        scene = new Scene(loadFXML("HomePage"), 1500, 800);
 
         stage.setScene(scene);
         
@@ -35,12 +35,19 @@ public class App extends Application {
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
+    
+    // Overload method: accept a Parent node already loaded
+    public static void setRoot(Parent node) {
+        scene.setRoot(node);
+    }
 
     // load FXML file thanks to FXMLLoader
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/" + fxml + ".fxml"));
         return fxmlLoader.load();
     }
+    
+    
 
     public static void main(String[] args) {
         RuleEngine.getInstance().loadRules("RulesFile.txt");

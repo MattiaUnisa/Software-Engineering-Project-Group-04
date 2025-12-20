@@ -33,6 +33,6 @@ public class DateTriggerTest {
         LocalDate date = LocalDate.of(2024, 5, 15);
         DateTrigger trigger = new DateTrigger(date);
 
-        assertEquals(date, trigger.getdate());
+        assertEquals(date, trigger.getDate());
     }
 }

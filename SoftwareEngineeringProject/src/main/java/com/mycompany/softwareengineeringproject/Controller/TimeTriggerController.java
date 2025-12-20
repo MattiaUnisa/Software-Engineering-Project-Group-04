@@ -4,6 +4,7 @@
  */
 package com.mycompany.softwareengineeringproject.Controller;
 
+import com.mycompany.softwareengineeringproject.Model.TimeTrigger;
 import com.mycompany.softwareengineeringproject.Model.Trigger;
 import com.mycompany.softwareengineeringproject.Model.TriggerFactory;
 import java.time.LocalTime;
@@ -44,6 +45,18 @@ public class TimeTriggerController implements TriggerControllerInterface{
         int minute = minuteSpinner.getValue(); //take the int minute value
         LocalTime time = LocalTime.of(hour, minute); //create a variable that we use to create the TimeTrigger
         return TriggerFactory.createTimeTrigger(time);
+    }
+    
+    // method to get the instance of the TimeTrigger to set the spinner values in the UI
+    @Override
+    public void setTriggerData(Trigger trigger) {
+        if (trigger instanceof TimeTrigger) {
+            TimeTrigger timeTrigger = (TimeTrigger) trigger;
+            LocalTime time = timeTrigger.getTime();             
+            
+            hourSpinner.getValueFactory().setValue(time.getHour());
+            minuteSpinner.getValueFactory().setValue(time.getMinute());
+        }
     }
     
 }

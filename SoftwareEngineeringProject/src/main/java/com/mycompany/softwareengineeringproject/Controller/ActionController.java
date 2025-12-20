@@ -31,11 +31,11 @@ public class ActionController {
     //actions are added to the combobox as strings
     actionComboBox.getItems().addAll(
         "Choose Action",
-        "PlayAudio",
-        "Notification",
-        "WriteOnFile",
-        "CopyFile",
-        "ExternalProgram"
+        "PlayAudioAction",
+        "NotificationAction",
+        "WriteOnFileAction",
+        "CopyFileAction",
+        "ExternalProgramAction"
     );
     
     //the default string selected is Choose Action
@@ -81,4 +81,36 @@ public class ActionController {
         return null;
     }
     
+    // method called from CreateOrModifyRuleController
+    // method that allows us to get the istance of the actions to set values in UI
+    // each action has its own setActionData method that is called by this method
+    public void setAction(Action existingAction) {
+        // get class name
+        String actionClassName = existingAction.getClass().getSimpleName();
+        
+        // get combo box value
+        actionComboBox.getSelectionModel().select(actionClassName);
+        
+        // load FXML and give data
+        try {
+            String fxmlPath = "/" + actionClassName + ".fxml";
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent actionUI = loader.load();
+            
+            // get specific controller
+            action = loader.getController();
+            
+            // show UI
+            dynamicContainer.getChildren().clear();
+            dynamicContainer.getChildren().add(actionUI);
+            
+            // give data to specified controller
+            if (action != null) {
+                action.setActionData(existingAction);
+            }
+            
+        } catch (IOException e) {
+            System.out.println("Error loading UI for Action: " + actionClassName);
+        }
+    }
 }

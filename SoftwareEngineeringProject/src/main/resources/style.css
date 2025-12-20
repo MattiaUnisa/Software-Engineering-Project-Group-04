@@ -18,6 +18,7 @@ and open the template in the editor.
     -light-blue: #E3F2FD;
     -delete-red: #ffb3b3;
     -cyan: #94a2b3;
+    -bright-light-blue: #5AA2ED;
     -fx-font-family: 'Segoe UI', sans-serif;
 }
 
@@ -231,6 +232,19 @@ panel is visible, the list is shifted on left of 100px
     -fx-font-weight: bold;
 }
 
+.modify-rule-button {
+    -fx-font-size: 20px;
+    -fx-background-color: -green; 
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-padding: 10px 20px 10px 20px;
+}
+
+.modify-rule-button:hover {
+    -fx-background-color: -dark-green;
+}
 /* ----- CREATE RULE PAGE ----- */
 
 /* --- SCROLL PANE --- */

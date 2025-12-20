@@ -36,7 +36,7 @@ public class RuleListCell extends ListCell<Rule> {
         nameLabel = new Label();
         nameLabel.getStyleClass().add("rule-name-label");
         
-        // -----  SWITCH -----
+        // SWITCH
         activeSwitch = new ToggleButton();
         activeSwitch.getStyleClass().add("toggle-switch"); 
         activeSwitch.setText("OFF"); // Default text
@@ -63,7 +63,7 @@ public class RuleListCell extends ListCell<Rule> {
         controller.onUpdateItem(rule, empty);
     }
     
-    // --- Methods for the Controller to update the View ---
+    //Methods for the Controller to update the View 
     
     public void clearContent() {
         setText(null);
