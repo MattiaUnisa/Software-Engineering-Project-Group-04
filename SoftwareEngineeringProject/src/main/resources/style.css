@@ -270,8 +270,10 @@ panel is visible, the list is shifted on left of 100px
 /*  back arrow */
 .icon-button {
     /* button dimensions */
-    -fx-pref-width: 40px;
-    -fx-pref-height: 40px;  
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;  
+    -fx-max-width: 40px;
+    -fx-max-height: 40px; 
     /* image loaded as wallpaper */
     -fx-background-image: url("arrow_back.png");
     -fx-background-size: contain; 
