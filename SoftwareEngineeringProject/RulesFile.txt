@@ -1,2 +1,2 @@
 Rule 1 | false | DayOfWeekTrigger:FRIDAY | Notification:ok | Repetition:false;PT15S;2025-12-19T11:17:42.749;4;1
-dsdsdsds | false | DayOfWeekTrigger:FRIDAY | MoveFile:   C:\Users\matda\OneDrive\Desktop\1\Ciao.txt;C:\Users\matda\OneDrive\Desktop\2 | Repetition:true;null;2025-12-19T20:19:17.798;1;1
+Rule 2 | false | DayOfWeekTrigger:SATURDAY | MoveFile:C:\Users\matda\OneDrive\Desktop\2\Ciao.txt;C:\Users\matda\OneDrive\Desktop\1 | Repetition:true;null;2025-12-20T15:56:28.994;1;1
