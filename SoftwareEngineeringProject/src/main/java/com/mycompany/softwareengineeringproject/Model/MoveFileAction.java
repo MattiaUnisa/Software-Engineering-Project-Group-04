@@ -31,7 +31,7 @@ public class MoveFileAction implements Action{
 
     @Override
     public String formatString() {
-        return "MoveFile: " + source + ";" + destination;
+        return "MoveFile:" + source + ";" + destination;
     }
     
     public static Action parseString(String action){

@@ -61,7 +61,7 @@ public class CopyFileAction implements Action{
 
     @Override
     public String formatString() {
-        return "CopyFile: " + sourcePath + ";" + destPath;
+        return "CopyFile:" + sourcePath + ";" + destPath;
     }
     
     public static Action parseString(String action){
