@@ -56,7 +56,9 @@ public class FileTriggerController implements TriggerControllerInterface{
         String name = fileNameField.getText();
         return TriggerFactory.createFileTrigger(path,name);
     }
-
+    
+    // method to get the instance of the FileTrigger to set the spinner values in the UI
+    // called by setTrigger method in TriggerController
     @Override
     public void setTriggerData(Trigger trigger) {
         if (trigger instanceof FileTrigger) {

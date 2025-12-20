@@ -60,6 +60,8 @@ public class CopyFileActionController implements ActionControllerInterface{
         return ActionFactory.createCopyFile(new File(sourcePathField.getText()), new File(destPathField.getText()));
     }
     
+    // method to get the instance of the CopyFileAction to set the spinner values in the UI
+    // called by setAction method in ActionController
     @Override
     public void setActionData(Action action) {
         if (action instanceof CopyFileAction) {
