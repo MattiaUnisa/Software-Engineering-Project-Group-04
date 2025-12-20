@@ -19,6 +19,8 @@ public class NotificationController implements ActionControllerInterface {
         return ActionFactory.createShowNotification(msg);
     }
     
+    // method to get the instance of the NotificationAction to set the spinner values in the UI
+    // called by setAction method in ActionController
     @Override
     public void setActionData(Action action) {
         if (action instanceof NotificationAction) {

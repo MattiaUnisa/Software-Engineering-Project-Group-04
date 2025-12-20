@@ -59,6 +59,8 @@ public class MoveFileActionController implements ActionControllerInterface {
         return ActionFactory.createMoveFile(new File(sourcePathField.getText()), new File(destPathField.getText()));
     }
 
+    // method to get the instance of the MoveFileAction to set the spinner values in the UI
+    // called by setAction method in ActionController
     @Override
     public void setActionData(Action action) {
         if (action instanceof MoveFileAction) {
