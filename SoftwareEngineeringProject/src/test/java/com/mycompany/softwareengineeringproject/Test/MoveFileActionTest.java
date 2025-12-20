@@ -11,10 +11,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -43,45 +39,22 @@ public class MoveFileActionTest {
 
         action.execute(context);
 
-        //Build the path where we the user want to find the copied file
+        //Build the path where we the user want to find the moved file
         File expectedFile = Paths.get(destDir.toString(), sourceFile.getName()).toFile();
         //Check if the file exists in the destination
         assertTrue(expectedFile.exists(), "The file should exist in the destination folder");
-        //Check if the content of the file has been not change during the coping
-        assertEquals(content, Files.readAllLines(expectedFile.toPath()).get(0), "The content of the copied file not correspond");
-        //The original file must still exist
-        assertTrue(sourceFile.exists(), "The original file didn't remove during the copy");
+        //Check if the file exists in the destination
+        assertFalse(sourceFile.exists(), "The file shouldn't exist anymore in the source folder");
     }
     
-    //Test 2: Verify if the action overwrite a file if it already exist in the destination
-    @Test
-    void testExecuteOverwritesExistingFile() throws IOException {
-        Path sourceDir = Files.createTempDirectory("sourceDir");
-        Path destDir = Files.createTempDirectory("destDir");
-
-        //Create the source with the new content
-        File sourceFile = Files.createFile(sourceDir.resolve("replaceMe.txt")).toFile();
-        Files.write(sourceFile.toPath(), "New content".getBytes());
-
-        //Create a file with the same name in the destination, and we add at the content "Old content"        
-        File existingFile = Files.createFile(destDir.resolve("replaceMe.txt")).toFile();
-        Files.write(existingFile.toPath(), "Old content".getBytes());
-
-        CopyFileAction action = new CopyFileAction(sourceFile, destDir.toFile());
-        action.execute(new ActionContext());
-
-        //Check if StandardCopyOption.REPLACE_EXISTING make the overwrite of the content
-        String currentContent = Files.readAllLines(existingFile.toPath()).get(0);
-        assertEquals("New content", currentContent, "The existing file should be overwritten");
-    }
     
-    //Test 3: Verify that the action manage correctly the error if the source file doesn't exist
+    //Test 2: Verify that the action manage correctly the error if the source file doesn't exist
     @Test
     void testExecuteHandlesMissingSourceFile() throws IOException {
         File nonExistentFile = new File("fake_source.txt"); // File that not exist on the disk
         Path destDir = Files.createTempDirectory("destDir");
 
-        CopyFileAction action = new CopyFileAction(nonExistentFile, destDir.toFile());
+        MoveFileAction action = new MoveFileAction(nonExistentFile, destDir.toFile());
         ActionContext context = new ActionContext();
 
         //The execution must not throw Java exception, but manage the error
