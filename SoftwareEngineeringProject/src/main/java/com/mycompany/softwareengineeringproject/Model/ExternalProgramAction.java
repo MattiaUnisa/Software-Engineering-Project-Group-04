@@ -46,15 +46,16 @@ public class ExternalProgramAction implements Action{
 
     @Override
     public String formatString() {
-        return "ExternalProgram: " + programPath;
+        return "ExternalProgram:" + programPath;
     }
     
     public static Action parseString(String action){
-        if(!action.startsWith("ExternalProgram: ")){
+        if(!action.startsWith("ExternalProgram:")){
             throw new IllegalArgumentException("Invalid ExternalProgramAction format.");
         }
-        String path = action.substring("ExternalProgram: ".length());
-        return ActionFactory.createExternalProgram(programPath);
+        String part = action.substring("ExternalProgram:".length());
+        File path = new File(part);
+        return ActionFactory.createExternalProgram(path);
     }
 
     public File getProgramPath() {

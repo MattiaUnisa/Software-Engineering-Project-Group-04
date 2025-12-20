@@ -65,17 +65,17 @@ public class CopyFileAction implements Action{
     }
     
     public static Action parseString(String action){
-        if(!action.startsWith("CopyFile: ")){
+        if(!action.startsWith("CopyFile:")){
             throw new IllegalArgumentException("Invalid CopyFileAction format.");
         }
-        String cmfPart = action.substring("CopyFile: ".length());
+        String cmfPart = action.substring("CopyFile:".length());
         String[] parts = cmfPart.split(";");
         
         if (parts.length != 2) throw new IllegalArgumentException("CopyFileAction data error.");
         
         File source = new File(parts[0]);
         File dest = new File(parts[1]);
-        return ActionFactory.createCopyFile(sourcePath, destPath);
+        return ActionFactory.createCopyFile(source, dest);
     }
 
     public File getSourcePath() {

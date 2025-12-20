@@ -1,8 +1,9 @@
-/*
+
 package com.mycompany.softwareengineeringproject.Controller;
 
 import com.mycompany.softwareengineeringproject.Model.Action;
 import com.mycompany.softwareengineeringproject.Model.ActionFactory;
+import com.mycompany.softwareengineeringproject.Model.MoveFileAction;
 import java.io.File;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -50,8 +51,8 @@ public class MoveFileActionController implements ActionControllerInterface {
     @Override
     public Action buildAction() {
         // Verifica que ambos campos estén completos antes de mover el archivo
-        if (sourcePathField == null || sourcePathField.getText().isEmpty() || 
-            destPathField == null || destPathField.getText().isEmpty()) {
+        if (sourcePathField == null || sourcePathField.getText().isEmpty() && 
+            (destPathField == null || destPathField.getText().isEmpty())) {
             return null;  // Si alguno de los campos está vacío, no hace nada.
         }
         // Crea la acción de mover el archivo.
@@ -60,7 +61,14 @@ public class MoveFileActionController implements ActionControllerInterface {
 
     @Override
     public void setActionData(Action action) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (action instanceof MoveFileAction) {
+            MoveFileAction moveAction = (MoveFileAction) action;
+            
+            if (moveAction.getSource() != null)
+                sourcePathField.setText(moveAction.getSource().getAbsolutePath());
+            
+            if (moveAction.getDestination() != null)
+                destPathField.setText(moveAction.getDestination().getAbsolutePath());
+        }
     }
 }
-*/
