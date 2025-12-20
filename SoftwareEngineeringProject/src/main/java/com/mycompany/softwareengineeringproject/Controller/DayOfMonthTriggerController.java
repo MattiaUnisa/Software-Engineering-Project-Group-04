@@ -33,6 +33,8 @@ public class DayOfMonthTriggerController implements TriggerControllerInterface{
         return TriggerFactory.createDayOfMonthTrigger(day);
     }
 
+    // method to get the instance of the DayOfMonthriggert o set the spinner values in the UI
+    // called by setTrigger method in TriggerController
     @Override
     public void setTriggerData(Trigger trigger) {
         if (trigger instanceof DayOfMonthTrigger) {

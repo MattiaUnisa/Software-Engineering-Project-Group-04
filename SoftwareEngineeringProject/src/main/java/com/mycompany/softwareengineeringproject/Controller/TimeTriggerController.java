@@ -48,6 +48,7 @@ public class TimeTriggerController implements TriggerControllerInterface{
     }
     
     // method to get the instance of the TimeTrigger to set the spinner values in the UI
+    // called by setTrigger method in TriggerController
     @Override
     public void setTriggerData(Trigger trigger) {
         if (trigger instanceof TimeTrigger) {
