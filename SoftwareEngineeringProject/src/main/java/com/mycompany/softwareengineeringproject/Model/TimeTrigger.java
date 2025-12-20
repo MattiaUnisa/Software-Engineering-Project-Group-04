@@ -58,7 +58,7 @@ public class TimeTrigger implements Trigger{
     
     @Override
     public String toString() {
-        return "TimeTrigger{" + "time=" + time + '}';
+        return "TimeTrigger\n" + "time: " + time;
     }
     
 }

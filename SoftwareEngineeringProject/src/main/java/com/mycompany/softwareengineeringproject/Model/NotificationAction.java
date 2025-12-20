@@ -65,6 +65,6 @@ public class NotificationAction implements Action {
 
     @Override
     public String toString() {
-        return "NotificationAction{message='" + message + "'}";
+        return "NotificationAction\n" + "message: " + message;
     }
 }

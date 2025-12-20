@@ -58,19 +58,19 @@ public class WriteOnFileAction implements Action{
     //Format an Action object in a string 
     @Override
     public String formatString(){
-        return "WriteOnFile: " + this.filePath + ";" + this.message;
+        return "WriteOnFile:" + this.filePath + ";" + this.message;
     }
     
     //This method permit to rebuild an Action object from a string
     public static Action parseString(String action){
-        if(!action.startsWith("WriteOnFile: ")){
+        if(!action.startsWith("WriteOnFile:")){
             throw new IllegalArgumentException("Invalid WriteToFile format.");
         }
         //Extraxt the path of the file from the saved string
         String wofPart = action.substring("WriteToFile: ".length());
         String[] parts = wofPart.split(";");
         
-        if (parts.length != 2) throw new IllegalArgumentException("CopyMoveAction data error.");
+        if (parts.length != 2) throw new IllegalArgumentException("WriteOnFile data error.");
         
         String path = parts[0];
         String msg = parts[1];
@@ -79,7 +79,7 @@ public class WriteOnFileAction implements Action{
 
     @Override
     public String toString() {
-        return "WriteOnFileAction{" + "filePath=" + filePath + "message=" + message + '}';
+        return "WriteOnFileAction\n" + "filePath: " + filePath + "\nmessage: " + message;
     }
 
     

@@ -55,6 +55,8 @@ public class WriteOnFileActionController implements ActionControllerInterface{
         return ActionFactory.createWriteOnFile(path, content);
     }
     
+    // method to get the instance of the WriteOnFileAction to set the spinner values in the UI
+    // called by setAction method in ActionController
     @Override
     public void setActionData(Action action) {
         if (action instanceof WriteOnFileAction) {

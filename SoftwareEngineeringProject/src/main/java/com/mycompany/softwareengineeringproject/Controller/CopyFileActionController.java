@@ -9,7 +9,6 @@ import com.mycompany.softwareengineeringproject.Model.ActionFactory;
 import com.mycompany.softwareengineeringproject.Model.CopyFileAction;
 import java.io.File;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -70,6 +69,8 @@ public class CopyFileActionController implements ActionControllerInterface{
         return ActionFactory.createCopyFile(new File(sourcePathField.getText()), new File(destPathField.getText()));
     }
     
+    // method to get the instance of the CopyFileAction to set the spinner values in the UI
+    // called by setAction method in ActionController
     @Override
     public void setActionData(Action action) {
         if (action instanceof CopyFileAction) {

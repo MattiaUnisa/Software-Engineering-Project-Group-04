@@ -98,6 +98,6 @@ public class PlayAudioAction implements Action {
 
     @Override
     public String toString() {
-        return "PlayAudioAction{" + "filePath=" + filePath + '}';
+        return "PlayAudioAction\n" + "filePath: " + filePath;
     }
 }

@@ -62,6 +62,8 @@ public class PlayAudioActionController implements ActionControllerInterface{
         return ActionFactory.createPlayAudio(path);
     }
     
+    // method to get the instance of the PlayAudioAction to set the spinner values in the UI
+    // called by setAction method in ActionController
     @Override
     public void setActionData(Action action) {
         if (action instanceof PlayAudioAction) {

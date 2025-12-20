@@ -35,6 +35,8 @@ public class DayOfWeekTriggerController implements TriggerControllerInterface{
         return TriggerFactory.createDayOfWeekTrigger(day);
     }
 
+    // method to get the instance of the DayOfWeekTrigger to set the spinner values in the UI
+    // called by setTrigger method in TriggerController
     @Override
     public void setTriggerData(Trigger trigger) {
         if (trigger instanceof DayOfWeekTrigger) {

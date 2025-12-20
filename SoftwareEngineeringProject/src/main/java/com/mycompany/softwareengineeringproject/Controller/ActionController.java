@@ -35,7 +35,8 @@ public class ActionController {
         "NotificationAction",
         "WriteOnFileAction",
         "CopyFileAction",
-        "ExternalProgramAction"
+        "ExternalProgramAction",
+        "MoveFileAction"
     );
     
     //the default string selected is Choose Action

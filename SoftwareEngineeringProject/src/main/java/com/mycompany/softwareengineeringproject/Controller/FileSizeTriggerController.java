@@ -97,6 +97,8 @@ public class FileSizeTriggerController implements TriggerControllerInterface{
         return TriggerFactory.createFileSizeTrigger(path,thresholdInBytes);
     }
 
+    // method to get the instance of the FileSizeTrigger to set the spinner values in the UI
+    // called by setTrigger method in TriggerController
     @Override
     public void setTriggerData(Trigger trigger) {
         if (trigger instanceof FileSizeTrigger) {

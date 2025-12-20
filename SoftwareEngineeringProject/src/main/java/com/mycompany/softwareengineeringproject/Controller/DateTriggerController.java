@@ -33,6 +33,8 @@ public class DateTriggerController implements TriggerControllerInterface{
         return TriggerFactory.createDateTrigger(date);
     }
 
+    // method to get the instance of the DateTrigger to set the spinner values in the UI
+    // called by setTrigger method in TriggerController
     @Override
     public void setTriggerData(Trigger trigger) {
         if (trigger instanceof DateTrigger) {

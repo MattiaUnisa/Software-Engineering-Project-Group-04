@@ -52,18 +52,20 @@ public class ExternalProgramAction implements Action{
     //Format an Action object in a string 
     @Override
     public String formatString() {
-        return "ExternalProgram: " + programPath;
+        return "ExternalProgram:" + programPath;
     }
     
     //This method permit to rebuild an Action object from a string
     public static Action parseString(String action){
-        if(!action.startsWith("ExternalProgram: ")){
+        if(!action.startsWith("ExternalProgram:")){
             throw new IllegalArgumentException("Invalid ExternalProgramAction format.");
         }
-        //Extraxt the path of the file from the saved string
-        String path = action.substring("ExternalProgram: ".length());
+        //Extraxt the path of the file from the saved string        
+        String part = action.substring("ExternalProgram:".length());
         //Use the factory to create the object
-        return ActionFactory.createExternalProgram(programPath);
+        File path = new File(part);
+        return ActionFactory.createExternalProgram(path);
+
     }
 
     public File getProgramPath() {
@@ -74,6 +76,6 @@ public class ExternalProgramAction implements Action{
     
     @Override
     public String toString() {
-        return "ExternalProgramAction{" + "programPath=" + programPath + '}';
+        return "ExternalProgramAction\n" + "programPath: " + programPath;
     }
 }

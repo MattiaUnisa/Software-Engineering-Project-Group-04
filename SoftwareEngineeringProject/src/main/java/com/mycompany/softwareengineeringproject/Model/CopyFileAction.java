@@ -68,11 +68,11 @@ public class CopyFileAction implements Action{
     
     //This method permit to rebuild an Action object from a string
     public static Action parseString(String action){
-        if(!action.startsWith("CopyFile: ")){
+        if(!action.startsWith("CopyFile:")){
             throw new IllegalArgumentException("Invalid CopyFileAction format.");
         }
         //As separator between Source and Destination we used a semicolon
-        String cmfPart = action.substring("CopyFile: ".length());
+        String cmfPart = action.substring("CopyFile:".length());
         String[] parts = cmfPart.split(";");
         //If there isn't 2 fields the method throws an exception
         if (parts.length != 2) throw new IllegalArgumentException("CopyFileAction data error.");
@@ -80,7 +80,7 @@ public class CopyFileAction implements Action{
         File source = new File(parts[0]);
         File dest = new File(parts[1]);
         //Use the factory to create the Action
-        return ActionFactory.createCopyFile(sourcePath, destPath);
+        return ActionFactory.createCopyFile(source, dest);
     }
 
     public File getSourcePath() {
@@ -94,7 +94,7 @@ public class CopyFileAction implements Action{
     
     @Override
     public String toString() {
-        return "CopyFileAction{" + "sourcePath=" + sourcePath + ", destPath=" + destPath + ", operationType=" + '}';
+        return "CopyFileAction\n" + "sourcePath: " + sourcePath + "\ndestPath: " + destPath;
     }
 
     
