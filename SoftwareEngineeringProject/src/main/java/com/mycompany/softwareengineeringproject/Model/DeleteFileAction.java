@@ -17,18 +17,17 @@ public class DeleteFileAction implements Action {
 
         // Check if the file exists
         if (file == null || !file.exists()) {
-            context.appendLog("ERROR: File does not exist: " + file);
+            context.appendToLog("ERROR: File does not exist: " + file);
 
             if (context.getUiEventListener() != null) {
-                context.getUiEventListener()
-                        .onShowError("Error", "Cannot delete the file", "File does not exist");
+                context.getUiEventListener().onShowError("Error", "Cannot delete the file", "File does not exist");
             }
             return;
         }
 
-        // Check that it is not a directory (optional but safer)
+        // Check that it is not a directory
         if (file.isDirectory()) {
-            context.appendLog("ERROR: Selected path is a directory, not a file: " + file.getAbsolutePath());
+            context.appendToLog("ERROR: Selected path is a directory, not a file: " + file.getAbsolutePath());
 
             if (context.getUiEventListener() != null) {
                 context.getUiEventListener()
@@ -41,7 +40,7 @@ public class DeleteFileAction implements Action {
             // Delete the file
             Files.delete(file.toPath());
 
-            context.appendLog("SUCCESS: File deleted: " + file.getAbsolutePath());
+            context.appendToLog("SUCCESS: File deleted: " + file.getAbsolutePath());
 
             if (context.getUiEventListener() != null) {
                 context.getUiEventListener()
@@ -49,7 +48,7 @@ public class DeleteFileAction implements Action {
             }
 
         } catch (IOException e) {
-            context.appendLog("ERROR: File deletion failed: " + e.getMessage());
+            context.appendToLog("ERROR: File deletion failed: " + e.getMessage());
 
             if (context.getUiEventListener() != null) {
                 context.getUiEventListener()
@@ -87,6 +86,6 @@ public class DeleteFileAction implements Action {
 
     @Override
     public String toString() {
-        return "Delete File: " + (file != null ? file.getAbsolutePath() : "null");
+        return "DeleteFileAction\n" + "file:" + file;
     }
 }

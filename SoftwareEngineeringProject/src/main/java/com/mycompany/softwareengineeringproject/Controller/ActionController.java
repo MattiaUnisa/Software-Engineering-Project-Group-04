@@ -36,7 +36,8 @@ public class ActionController {
         "WriteOnFileAction",
         "CopyFileAction",
         "ExternalProgramAction",
-        "MoveFileAction"
+        "MoveFileAction",
+        "DeleteFileAction"
     );
     
     //the default string selected is Choose Action

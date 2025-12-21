@@ -63,10 +63,7 @@ public class MoveFileActionController implements ActionControllerInterface {
         }
 
         // Create the MoveFileAction
-        return ActionFactory.createMoveFile(
-                new File(sourcePathField.getText()),
-                new File(destPathField.getText())
-        );
+        return ActionFactory.createMoveFile(new File(sourcePathField.getText()),new File(destPathField.getText()));
     }
 
     @Override

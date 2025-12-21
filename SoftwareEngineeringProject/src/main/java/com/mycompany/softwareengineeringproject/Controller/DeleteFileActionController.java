@@ -40,9 +40,7 @@ public class DeleteFileActionController implements ActionControllerInterface {
             return null;
         }
 
-        return ActionFactory.createDeleteFile(
-                new File(filePathField.getText())
-        );
+        return ActionFactory.createDeleteFile(new File(filePathField.getText()));
     }
 
     @Override
