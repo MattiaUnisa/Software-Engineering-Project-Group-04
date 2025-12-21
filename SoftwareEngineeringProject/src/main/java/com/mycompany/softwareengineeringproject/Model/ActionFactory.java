@@ -38,4 +38,7 @@ public class ActionFactory {
     public static Action createMoveFile(File sourcePath, File destPath){
         return new MoveFileAction(sourcePath, destPath);
     }
+    public static Action createDeleteFile(File filePath){
+        return new DeleteFileAction(filePath);
+    }
 }
