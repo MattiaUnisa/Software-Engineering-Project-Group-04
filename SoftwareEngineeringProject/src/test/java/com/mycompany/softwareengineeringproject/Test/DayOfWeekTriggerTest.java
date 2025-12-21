@@ -23,7 +23,7 @@ public class DayOfWeekTriggerTest {
     public void testIsTriggeredFalseOnDifferentDay() {
         DayOfWeek today = LocalDate.now().getDayOfWeek();
 
-        //prendo un giorno diverso da quello attuale
+        // i take a different day from actual day
         DayOfWeek different = today.plus(1);
         if(different == today) 
             different = today.minus(1);

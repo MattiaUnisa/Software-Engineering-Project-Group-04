@@ -27,19 +27,20 @@ public class CopyFileAction implements Action{
 
     @Override
     public void execute(ActionContext context) {
-        // Controllo esistenza file sorgente
+        // Check of the existing of the source file
         if (sourcePath == null || !sourcePath.exists()) {
             context.appendToLog("ERROR: Source file does not exist: " + sourcePath);
             return;
         }
 
         try {
-            // Costruiamo il file di destinazione finale (Directory + Nome File Sorgente)
-            // La User Story richiede di spostare in una directory di destinazione
+            // Here we create a new reference file that aim inside the destination folder
             File finalDest = new File(destPath, sourcePath.getName());
 
-            // Copia il file convertendo in Path
+            // .toPath() convert the File in Path to make it compatible with Files.copy
+            // StandardCopyOption.REPLACE_EXISTING allow to overwrite the files with the same names
             Files.copy(sourcePath.toPath(), finalDest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            // write on the log a feedback about the copy operation
             context.appendToLog("SUCCESS: File copied to " + finalDest.getAbsolutePath());
             if (context.getUiEventListener() != null) {
                 context.getUiEventListener().onShowNotification("Success!", "File is well copied");
@@ -59,22 +60,26 @@ public class CopyFileAction implements Action{
         
     }
 
+    //Format an Action object in a string 
     @Override
     public String formatString() {
-        return "CopyFile: " + sourcePath + ";" + destPath;
+        return "CopyFile:" + sourcePath + ";" + destPath;
     }
     
+    //This method permit to rebuild an Action object from a string
     public static Action parseString(String action){
         if(!action.startsWith("CopyFile:")){
             throw new IllegalArgumentException("Invalid CopyFileAction format.");
         }
+        //As separator between Source and Destination we used a semicolon
         String cmfPart = action.substring("CopyFile:".length());
         String[] parts = cmfPart.split(";");
-        
+        //If there isn't 2 fields the method throws an exception
         if (parts.length != 2) throw new IllegalArgumentException("CopyFileAction data error.");
         
         File source = new File(parts[0]);
         File dest = new File(parts[1]);
+        //Use the factory to create the Action
         return ActionFactory.createCopyFile(source, dest);
     }
 

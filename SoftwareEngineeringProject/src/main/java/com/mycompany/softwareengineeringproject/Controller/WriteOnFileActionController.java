@@ -26,6 +26,7 @@ public class WriteOnFileActionController implements ActionControllerInterface{
         
     }
     
+    //When the "Select file" button is pressed the program open a window to choose the file in which the user want write
     @FXML
     private void onSelectFile(){
         FileChooser fileChooser = new FileChooser();
@@ -38,6 +39,8 @@ public class WriteOnFileActionController implements ActionControllerInterface{
         }
     }
     
+    //Create the Action Object starting from the data entered from the user. It is called from the Controller 
+    //when the button "Save" is pressed
     @Override
     public Action buildAction(){
         String path = filePathField.getText();
@@ -48,6 +51,7 @@ public class WriteOnFileActionController implements ActionControllerInterface{
         if(path == null || path.isEmpty()){
             return null;
         }
+        //Delegate at the Factory the construction the WriteOnFileAction object
         return ActionFactory.createWriteOnFile(path, content);
     }
     

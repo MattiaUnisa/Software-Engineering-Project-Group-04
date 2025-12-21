@@ -13,7 +13,6 @@
       spacing="15"
       styleClass="dynamic-content"
 >
-    <!-- Título de la interfaz -->
     <Label text="Source File Path" styleClass="section-label"/>
     
     <HBox spacing="10">    
@@ -24,7 +23,6 @@
 
     <Label text="Destination File Path" styleClass="section-label"/>
     <HBox spacing="10"> 
-        <!-- Campo para mostrar la ruta del directorio de destino -->
         <TextField fx:id="destPathField" promptText="Select Destination Directory" HBox.hgrow="ALWAYS" editable="false" styleClass="text-field"/>
         <Button text="Select Destination Directory" onAction="#onSelectDest" styleClass="standard-button"/>
     </HBox>
