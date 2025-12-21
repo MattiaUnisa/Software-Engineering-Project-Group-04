@@ -33,6 +33,10 @@ public class ActionIOFactory {
         if (action.startsWith("MoveFile:")){
             return MoveFileAction.parseString(action);
         }
+        
+        if (action.startsWith("DeleteFile:")){
+            return DeleteFileAction.parseString(action);
+        }
 
         throw new IllegalArgumentException("Unknown Action type in persistence data: " + action);
     }

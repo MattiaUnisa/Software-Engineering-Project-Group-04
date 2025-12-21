@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class DeleteFileActionTest {
     
-    //Test 1: Verify if a file has been succesfully deleated
+    //Test to Verify if a file has been succesfully deleated
     @Test
     void testExecuteMoveFileSuccessfully() throws IOException {
         //Create a file that already contain a text
@@ -34,7 +34,7 @@ public class DeleteFileActionTest {
     }
     
     
-    //Test 2: Verify that the action manage correctly the error if the file doesn't exist
+    //Test to Verify that the action manage correctly the error if the file doesn't exist
     @Test
     void testExecuteHandlesMissingSourceFile() throws IOException {
         File nonExistentFile = new File("fake_source.txt"); // File that not exist 

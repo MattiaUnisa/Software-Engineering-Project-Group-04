@@ -9,7 +9,6 @@ import com.mycompany.softwareengineeringproject.Model.ExternalProgramAction;
 import java.io.File;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assumptions.assumeTrue;
 import org.junit.jupiter.api.Test;
 
 /**

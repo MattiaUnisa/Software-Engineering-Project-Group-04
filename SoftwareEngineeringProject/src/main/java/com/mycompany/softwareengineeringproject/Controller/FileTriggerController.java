@@ -8,7 +8,6 @@ import com.mycompany.softwareengineeringproject.Model.FileTrigger;
 import com.mycompany.softwareengineeringproject.Model.Trigger;
 import com.mycompany.softwareengineeringproject.Model.TriggerFactory;
 import java.io.File;
-import java.time.LocalTime;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;

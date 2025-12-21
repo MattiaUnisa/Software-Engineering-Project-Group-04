@@ -1,2 +1,2 @@
 Rule 1 | false | DayOfWeekTrigger:FRIDAY | Notification:ok | Repetition:true;PT15S;null;4;0
-Rule 2 | false | DayOfWeekTrigger:SUNDAY | DeleteFile:C:\Users\matda\OneDrive\Desktop\1\Test.txt | Repetition:true;PT5S;2025-12-21T15:59:38.204;2;1
+Rule 2 | false | DayOfWeekTrigger:SUNDAY | DeleteFile:C:\Users\matda\OneDrive\Desktop\2\Test.txt | Repetition:true;null;2025-12-21T16:04:06.245;1;1

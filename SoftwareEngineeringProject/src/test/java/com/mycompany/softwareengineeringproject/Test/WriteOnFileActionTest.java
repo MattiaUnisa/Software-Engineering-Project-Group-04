@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class WriteOnFileActionTest {
     
-    //Test 1: Verify that the action add the content, and not that overwrite the previous content
+    //Test to Verify that the action add the content, and not that overwrite the previous content
     @Test
     void testExecuteAppendsContentToExistingFile() throws IOException {
         //Create a file that already contain a text
@@ -44,7 +44,7 @@ public class WriteOnFileActionTest {
         tempFile.delete();
     }
     
-    //Test 2: Verify that the action manage the not valid paths
+    //Test to Verify that the action manage the not valid paths
     @Test
     void testExecuteHandlesInvalidPath() {
         //Here is saved a not valid path
