@@ -22,7 +22,7 @@ public class ExternalProgramActionTest {
     @Test
     void testExecuteStartsExternalProgram() {
         //Define the absoluteh path of the program
-        File program = new File("C:\\Windows\\System32\\calc.exe");
+        File program = new File("cc");
         //create an instance of the action and of the context to save in that the feedback about the execution of the action
         ExternalProgramAction action = new ExternalProgramAction(program);
         ActionContext context = new ActionContext();
