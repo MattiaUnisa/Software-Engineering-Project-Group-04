@@ -8,9 +8,6 @@ import com.mycompany.softwareengineeringproject.Model.ActionContext;
 import com.mycompany.softwareengineeringproject.Model.DeleteFileAction;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class DeleteFileActionTest {
     
-    //Test 1: Verify if a file has been succesfully moved from a folder to another one
+    //Test 1: Verify if a file has been succesfully deleated
     @Test
     void testExecuteMoveFileSuccessfully() throws IOException {
         //Create a file that already contain a text

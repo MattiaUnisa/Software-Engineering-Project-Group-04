@@ -43,6 +43,8 @@ public class DeleteFileActionController implements ActionControllerInterface {
         return ActionFactory.createDeleteFile(new File(filePathField.getText()));
     }
 
+    // method to get the instance of the DeleteFileAction to set the spinner values in the UI
+    // called by setAction method in ActionController
     @Override
     public void setActionData(Action action) {
         // Load data into UI when editing a rule
