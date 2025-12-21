@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.2"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.mycompany.softwareengineeringproject.Controller.DeleteFileActionController"
+      stylesheets="@style.css"
+      alignment="CENTER"
+      spacing="15"
+      styleClass="dynamic-content">
+
+    <!-- File section -->
+    <Label text="File Path" styleClass="section-label"/>
+
+    <HBox spacing="10">
+        <TextField fx:id="filePathField"
+                   promptText="Select File to Delete"
+                   HBox.hgrow="ALWAYS"
+                   editable="false"
+                   styleClass="text-field"/>
+        <Button text="Select File"
+                onAction="#onSelectFile"
+                styleClass="standard-button"/>
+    </HBox>
+
+</VBox>
